@@ -254,3 +254,619 @@
   </script>
 </body>
 </html>
+
+
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>チームTOP3ランキング（打撃／投球）</title>
+<style>
+  body {
+    font-family: "Segoe UI", sans-serif;
+    background-color: #092048;
+    color: #fff;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    color: #4da3ff;
+  }
+
+  .toggle-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 25px;
+  }
+
+  button {
+    background: #1e3a8a;
+    border: 1px solid #4da3ff;
+    color: #fff;
+    padding: 8px 18px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  button.active, button:hover {
+    background: #4da3ff;
+    color: #092048;
+  }
+
+  .section {
+    display: none;
+    animation: fade 0.5s ease-in-out;
+  }
+
+  .section.active {
+    display: block;
+  }
+
+  @keyframes fade {
+    from {opacity: 0;}
+    to {opacity: 1;}
+  }
+
+  /* ✅ 改良されたスクロールエリア */
+  .scroll-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 18px;
+    padding: 8px 20px;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .scroll-container::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  .scroll-container::-webkit-scrollbar-thumb {
+    background: #4da3ff;
+    border-radius: 3px;
+  }
+
+  .card {
+    flex: 0 0 200px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 14px;
+    padding: 12px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.25);
+    transition: transform 0.3s;
+  }
+
+  .card:hover {
+    transform: scale(1.04);
+  }
+
+  .title {
+    font-size: 1rem;
+    color: #4da3ff;
+    margin-bottom: 8px;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+    padding-bottom: 4px;
+  }
+
+  .player {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 6px 0;
+  }
+
+  .player a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .player img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #4da3ff;
+  }
+
+  .player.top img {
+    width: 58px;
+    height: 58px;
+    border: 2px solid #5eb0ff;
+    box-shadow: 0 0 10px rgba(77,163,255,0.6);
+  }
+
+  .player-info {
+    text-align: left;
+  }
+
+  .player-info span {
+    color: #fff;
+    font-weight: bold;
+    font-size: 0.9rem;
+  }
+
+  .player.top .player-info span {
+    font-size: 1rem;
+    color: #5eb0ff;
+  }
+
+  .rank {
+    font-size: 0.85rem;
+    color: #ccc;
+  }
+
+  @media (max-width: 600px) {
+    .card {
+      flex: 0 0 180px;
+      padding: 10px;
+    }
+    .scroll-container {
+      gap: 14px;
+      padding: 6px 10px;
+    }
+    .player img {
+      width: 40px;
+      height: 40px;
+    }
+    .player.top img {
+      width: 52px;
+      height: 52px;
+    }
+    .player-info span {
+      font-size: 0.85rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+<h1>チームTOP3ランキング2025</h1>
+
+<div class="toggle-buttons">
+  <button id="battingBtn" class="active">打撃成績</button>
+  <button id="pitchingBtn">投球成績</button>
+</div>
+
+
+<!-- 打撃部門 -->
+<div id="batting" class="section active">
+  <div class="scroll-container">
+    <div class="card">
+      <div class="title">打率</div>
+      <div class="player top">
+        <a href="https://sites.google.com/view/lionscrown/ネビン">
+          <img src="https://via.placeholder.com/100" alt="ネビン">
+          <div class="player-info">
+            <span>ネビン</span>
+            <div class="rank">.277</div>
+          </div>
+        </a>
+      </div>
+      <div class="player">
+        <a href="https://sites.google.com/view/lionscrown/西川愛也">
+          <img src="https://via.placeholder.com/100" alt="西川愛也">
+          <div class="player-info">
+            <span>西川愛也</span>
+            <div class="rank">.264</div>
+          </div>
+        </a>
+      </div>
+      <div class="player">
+        <a href="https://sites.google.com/view/lionscrown/渡部聖弥">
+          <img src="https://via.placeholder.com/100" alt="渡部聖弥">
+          <div class="player-info">
+            <span>渡部聖弥</span>
+            <div class="rank">.259</div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="title">安打数</div>
+      <div class="player top">
+        <a href="https://sites.google.com/view/lionscrown/ネビン">
+          <img src="https://via.placeholder.com/100" alt="ネビン">
+          <div class="player-info">
+            <span>ネビン</span>
+            <div class="rank">141</div>
+          </div>
+        </a>
+      </div>
+      <div class="player">
+        <a href="https://sites.google.com/view/lionscrown/西川愛也">
+          <img src="https://via.placeholder.com/100" alt="西川愛也">
+          <div class="player-info">
+            <span>西川 愛也</span>
+            <div class="rank">134</div>
+          </div>
+        </a>
+      </div>
+      <div class="player">
+        <a href="https://sites.google.com/view/lionscrown/渡部聖弥">
+          <img src="https://via.placeholder.com/100" alt="渡部聖弥">
+          <div class="player-info">
+            <span>渡部 聖弥</span>
+            <div class="rank">110</div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="title">本塁打数</div>
+      <div class="player top">
+        <a href="https://sites.google.com/view/lionscrown/ネビン">
+          <img src="https://via.placeholder.com/100" alt="ネビン">
+          <div class="player-info">
+            <span>ネビン</span>
+            <div class="rank">21</div>
+          </div>
+        </a>
+      </div>
+      <div class="player">
+        <a href="https://sites.google.com/view/lionscrown/渡部聖弥">
+          <img src="https://via.placeholder.com/100" alt="渡部聖弥">
+          <div class="player-info">
+            <span>渡部 聖弥</span>
+            <div class="rank">12</div>
+          </div>
+        </a>
+      </div>
+      <div class="player">
+        <a href="https://sites.google.com/view/lionscrown/西川愛也">
+          <img src="https://via.placeholder.com/100" alt="西川愛也">
+          <div class="player-info">
+            <span>西川 愛也</span>
+            <div class="rank">10</div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="title">盗塁</div>
+      <div class="player top">
+        <a href="https://sites.google.com/view/lionscrown/西川愛也">
+          <img src="https://via.placeholder.com/100" alt="西川愛也">
+          <div class="player-info">
+            <span>西川 愛也</span>
+            <div class="rank">25</div>
+          </div>
+        </a>
+      </div>
+      <div class="player">
+        <a href="https://sites.google.com/view/lionscrown/滝澤夏央">
+          <img src="https://via.placeholder.com/100" alt="滝澤夏央">
+          <div class="player-info">
+            <span>滝澤 夏央</span>
+            <div class="rank">21</div>
+          </div>
+        </a>
+      </div>
+      <div class="player">
+        <a href="https://sites.google.com/view/lionscrown/長谷川信哉">
+          <img src="https://via.placeholder.com/100" alt="長谷川信哉">
+          <div class="player-info">
+            <span>長谷川 信哉</span>
+            <div class="rank">9</div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="title">出塁率</div>
+      <div class="player top">
+        <a href="https://sites.google.com/view/lionscrown/ネビン">
+          <img src="https://via.placeholder.com/100" alt="ネビン">
+          <div class="player-info">
+            <span>ネビン</span>
+            <div class="rank">.346</div>
+          </div>
+        </a>
+      </div>
+      <div class="player">
+        <a href="https://sites.google.com/view/lionscrown/西川愛也">
+          <img src="https://via.placeholder.com/100" alt="西川愛也">
+          <div class="player-info">
+            <span>西川 愛也</span>
+            <div class="rank">.318</div>
+          </div>
+        </a>
+      </div>
+      <div class="player">
+        <a href="https://sites.google.com/view/lionscrown/渡部聖弥">
+          <img src="https://via.placeholder.com/100" alt="渡部聖弥">
+          <div class="player-info">
+            <span>渡部 聖弥</span>
+            <div class="rank">.299</div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="title">OPS</div>
+      <div class="player top">
+        <a href="https://sites.google.com/view/lionscrown/ネビン">
+          <img src="https://via.placeholder.com/100" alt="ネビン">
+          <div class="player-info">
+            <span>ネビン</span>
+            <div class="rank">.794</div>
+          </div>
+        </a>
+      </div>
+      <div class="player">
+        <a href="https://sites.google.com/view/lionscrown/西川愛也">
+          <img src="https://via.placeholder.com/100" alt="西川愛也">
+          <div class="player-info">
+            <span>西川 愛也</span>
+            <div class="rank">.704</div>
+          </div>
+        </a>
+      </div>
+      <div class="player">
+        <a href="https://sites.google.com/view/lionscrown/渡部聖弥">
+          <img src="https://via.placeholder.com/100" alt="渡部聖弥">
+          <div class="player-info">
+            <span>渡部 聖弥</span>
+            <div class="rank">.694</div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+
+  </div>
+</div>
+
+
+<!-- 投球部門 -->
+<div id="pitching" class="section">
+  <div class="scroll-container">
+    <div class="card">
+      <div class="title">防御率</div>
+      <div class="player top">
+        <a href="https://sites.google.com/view/lionscrown/今井達也">
+          <img src="https://via.placeholder.com/100" alt="今井達也">
+          <div class="player-info">
+            <span>今井 達也</span>
+            <div class="rank">1.92</div>
+          </div>
+        </a>
+      </div>
+      <div class="player">
+        <a href="https://sites.google.com/view/lionscrown/隅田知一郎">
+          <img src="https://via.placeholder.com/100" alt="隅田知一郎">
+          <div class="player-info">
+            <span>隅田 知一郎</span>
+            <div class="rank">2.59</div>
+          </div>
+        </a>
+      </div>
+      <div class="player">
+        <a href="https://sites.google.com/view/lionscrown/髙橋光成">
+          <img src="https://via.placeholder.com/100" alt="髙橋光成">
+          <div class="player-info">
+            <span>髙橋 光成</span>
+            <div class="rank">3.04</div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="title">勝利数</div>
+      <div class="player top">
+        <a href="https://sites.google.com/view/lionscrown/隅田知一郎">
+          <img src="https://via.placeholder.com/100" alt="隅田知一郎">
+          <div class="player-info">
+            <span>隅田 知一郎</span>
+            <div class="rank">10</div>
+          </div>
+        </a>
+      </div>
+      <div class="player">
+        <a href="https://sites.google.com/view/lionscrown/今井達也">
+          <img src="https://via.placeholder.com/100" alt="今井達也">
+          <div class="player-info">
+            <span>今井 達也</span>
+            <div class="rank">10</div>
+          </div>
+        </a>
+      </div>
+      <div class="player">
+        <a href="https://sites.google.com/view/lionscrown/髙橋光成">
+          <img src="https://via.placeholder.com/100" alt="髙橋光成">
+          <div class="player-info">
+            <span>髙橋 光成</span>
+            <div class="rank">8</div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="title">奪三振数</div>
+      <div class="player top">
+        <a href="https://sites.google.com/view/lionscrown/今井達也">
+          <img src="https://via.placeholder.com/100" alt="今井達也">
+          <div class="player-info">
+            <span>今井 達也</span>
+            <div class="rank">178</div>
+          </div>
+        </a>
+      </div>
+      <div class="player">
+        <a href="https://sites.google.com/view/lionscrown/隅田知一郎">
+          <img src="https://via.placeholder.com/100" alt="隅田知一郎">
+          <div class="player-info">
+            <span>隅田 知一郎</span>
+            <div class="rank">149</div>
+          </div>
+        </a>
+      </div>
+      <div class="player">
+        <a href="https://sites.google.com/view/lionscrown/髙橋光成">
+          <img src="https://via.placeholder.com/100" alt="髙橋光成">
+          <div class="player-info">
+            <span>髙橋 光成</span>
+            <div class="rank">88</div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="title">ホールド数</div>
+      <div class="player top">
+        <a href="https://sites.google.com/view/lionscrown/甲斐野央">
+          <img src="https://via.placeholder.com/100" alt="甲斐野央">
+          <div class="player-info">
+            <span>甲斐野央</span>
+            <div class="rank">33</div>
+          </div>
+        </a>
+      </div>
+      <div class="player">
+        <a href="https://sites.google.com/view/lionscrown/ウィンゲンター">
+          <img src="https://via.placeholder.com/100" alt="ウィンゲンター">
+          <div class="player-info">
+            <span>ウィンゲンター</span>
+            <div class="rank">31</div>
+          </div>
+        </a>
+      </div>
+      <div class="player">
+        <a href="https://sites.google.com/view/lionscrown/山田陽翔">
+          <img src="https://via.placeholder.com/100" alt="山田陽翔">
+          <div class="player-info">
+            <span>山田 陽翔</span>
+            <div class="rank">17</div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="title">セーブ数</div>
+      <div class="player top">
+        <a href="https://sites.google.com/view/lionscrown/平良海馬">
+          <img src="https://via.placeholder.com/100" alt="平良海馬">
+          <div class="player-info">
+            <span>平良 海馬</span>
+            <div class="rank">31</div>
+          </div>
+        </a>
+      </div>
+      <div class="player">
+        <a href="https://sites.google.com/view/lionscrown/山田陽翔">
+          <img src="https://via.placeholder.com/100" alt="山田 陽翔">
+          <div class="player-info">
+            <span>山田 陽翔</span>
+            <div class="rank">1</div>
+          </div>
+        </a>
+      </div>
+      <div class="player">
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="title">投球回</div>
+      <div class="player top">
+        <a href="https://sites.google.com/view/lionscrown/今井達也">
+          <img src="https://via.placeholder.com/100" alt="今井達也">
+          <div class="player-info">
+            <span>今井 達也</span>
+            <div class="rank">163.2</div>
+          </div>
+        </a>
+      </div>
+      <div class="player">
+        <a href="https://sites.google.com/view/lionscrown/隅田知一郎">
+          <img src="https://via.placeholder.com/100" alt="隅田知一郎">
+          <div class="player-info">
+            <span>隅田 知一郎</span>
+            <div class="rank">159.2</div>
+          </div>
+        </a>
+      </div>
+      <div class="player">
+        <a href="https://sites.google.com/view/lionscrown/髙橋光成">
+          <img src="https://via.placeholder.com/100" alt="髙橋光成">
+          <div class="player-info">
+            <span>髙橋 光成</span>
+            <div class="rank">148.0</div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="title">登板数</div>
+      <div class="player top">
+        <a href="https://sites.google.com/view/lionscrown/平良海馬">
+          <img src="https://via.placeholder.com/100" alt="平良海馬">
+          <div class="player-info">
+            <span>平良 海馬</span>
+            <div class="rank">54</div>
+          </div>
+        </a>
+      </div>
+      <div class="player">
+        <a href="https://sites.google.com/view/lionscrown/ウィンゲンター">
+          <img src="https://via.placeholder.com/100" alt="ウィンゲンター">
+          <div class="player-info">
+            <span>ウィンゲンター</span>
+            <div class="rank">49</div>
+          </div>
+        </a>
+      </div>
+      <div class="player">
+        <a href="https://sites.google.com/view/lionscrown/山田陽翔">
+          <img src="https://via.placeholder.com/100" alt="山田陽翔">
+          <div class="player-info">
+            <span>山田 陽翔</span>
+            <div class="rank">49</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const battingBtn = document.getElementById('battingBtn');
+const pitchingBtn = document.getElementById('pitchingBtn');
+const batting = document.getElementById('batting');
+const pitching = document.getElementById('pitching');
+
+battingBtn.addEventListener('click', () => {
+  battingBtn.classList.add('active');
+  pitchingBtn.classList.remove('active');
+  batting.classList.add('active');
+  pitching.classList.remove('active');
+});
+pitchingBtn.addEventListener('click', () => {
+  pitchingBtn.classList.add('active');
+  battingBtn.classList.remove('active');
+  pitching.classList.add('active');
+  batting.classList.remove('active');
+});
+</script>
+
+</body>
+</html>
