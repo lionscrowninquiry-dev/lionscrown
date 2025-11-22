@@ -1,4 +1,12 @@
-<!doctype html>
+<nav>
+  <ul style="display:flex; gap:20px;">
+    <li><a href="index.html">ホーム</a></li>
+    <li><a href="about.html">サイト概要</a></li>
+    <li><a href="games.html">試合データ</a></li>
+    <li><a href="contact.html">お問い合わせ</a></li>
+  </ul>
+</nav>
+
 <html lang="ja">
 <head>
   <meta charset="utf-8" />
