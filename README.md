@@ -212,63 +212,103 @@
     /* ============================ */
     /* ★ TOP3カード（カード型） */
     /* ============================ */
-    .rank-section{
-      background:var(--card);
-      padding:20px;
-      border-radius:14px;
-      box-shadow:0 2px 6px rgba(0,0,0,0.08);
-      margin-bottom:25px;
-    }
+   
+<section class="rank-section" id="rank">
+  <h2>TOP3 ランキング</h2>
 
-    .ranking-tabs{
-      display:flex;
-      gap:10px;
-      margin-bottom:14px;
-    }
-    .ranking-tabs button{
-      padding:8px 14px;
-      border-radius:8px;
-      border:none;
-      background:#e5e7eb;
-      cursor:pointer;
-      font-weight:600;
-    }
-    .ranking-tabs button.active{
-      background:var(--lions-blue);
-      color:#fff;
-    }
+  <!-- メインタブ（打撃 / 投球） -->
+  <div class="ranking-tabs main-tabs">
+    <button class="active" data-target="batting">打撃</button>
+    <button data-target="pitching">投球</button>
+  </div>
 
-    .ranking-content{ display:none; }
-    .ranking-content.active{ display:block; }
+  <!-- ================= -->
+  <!--       打 撃       -->
+  <!-- ================= -->
+  <div id="batting" class="ranking-block active">
 
-    .ranking-card{
-      display:flex;
-      gap:12px;
-      padding:12px;
-      background:#fff;
-      border-radius:12px;
-      margin-bottom:10px;
-      border-left:5px solid var(--lions-blue);
-      box-shadow:0 2px 6px rgba(0,0,0,0.05);
-    }
+    <!-- サブタブ（打撃） -->
+    <div class="ranking-tabs sub-tabs">
+      <button class="active" data-target="avg">打率</button>
+      <button data-target="hr">本塁打</button>
+      <button data-target="rbi">打点</button>
+      <button data-target="sb">盗塁</button>
+    </div>
 
-    .rank-num{
-      font-size:1.3rem;
-      font-weight:700;
-    }
-    .player-name{
-      font-size:1.05rem;
-      font-weight:700;
-    }
-    .player-detail{
-      font-size:0.95rem;
-      color:#555;
-    }
+    <!-- 打率 -->
+    <div id="avg" class="ranking-content active">
+      <div class="ranking-card"><div class="rank-num">1</div><div><div class="player-name">A選手</div><div class="player-detail">.345</div></div></div>
+      <div class="ranking-card"><div class="rank-num">2</div><div><div class="player-name">B選手</div><div class="player-detail">.330</div></div></div>
+      <div class="ranking-card"><div class="rank-num">3</div><div><div class="player-name">C選手</div><div class="player-detail">.325</div></div></div>
+    </div>
 
-  </style>
-</head>
+    <!-- 本塁打 -->
+    <div id="hr" class="ranking-content">
+      <div class="ranking-card"><div class="rank-num">1</div><div><div class="player-name">A選手</div><div class="player-detail">40本</div></div></div>
+      <div class="ranking-card"><div class="rank-num">2</div><div><div class="player-name">B選手</div><div class="player-detail">32本</div></div></div>
+      <div class="ranking-card"><div class="rank-num">3</div><div><div class="player-name">C選手</div><div class="player-detail">28本</div></div></div>
+    </div>
 
-<body>
+    <!-- 打点 -->
+    <div id="rbi" class="ranking-content">
+      <div class="ranking-card"><div class="rank-num">1</div><div><div class="player-name">A選手</div><div class="player-detail">98打点</div></div></div>
+      <div class="ranking-card"><div class="rank-num">2</div><div><div class="player-name">B選手</div><div class="player-detail">90打点</div></div></div>
+      <div class="ranking-card"><div class="rank-num">3</div><div><div class="player-name">C選手</div><div class="player-detail">83打点</div></div></div>
+    </div>
+
+    <!-- 盗塁 -->
+    <div id="sb" class="ranking-content">
+      <div class="ranking-card"><div class="rank-num">1</div><div><div class="player-name">A選手</div><div class="player-detail">35盗塁</div></div></div>
+      <div class="ranking-card"><div class="rank-num">2</div><div><div class="player-name">B選手</div><div class="player-detail">28盗塁</div></div></div>
+      <div class="ranking-card"><div class="rank-num">3</div><div><div class="player-name">C選手</div><div class="player-detail">22盗塁</div></div></div>
+    </div>
+  </div>
+
+
+
+  <!-- ================= -->
+  <!--       投 球       -->
+  <!-- ================= -->
+  <div id="pitching" class="ranking-block">
+
+    <!-- サブタブ（投球） -->
+    <div class="ranking-tabs sub-tabs">
+      <button class="active" data-target="era">防御率</button>
+      <button data-target="so">奪三振</button>
+      <button data-target="app">登板</button>
+      <button data-target="win">勝利</button>
+    </div>
+
+    <!-- 防御率 -->
+    <div id="era" class="ranking-content active">
+      <div class="ranking-card"><div class="rank-num">1</div><div><div class="player-name">D投手</div><div class="player-detail">2.10</div></div></div>
+      <div class="ranking-card"><div class="rank-num">2</div><div><div class="player-name">E投手</div><div class="player-detail">2.45</div></div></div>
+      <div class="ranking-card"><div class="rank-num">3</div><div><div class="player-name">F投手</div><div class="player-detail">2.53</div></div></div>
+    </div>
+
+    <!-- 奪三振 -->
+    <div id="so" class="ranking-content">
+      <div class="ranking-card"><div class="rank-num">1</div><div><div class="player-name">D投手</div><div class="player-detail">188奪三振</div></div></div>
+      <div class="ranking-card"><div class="rank-num">2</div><div><div class="player-name">E投手</div><div class="player-detail">175奪三振</div></div></div>
+      <div class="ranking-card"><div class="rank-num">3</div><div><div class="player-name">F投手</div><div><div class="player-detail">160奪三振</div></div></div>
+    </div>
+
+    <!-- 登板 -->
+    <div id="app" class="ranking-content">
+      <div class="ranking-card"><div class="rank-num">1</div><div><div class="player-name">G投手</div><div class="player-detail">65試合</div></div></div>
+      <div class="ranking-card"><div class="rank-num">2</div><div><div class="player-name">H投手</div><div class="player-detail">61試合</div></div></div>
+      <div class="ranking-card"><div class="rank-num">3</div><div><div class="player-name">I投手</div><div class="player-detail">58試合</div></div></div>
+    </div>
+
+    <!-- 勝利 -->
+    <div id="win" class="ranking-content">
+      <div class="ranking-card"><div class="rank-num">1</div><div><div class="player-name">J投手</div><div class="player-detail">14勝</div></div></div>
+      <div class="ranking-card"><div class="rank-num">2</div><div><div class="player-name">K投手</div><div class="player-detail">12勝</div></div></div>
+      <div class="ranking-card"><div class="rank-num">3</div><div><div class="player-name">L投手</div><div class="player-detail">11勝</div></div></div>
+    </div>
+
+  </div>
+</section>
 
 <header>
   <div class="title">L-Crown（西武ライオンズ データサイト）</div>
