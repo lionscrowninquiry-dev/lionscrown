@@ -22,6 +22,59 @@
 
     /* ヘッダー */
     header{
+      position:relative;
+      background:var(--lions-blue);
+      color:#fff;
+      padding:12px 20px;
+      font-size:1.3rem;
+      font-weight:700;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+    }
+
+    /* ハンバーガー */
+    .nav-toggle{ display:none; }
+    .nav-toggle-label{
+      cursor:pointer;
+      width:30px;
+      height:22px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+    }
+    .nav-toggle-label span,
+    .nav-toggle-label span:before,
+    .nav-toggle-label span:after{
+      content:"";
+      display:block;
+      height:4px;
+      background:#fff;
+      border-radius:2px;
+    }
+
+    /* メニュー */
+    .nav-menu{
+      position:absolute;
+      top:60px;
+      right:0;
+      background:#fff;
+      width:180px;
+      padding:15px 0;
+      border-radius:12px;
+      box-shadow:0 4px 8px rgba(0,0,0,0.15);
+      display:none;
+    }
+    .nav-menu ul{ list-style:none; margin:0; padding:0; }
+    .nav-menu li{ padding:10px 20px; }
+    .nav-menu a{
+      text-decoration:none;
+      color:#1a1a1a;
+      font-size:1rem;
+    }
+
+    .nav-toggle:checked ~ .nav-menu{ display:block; }
+    header{
       background:var(--lions-blue);
       color:#fff;
       padding:12px 20px;
@@ -149,14 +202,32 @@
 
 <header>
   <div class="title">L-Crown（西武ライオンズ データサイト）</div>
+
+  <!-- ▼ ハンバーガーメニュー -->
+  <input type="checkbox" id="nav-toggle" class="nav-toggle">
+  <label for="nav-toggle" class="nav-toggle-label">
+    <span></span>
+  </label>
+
+  <nav class="nav-menu">
+    <ul>
+      <li><a href="#game">試合速報</a></li>
+      <li><a href="#news">ニュース</a></li>
+      <li><a href="#rank">TOP3ランキング</a></li>
+    </ul>
+  </nav>
 </header>
 
 <div class="container">
 
   <!-- ▼ 試合速報エリア -->
-  <section class="game-card">
+  <section class="game-card" id="game">
     <h2 class="game-title">試合速報</h2>
-    <p>ここに最新の試合速報を掲載します。（スコアカードや状況など）</p>
+    <div class="game-content">
+      <div class="game-team"><strong>Lions</strong> 3 - 2 Hawks</div>
+      <div class="game-info">7回表／ベルーナドーム</div>
+      <div class="game-detail">投手：隅田 → 2失点好投継続中</div>
+    </div>
   </section>
 
   <!-- ▼ ニュースエリア -->
@@ -179,7 +250,7 @@
   </section>
 
   <!-- ▼ ランキングエリア -->
-  <section class="rank-section">
+  <section class="rank-section" id="rank">
     <h2 class="rank-header">TOP3 ランキング</h2>
 
     <div class="rank-buttons">
@@ -188,15 +259,15 @@
     </div>
 
     <ul id="rank-bat" class="rank-list">
-      <li class="rank-item">1位 ●●：打率 .345</li>
-      <li class="rank-item">2位 ●●：打率 .321</li>
-      <li class="rank-item">3位 ●●：打率 .310</li>
+      <li class="rank-item">1位 A選手：打率 .345（直近10試合 .410）</li>
+      <li class="rank-item">2位 B選手：打率 .321</li>
+      <li class="rank-item">3位 C選手：打率 .310</li>
     </ul>
 
     <ul id="rank-pit" class="rank-list" style="display:none;">
-      <li class="rank-item">1位 ●●：防御率 1.23</li>
-      <li class="rank-item">2位 ●●：防御率 1.85</li>
-      <li class="rank-item">3位 ●●：防御率 2.20</li>
+      <li class="rank-item">1位 X投手：防御率 1.23（奪三振率 10.2）</li>
+      <li class="rank-item">2位 Y投手：防御率 1.85</li>
+      <li class="rank-item">3位 Z投手：防御率 2.20</li>
     </ul>
   </section>
 
