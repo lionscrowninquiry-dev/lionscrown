@@ -1,1078 +1,223 @@
-<!-- ▼ ナビゲーション -->
-<header class="nav-header">
-  <div class="nav-container">
-    <div class="nav-title">L-Crown</div>
-
-    <!-- ハンバーガー（スマホ用） -->
-    <input type="checkbox" id="nav-toggle" class="nav-toggle">
-    <label for="nav-toggle" class="nav-toggle-label">
-      <span></span>
-    </label>
-
-    <!-- ▼ メニュー -->
-    <nav class="nav-menu">
-      <a href="index.html">ホーム</a>
-      <a href="games.html">試合一覧</a>
-      <a href="players.html">選手データ</a>
-      <a href="about.html">サイトについて</a>
-    </nav>
-  </div>
-</header>
-
-<style>
-/* 基本色 */
-:root{
-  --main:#092048; /* ライオンズ濃紺 */
-  --text:#ffffff;
-  --hover:#ffca00;
-}
-
-/* レイアウト全体 */
-.nav-header{
-  background: var(--main);
-  color: var(--text);
-  width: 100%;
-  position: sticky;
-  top: 0;
-  z-index: 999;
-}
-
-.nav-container{
-  max-width: 1100px;
-  margin: auto;
-  padding: 10px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-/* PCのメニュー表示 */
-.nav-menu{
-  display: flex;
-  gap: 25px;
-}
-
-.nav-menu a{
-  color: var(--text);
-  text-decoration: none;
-  font-size: 17px;
-  font-weight: bold;
-}
-
-.nav-menu a:hover{
-  color: var(--hover);
-}
-
-/* タイトル */
-.nav-title{
-  font-size: 20px;
-  font-weight: bold;
-}
-
-/* ハンバーガーボタン（スマホ用） */
-.nav-toggle{
-  display: none;
-}
-
-.nav-toggle-label{
-  display: none;
-  cursor: pointer;
-}
-
-.nav-toggle-label span,
-.nav-toggle-label span::before,
-.nav-toggle-label span::after{
-  display: block;
-  background: var(--text);
-  height: 3px;
-  width: 28px;
-  border-radius: 3px;
-  position: relative;
-}
-
-.nav-toggle-label span::before,
-.nav-toggle-label span::after{
-  content: "";
-  position: absolute;
-  left: 0;
-}
-
-.nav-toggle-label span::before{
-  top: -8px;
-}
-
-.nav-toggle-label span::after{
-  top: 8px;
-}
-
-/* ▼ スマホ用デザイン */
-@media (max-width: 768px){
-
-  .nav-toggle-label{
-    display: block;
-  }
-
-  .nav-menu{
-    position: absolute;
-    top: 60px;
-    left: 0;
-    width: 100%;
-    background: var(--main);
-    flex-direction: column;
-    gap: 0;
-    display: none;
-  }
-
-  .nav-menu a{
-    padding: 15px 20px;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-  }
-
-  /* チェックが入ったらメニューを表示 */
-  .nav-toggle:checked + .nav-toggle-label + .nav-menu{
-    display: flex;
-  }
-}
-</style>
-
-
-
+<!doctype html>
 <html lang="ja">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>試合速報（テンプレート）</title>
+  <title>L-Crown | 西武ライオンズ データ速報</title>
   <style>
     :root{
-      --lions-main:#092048;
-      --hawks-main:#ffcc00;
-      --bg:#ffffff;
+      --lions-blue:#092048;
+      --accent:#1e3a8a;
+      --bg:#f5f7fa;
       --card:#ffffff;
       --muted:#94a3b8;
-      --score-bg: rgba(255,255,255,0.06);
+      --border:#e2e8f0;
+    }
+    body{
+      margin:0;
+      background:var(--bg);
+      font-family:'Hiragino Sans','Noto Sans JP',sans-serif;
+      color:#1a1a1a;
     }
 
-    *{box-sizing:border-box}
-    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,'Noto Sans JP',sans-serif;background:var(--bg);color:#000;margin:0;padding:0}
+    /* ヘッダー */
+    header{
+      background:var(--lions-blue);
+      color:#fff;
+      padding:12px 20px;
+      font-size:1.3rem;
+      font-weight:700;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+    }
+    header .title{ font-size:1.4rem; }
 
-    .match-card{
-      width:100%;
-      max-width:900px;
-      margin:16px auto;
-      padding:14px;
-      border-radius:14px;
+    /* レイアウト */
+    .container{
+      max-width:1100px;
+      margin:0 auto;
+      padding:20px;
+    }
+
+    /* ▼ 試合速報カード */
+    .game-card{
       background:var(--card);
-      color:#000;
-      box-shadow:0 6px 20px rgba(2,6,23,0.15);
-      display:flex;
-      gap:16px;
-      align-items:center;
-      flex-wrap:wrap;
-    }
-
-    .teams{
-      display:flex;
-      flex:1;
-      align-items:center;
-      gap:16px;
-      flex-wrap:wrap;
-    }
-
-    .team{
-      flex:1 1 120px;
-      display:flex;
-      align-items:center;
-      gap:14px;
-    }
-
-    .logo{
-      width:56px;
-      height:56px;
-      border-radius:12px;
-      overflow:hidden;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      background:linear-gradient(135deg, rgba(255,255,255,0.02), rgba(255,255,255,0.04));
-      border:2px solid rgba(255,255,255,0.04);
-      flex-shrink:0;
-    }
-    .logo img{width:100%;height:100%;object-fit:cover;display:block}
-    .logo .fallback{font-weight:700;font-size:20px;color:#fff}
-
-    .team-name{font-size:15px;font-weight:600}
-    .team-sub{font-size:12px;color:var(--muted)}
-
-    /* チームカラー反映 */
-    #home-team.lions .team-name{color:var(--lions-main)}
-    #home-team.hawks .team-name{color:var(--hawks-main)}
-    #away-team.lions .team-name{color:var(--lions-main)}
-    #away-team.hawks .team-name{color:var(--hawks-main)}
-
-    .score{
-      display:flex;
-      flex-direction:row;
-      align-items:center;
-      justify-content:center;
-      padding:10px 14px;
+      padding:20px;
       border-radius:14px;
-      background:var(--score-bg);
-      min-width:0;
-      gap:8px;
-      transition:box-shadow .25s,border-color .25s;
+      box-shadow:0 2px 6px rgba(0,0,0,0.08);
+      margin-bottom:25px;
+    }
+    .game-title{
+      font-size:1.3rem;
+      font-weight:700;
+      color:var(--lions-blue);
+      margin-bottom:12px;
+    }
+
+    /* ▼ ニュース */
+    .news-section{
+      background:var(--card);
+      padding:20px;
+      border-radius:14px;
+      box-shadow:0 2px 6px rgba(0,0,0,0.08);
+      margin-bottom:25px;
+    }
+    .news-title{
+      font-size:1.3rem;
+      font-weight:700;
+      color:var(--lions-blue);
+      margin-bottom:15px;
+    }
+    .news-list{
+      list-style:none;
+      padding:0;
+      margin:0;
+    }
+    .news-item{
+      display:flex;
+      gap:12px;
+      padding:10px 0;
+      border-bottom:1px solid var(--border);
+    }
+    .news-item:last-child{ border-bottom:none; }
+    .news-date{
+      font-size:0.9rem;
+      width:90px;
+      color:#555;
       flex-shrink:0;
     }
-    .score .runs{font-size:36px;font-weight:800;line-height:1}
-    .score .label{font-size:12px;color:var(--muted)}
+    .news-text{
+      text-decoration:none;
+      color:#1a1a1a;
+      font-size:1rem;
+    }
+    .news-text:hover{ text-decoration:underline; }
 
-    .meta{
+    /* ▼ TOP3ランキング */
+    .rank-section{
+      background:var(--card);
+      padding:20px;
+      border-radius:14px;
+      box-shadow:0 2px 6px rgba(0,0,0,0.08);
+      margin-bottom:25px;
+    }
+    .rank-header{
+      font-size:1.3rem;
+      font-weight:700;
+      color:var(--lions-blue);
+      margin-bottom:12px;
+    }
+    .rank-buttons{
       display:flex;
-      flex-direction:column;
-      align-items:flex-end;
-      gap:6px;
+      gap:10px;
+      margin-bottom:12px;
     }
-    .inning{
-      background:linear-gradient(90deg, rgba(255,255,255,0.03), rgba(255,255,255,0.06));
-      padding:6px 10px;
-      border-radius:999px;
-      font-weight:600;
-      font-size:13px;
-      border:1px solid rgba(255,255,255,0.03);
+    .rank-btn{
+      padding:6px 12px;
+      border-radius:8px;
+      background:#e5eaf3;
+      border:none;
+      cursor:pointer;
     }
-    .status{font-size:13px;color:var(--muted)}
-    .time{font-size:12px;color:var(--muted)}
+    .rank-btn.active{
+      background:var(--lions-blue);
+      color:#fff;
+      font-weight:700;
+    }
+    .rank-list{
+      list-style:none;
+      padding:0;
+      margin:0;
+    }
+    .rank-item{
+      padding:10px 0;
+      border-bottom:1px solid var(--border);
+    }
+    .rank-item:last-child{ border-bottom:none; }
 
-    @media (max-width:560px){
-      .match-card{
-        flex-direction:column;
-        align-items:stretch;
-        padding:12px;
-        gap:12px;
-      }
-      .teams{
-        flex-direction:column;
-        gap:10px;
-      }
-      .team{
-        width:100%;
-        justify-content:flex-start;
-      }
-      .score{
-        align-self:center;
-        width:100%;
-        justify-content:center;
-        margin:8px 0;
-        gap:6px;
-        padding:8px 0;
-      }
-      .meta{
-        flex-direction:row;
-        justify-content:space-between;
-        align-items:center;
-        width:100%;
-      }
-      .score .runs{font-size:32px;}
-      .team-name{font-size:14px;}
-      .team-sub{font-size:11px;}
+    /* ▼ フッター */
+    footer{
+      text-align:center;
+      color:var(--muted);
+      padding:30px 0;
+      margin-top:40px;
     }
-
-    .game-info {
-      text-align: left;
-      margin-bottom: 15px;
-      padding: 12px 10px;
-      background-color: #ffffff;
-      color: #444;
-      border-radius: 10px;
-      line-height:1.4;
-    }
-    .game-info div:first-child{font-weight:700;font-size:16px;margin-bottom:4px}
-    .game-info div:last-child{font-size:14px}
   </style>
 </head>
 <body>
 
-  <div class="game-info">
-      <div id="stadium">■26年03月01日【オープン戦】埼玉西武 vs ソフトバンク 1回戦</div>
-      <div id="start-time">@ベルーナドーム／開始予定：18:00</div>
-  </div>
+<header>
+  <div class="title">L-Crown（西武ライオンズ データサイト）</div>
+</header>
 
-  <article id="game-summary" class="match-card" aria-live="polite">
-    <div class="teams">
-      <div class="team" id="home-team">
-        <div class="logo" id="home-logo"><img id="home-logo-img" src="https://example.com/lions_logo.png" alt="Lions ロゴ" /><span class="fallback" id="home-logo-fallback">L</span></div>
-        <div>
-          <div class="team-name" id="home-name">埼玉西武ライオンズ</div>
-          <div class="team-sub" id="home-sub">1位</div>
-        </div>
-      </div>
+<div class="container">
 
-      <div class="score" role="group" aria-label="スコア">
-        <div class="runs" id="home-runs">0</div>
-        <div class="label">-</div>
-        <div class="runs" id="away-runs">0</div>
-      </div>
+  <!-- ▼ 試合速報エリア -->
+  <section class="game-card">
+    <h2 class="game-title">試合速報</h2>
+    <p>ここに最新の試合速報を掲載します。（スコアカードや状況など）</p>
+  </section>
 
-      <div class="team" id="away-team" style="justify-content:space-between;">
-        <div>
-          <div class="team-name" id="away-name">福岡ソフトバンクホークス</div>
-          <div class="team-sub" id="away-sub">1位</div>
-        </div>
-        <div class="logo" id="away-logo"><img id="away-logo-img" src="https://example.com/hawks_logo.png" alt="Hawks ロゴ" /><span class="fallback" id="away-logo-fallback">H</span></div>
-      </div>
+  <!-- ▼ ニュースエリア -->
+  <section class="news-section">
+    <h2 class="news-title">ニュース</h2>
+    <ul class="news-list">
+      <li class="news-item">
+        <span class="news-date">2025/03/01</span>
+        <a href="#" class="news-text">サイトをリニューアルしました。</a>
+      </li>
+      <li class="news-item">
+        <span class="news-date">2025/02/28</span>
+        <a href="#" class="news-text">選手データを最新版に更新しました。</a>
+      </li>
+      <li class="news-item">
+        <span class="news-date">2025/02/27</span>
+        <a href="#" class="news-text">今季の日程ページを公開しました。</a>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ▼ ランキングエリア -->
+  <section class="rank-section">
+    <h2 class="rank-header">TOP3 ランキング</h2>
+
+    <div class="rank-buttons">
+      <button class="rank-btn active" onclick="showRank('bat')">打撃</button>
+      <button class="rank-btn" onclick="showRank('pit')">投球</button>
     </div>
 
-    <div class="meta">
-      <div class="inning" id="inning">18:00~</div>
-      <div class="status" id="game-status">試合前</div>
-      <div class="time" id="updated-at">更新: 2026-03-01 00:00</div>
-    </div>
-  </article>
+    <ul id="rank-bat" class="rank-list">
+      <li class="rank-item">1位 ●●：打率 .345</li>
+      <li class="rank-item">2位 ●●：打率 .321</li>
+      <li class="rank-item">3位 ●●：打率 .310</li>
+    </ul>
 
-  <script>
-    function fmtDateIso(iso){
-      const d = new Date(iso);
-      if (isNaN(d)) return '';
-      return d.getFullYear()+ '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0')
-        + ' ' + String(d.getHours()).padStart(2,'0') + ':' + String(d.getMinutes()).padStart(2,'0');
-    }
+    <ul id="rank-pit" class="rank-list" style="display:none;">
+      <li class="rank-item">1位 ●●：防御率 1.23</li>
+      <li class="rank-item">2位 ●●：防御率 1.85</li>
+      <li class="rank-item">3位 ●●：防御率 2.20</li>
+    </ul>
+  </section>
 
-    function setLogoImage(imgEl, fallbackEl, url, alt){
-      if (url){
-        imgEl.src = url;
-        imgEl.alt = alt || '';
-        imgEl.style.display = 'block';
-        fallbackEl.style.display = 'none';
-      } else {
-        imgEl.style.display = 'none';
-        fallbackEl.style.display = 'flex';
-      }
-    }
-
-    function updateGame(data){
-      document.getElementById('home-name').textContent = data.home.name || '';
-      document.getElementById('home-sub').textContent = data.home.sub || '';
-      document.getElementById('away-name').textContent = data.away.name || '';
-      document.getElementById('away-sub').textContent = data.away.sub || '';
-
-      const homeImg = document.getElementById('home-logo-img');
-      const homeFallback = document.getElementById('home-logo-fallback');
-      setLogoImage(homeImg, homeFallback, data.home.logoUrl, data.home.name + ' ロゴ');
-
-      const awayImg = document.getElementById('away-logo-img');
-      const awayFallback = document.getElementById('away-logo-fallback');
-      setLogoImage(awayImg, awayFallback, data.away.logoUrl, data.away.name + ' ロゴ');
-
-      document.getElementById('home-runs').textContent = (typeof data.home.runs === 'number') ? data.home.runs : data.home.runs || '';
-      document.getElementById('away-runs').textContent = (typeof data.away.runs === 'number') ? data.away.runs : data.away.runs || '';
-
-      document.getElementById('inning').textContent = data.inning || '';
-      document.getElementById('game-status').textContent = data.status || '';
-      document.getElementById('updated-at').textContent = '更新: ' + (data.updatedAt ? fmtDateIso(data.updatedAt) : fmtDateIso(new Date().toISOString()));
-
-      const homeTeamEl = document.getElementById('home-team');
-      const awayTeamEl = document.getElementById('away-team');
-      homeTeamEl.classList.remove('lions','hawks');
-      awayTeamEl.classList.remove('lions','hawks');
-
-      if (data.home.code === 'L') homeTeamEl.classList.add('lions');
-      if (data.home.code === 'H') homeTeamEl.classList.add('hawks');
-      if (data.away.code === 'L') awayTeamEl.classList.add('lions');
-      if (data.away.code === 'H') awayTeamEl.classList.add('hawks');
-    }
-
-    const sampleData = {
-      home: {code:'L', name:'埼玉西武ライオンズ', sub:'1位', runs:0, logoUrl:'https://lions-crown.wweb.jp/img/1759836807957.webp'},
-      away: {code:'H', name:'福岡ソフトバンクホークス', sub:'1位', runs:0, logoUrl:'https://lions-crown.wweb.jp/img/1759836829251.webp'},
-      inning: '隅田vsモイネロ',
-      status: '試合前',
-      updatedAt: new Date().toISOString()
-    };
-
-    updateGame(sampleData);
-  </script>
-</body>
-</html>
-
-
-
-
-<section class="news-section">
-  <h2 class="news-title">ニュース</h2>
-  <ul class="news-list">
-    <li class="news-item">
-      <span class="news-date">2025/03/01</span>
-      <a href="#" class="news-text">サイトをリニューアルしました。</a>
-    </li>
-    <li class="news-item">
-      <span class="news-date">2025/02/28</span>
-      <a href="#" class="news-text">選手データを最新版に更新しました。</a>
-    </li>
-    <li class="news-item">
-      <span class="news-date">2025/02/27</span>
-      <a href="#" class="news-text">今季の日程ページを公開しました。</a>
-    </li>
-  </ul>
-</section>
-.news-section{
-  margin: 20px 0;
-  padding: 20px;
-  background: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-}
-
-.news-title{
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: #092048; /* ライオンズ青 */
-  margin-bottom: 15px;
-}
-
-.news-list{
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.news-item{
-  display: flex;
-  gap: 12px;
-  padding: 10px 0;
-  border-bottom: 1px solid #e2e8f0;
-}
-
-.news-item:last-child{
-  border-bottom: none;
-}
-
-.news-date{
-  color: #555;
-  font-size: 0.9rem;
-  width: 90px;
-  flex-shrink: 0;
-}
-
-.news-text{
-  color: #1a1a1a;
-  text-decoration: none;
-  font-size: 1rem;
-}
-
-.news-text:hover{
-  text-decoration: underline;
-}
-
-
-
-
-<html lang="ja">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>チームTOP3ランキング（打撃／投球）</title>
-<style>
-  body {
-    font-family: "Segoe UI", sans-serif;
-    background-color: #092048;
-    color: #fff;
-    margin: 0;
-    padding: 20px;
-    text-align: center;
-  }
-
-  h1 {
-    font-size: 1.8rem;
-    margin-bottom: 15px;
-    color: #4da3ff;
-  }
-
-  .toggle-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-bottom: 25px;
-  }
-
-  button {
-    background: #1e3a8a;
-    border: 1px solid #4da3ff;
-    color: #fff;
-    padding: 8px 18px;
-    border-radius: 25px;
-    cursor: pointer;
-    transition: all 0.3s;
-  }
-
-  button.active, button:hover {
-    background: #4da3ff;
-    color: #092048;
-  }
-
-  .section {
-    display: none;
-    animation: fade 0.5s ease-in-out;
-  }
-
-  .section.active {
-    display: block;
-  }
-
-  @keyframes fade {
-    from {opacity: 0;}
-    to {opacity: 1;}
-  }
-
-  /* ✅ 改良されたスクロールエリア */
-  .scroll-container {
-    display: flex;
-    overflow-x: auto;
-    gap: 18px;
-    padding: 8px 20px;
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .scroll-container::-webkit-scrollbar {
-    height: 6px;
-  }
-
-  .scroll-container::-webkit-scrollbar-thumb {
-    background: #4da3ff;
-    border-radius: 3px;
-  }
-
-  .card {
-    flex: 0 0 200px;
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 14px;
-    padding: 12px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.25);
-    transition: transform 0.3s;
-  }
-
-  .card:hover {
-    transform: scale(1.04);
-  }
-
-  .title {
-    font-size: 1rem;
-    color: #4da3ff;
-    margin-bottom: 8px;
-    border-bottom: 1px solid rgba(255,255,255,0.15);
-    padding-bottom: 4px;
-  }
-
-  .player {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin: 6px 0;
-  }
-
-  .player a {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    text-decoration: none;
-    color: inherit;
-  }
-
-  .player img {
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid #4da3ff;
-  }
-
-  .player.top img {
-    width: 58px;
-    height: 58px;
-    border: 2px solid #5eb0ff;
-    box-shadow: 0 0 10px rgba(77,163,255,0.6);
-  }
-
-  .player-info {
-    text-align: left;
-  }
-
-  .player-info span {
-    color: #fff;
-    font-weight: bold;
-    font-size: 0.9rem;
-  }
-
-  .player.top .player-info span {
-    font-size: 1rem;
-    color: #5eb0ff;
-  }
-
-  .rank {
-    font-size: 0.85rem;
-    color: #ccc;
-  }
-
-  @media (max-width: 600px) {
-    .card {
-      flex: 0 0 180px;
-      padding: 10px;
-    }
-    .scroll-container {
-      gap: 14px;
-      padding: 6px 10px;
-    }
-    .player img {
-      width: 40px;
-      height: 40px;
-    }
-    .player.top img {
-      width: 52px;
-      height: 52px;
-    }
-    .player-info span {
-      font-size: 0.85rem;
-    }
-  }
-</style>
-</head>
-<body>
-
-<h1>チームTOP3ランキング2025</h1>
-
-<div class="toggle-buttons">
-  <button id="battingBtn" class="active">打撃成績</button>
-  <button id="pitchingBtn">投球成績</button>
 </div>
 
-
-<!-- 打撃部門 -->
-<div id="batting" class="section active">
-  <div class="scroll-container">
-    <div class="card">
-      <div class="title">打率</div>
-      <div class="player top">
-        <a href="https://sites.google.com/view/lionscrown/ネビン">
-          <img src="https://via.placeholder.com/100" alt="ネビン">
-          <div class="player-info">
-            <span>ネビン</span>
-            <div class="rank">.277</div>
-          </div>
-        </a>
-      </div>
-      <div class="player">
-        <a href="https://sites.google.com/view/lionscrown/西川愛也">
-          <img src="https://via.placeholder.com/100" alt="西川愛也">
-          <div class="player-info">
-            <span>西川愛也</span>
-            <div class="rank">.264</div>
-          </div>
-        </a>
-      </div>
-      <div class="player">
-        <a href="https://sites.google.com/view/lionscrown/渡部聖弥">
-          <img src="https://via.placeholder.com/100" alt="渡部聖弥">
-          <div class="player-info">
-            <span>渡部聖弥</span>
-            <div class="rank">.259</div>
-          </div>
-        </a>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="title">安打数</div>
-      <div class="player top">
-        <a href="https://sites.google.com/view/lionscrown/ネビン">
-          <img src="https://via.placeholder.com/100" alt="ネビン">
-          <div class="player-info">
-            <span>ネビン</span>
-            <div class="rank">141</div>
-          </div>
-        </a>
-      </div>
-      <div class="player">
-        <a href="https://sites.google.com/view/lionscrown/西川愛也">
-          <img src="https://via.placeholder.com/100" alt="西川愛也">
-          <div class="player-info">
-            <span>西川 愛也</span>
-            <div class="rank">134</div>
-          </div>
-        </a>
-      </div>
-      <div class="player">
-        <a href="https://sites.google.com/view/lionscrown/渡部聖弥">
-          <img src="https://via.placeholder.com/100" alt="渡部聖弥">
-          <div class="player-info">
-            <span>渡部 聖弥</span>
-            <div class="rank">110</div>
-          </div>
-        </a>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="title">本塁打数</div>
-      <div class="player top">
-        <a href="https://sites.google.com/view/lionscrown/ネビン">
-          <img src="https://via.placeholder.com/100" alt="ネビン">
-          <div class="player-info">
-            <span>ネビン</span>
-            <div class="rank">21</div>
-          </div>
-        </a>
-      </div>
-      <div class="player">
-        <a href="https://sites.google.com/view/lionscrown/渡部聖弥">
-          <img src="https://via.placeholder.com/100" alt="渡部聖弥">
-          <div class="player-info">
-            <span>渡部 聖弥</span>
-            <div class="rank">12</div>
-          </div>
-        </a>
-      </div>
-      <div class="player">
-        <a href="https://sites.google.com/view/lionscrown/西川愛也">
-          <img src="https://via.placeholder.com/100" alt="西川愛也">
-          <div class="player-info">
-            <span>西川 愛也</span>
-            <div class="rank">10</div>
-          </div>
-        </a>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="title">盗塁</div>
-      <div class="player top">
-        <a href="https://sites.google.com/view/lionscrown/西川愛也">
-          <img src="https://via.placeholder.com/100" alt="西川愛也">
-          <div class="player-info">
-            <span>西川 愛也</span>
-            <div class="rank">25</div>
-          </div>
-        </a>
-      </div>
-      <div class="player">
-        <a href="https://sites.google.com/view/lionscrown/滝澤夏央">
-          <img src="https://via.placeholder.com/100" alt="滝澤夏央">
-          <div class="player-info">
-            <span>滝澤 夏央</span>
-            <div class="rank">21</div>
-          </div>
-        </a>
-      </div>
-      <div class="player">
-        <a href="https://sites.google.com/view/lionscrown/長谷川信哉">
-          <img src="https://via.placeholder.com/100" alt="長谷川信哉">
-          <div class="player-info">
-            <span>長谷川 信哉</span>
-            <div class="rank">9</div>
-          </div>
-        </a>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="title">出塁率</div>
-      <div class="player top">
-        <a href="https://sites.google.com/view/lionscrown/ネビン">
-          <img src="https://via.placeholder.com/100" alt="ネビン">
-          <div class="player-info">
-            <span>ネビン</span>
-            <div class="rank">.346</div>
-          </div>
-        </a>
-      </div>
-      <div class="player">
-        <a href="https://sites.google.com/view/lionscrown/西川愛也">
-          <img src="https://via.placeholder.com/100" alt="西川愛也">
-          <div class="player-info">
-            <span>西川 愛也</span>
-            <div class="rank">.318</div>
-          </div>
-        </a>
-      </div>
-      <div class="player">
-        <a href="https://sites.google.com/view/lionscrown/渡部聖弥">
-          <img src="https://via.placeholder.com/100" alt="渡部聖弥">
-          <div class="player-info">
-            <span>渡部 聖弥</span>
-            <div class="rank">.299</div>
-          </div>
-        </a>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="title">OPS</div>
-      <div class="player top">
-        <a href="https://sites.google.com/view/lionscrown/ネビン">
-          <img src="https://via.placeholder.com/100" alt="ネビン">
-          <div class="player-info">
-            <span>ネビン</span>
-            <div class="rank">.794</div>
-          </div>
-        </a>
-      </div>
-      <div class="player">
-        <a href="https://sites.google.com/view/lionscrown/西川愛也">
-          <img src="https://via.placeholder.com/100" alt="西川愛也">
-          <div class="player-info">
-            <span>西川 愛也</span>
-            <div class="rank">.704</div>
-          </div>
-        </a>
-      </div>
-      <div class="player">
-        <a href="https://sites.google.com/view/lionscrown/渡部聖弥">
-          <img src="https://via.placeholder.com/100" alt="渡部聖弥">
-          <div class="player-info">
-            <span>渡部 聖弥</span>
-            <div class="rank">.694</div>
-          </div>
-        </a>
-      </div>
-    </div>
-
-
-  </div>
-</div>
-
-
-<!-- 投球部門 -->
-<div id="pitching" class="section">
-  <div class="scroll-container">
-    <div class="card">
-      <div class="title">防御率</div>
-      <div class="player top">
-        <a href="https://sites.google.com/view/lionscrown/今井達也">
-          <img src="https://via.placeholder.com/100" alt="今井達也">
-          <div class="player-info">
-            <span>今井 達也</span>
-            <div class="rank">1.92</div>
-          </div>
-        </a>
-      </div>
-      <div class="player">
-        <a href="https://sites.google.com/view/lionscrown/隅田知一郎">
-          <img src="https://via.placeholder.com/100" alt="隅田知一郎">
-          <div class="player-info">
-            <span>隅田 知一郎</span>
-            <div class="rank">2.59</div>
-          </div>
-        </a>
-      </div>
-      <div class="player">
-        <a href="https://sites.google.com/view/lionscrown/髙橋光成">
-          <img src="https://via.placeholder.com/100" alt="髙橋光成">
-          <div class="player-info">
-            <span>髙橋 光成</span>
-            <div class="rank">3.04</div>
-          </div>
-        </a>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="title">勝利数</div>
-      <div class="player top">
-        <a href="https://sites.google.com/view/lionscrown/隅田知一郎">
-          <img src="https://via.placeholder.com/100" alt="隅田知一郎">
-          <div class="player-info">
-            <span>隅田 知一郎</span>
-            <div class="rank">10</div>
-          </div>
-        </a>
-      </div>
-      <div class="player">
-        <a href="https://sites.google.com/view/lionscrown/今井達也">
-          <img src="https://via.placeholder.com/100" alt="今井達也">
-          <div class="player-info">
-            <span>今井 達也</span>
-            <div class="rank">10</div>
-          </div>
-        </a>
-      </div>
-      <div class="player">
-        <a href="https://sites.google.com/view/lionscrown/髙橋光成">
-          <img src="https://via.placeholder.com/100" alt="髙橋光成">
-          <div class="player-info">
-            <span>髙橋 光成</span>
-            <div class="rank">8</div>
-          </div>
-        </a>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="title">奪三振数</div>
-      <div class="player top">
-        <a href="https://sites.google.com/view/lionscrown/今井達也">
-          <img src="https://via.placeholder.com/100" alt="今井達也">
-          <div class="player-info">
-            <span>今井 達也</span>
-            <div class="rank">178</div>
-          </div>
-        </a>
-      </div>
-      <div class="player">
-        <a href="https://sites.google.com/view/lionscrown/隅田知一郎">
-          <img src="https://via.placeholder.com/100" alt="隅田知一郎">
-          <div class="player-info">
-            <span>隅田 知一郎</span>
-            <div class="rank">149</div>
-          </div>
-        </a>
-      </div>
-      <div class="player">
-        <a href="https://sites.google.com/view/lionscrown/髙橋光成">
-          <img src="https://via.placeholder.com/100" alt="髙橋光成">
-          <div class="player-info">
-            <span>髙橋 光成</span>
-            <div class="rank">88</div>
-          </div>
-        </a>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="title">ホールド数</div>
-      <div class="player top">
-        <a href="https://sites.google.com/view/lionscrown/甲斐野央">
-          <img src="https://via.placeholder.com/100" alt="甲斐野央">
-          <div class="player-info">
-            <span>甲斐野央</span>
-            <div class="rank">33</div>
-          </div>
-        </a>
-      </div>
-      <div class="player">
-        <a href="https://sites.google.com/view/lionscrown/ウィンゲンター">
-          <img src="https://via.placeholder.com/100" alt="ウィンゲンター">
-          <div class="player-info">
-            <span>ウィンゲンター</span>
-            <div class="rank">31</div>
-          </div>
-        </a>
-      </div>
-      <div class="player">
-        <a href="https://sites.google.com/view/lionscrown/山田陽翔">
-          <img src="https://via.placeholder.com/100" alt="山田陽翔">
-          <div class="player-info">
-            <span>山田 陽翔</span>
-            <div class="rank">17</div>
-          </div>
-        </a>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="title">セーブ数</div>
-      <div class="player top">
-        <a href="https://sites.google.com/view/lionscrown/平良海馬">
-          <img src="https://via.placeholder.com/100" alt="平良海馬">
-          <div class="player-info">
-            <span>平良 海馬</span>
-            <div class="rank">31</div>
-          </div>
-        </a>
-      </div>
-      <div class="player">
-        <a href="https://sites.google.com/view/lionscrown/山田陽翔">
-          <img src="https://via.placeholder.com/100" alt="山田 陽翔">
-          <div class="player-info">
-            <span>山田 陽翔</span>
-            <div class="rank">1</div>
-          </div>
-        </a>
-      </div>
-      <div class="player">
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="title">投球回</div>
-      <div class="player top">
-        <a href="https://sites.google.com/view/lionscrown/今井達也">
-          <img src="https://via.placeholder.com/100" alt="今井達也">
-          <div class="player-info">
-            <span>今井 達也</span>
-            <div class="rank">163.2</div>
-          </div>
-        </a>
-      </div>
-      <div class="player">
-        <a href="https://sites.google.com/view/lionscrown/隅田知一郎">
-          <img src="https://via.placeholder.com/100" alt="隅田知一郎">
-          <div class="player-info">
-            <span>隅田 知一郎</span>
-            <div class="rank">159.2</div>
-          </div>
-        </a>
-      </div>
-      <div class="player">
-        <a href="https://sites.google.com/view/lionscrown/髙橋光成">
-          <img src="https://via.placeholder.com/100" alt="髙橋光成">
-          <div class="player-info">
-            <span>髙橋 光成</span>
-            <div class="rank">148.0</div>
-          </div>
-        </a>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="title">登板数</div>
-      <div class="player top">
-        <a href="https://sites.google.com/view/lionscrown/平良海馬">
-          <img src="https://via.placeholder.com/100" alt="平良海馬">
-          <div class="player-info">
-            <span>平良 海馬</span>
-            <div class="rank">54</div>
-          </div>
-        </a>
-      </div>
-      <div class="player">
-        <a href="https://sites.google.com/view/lionscrown/ウィンゲンター">
-          <img src="https://via.placeholder.com/100" alt="ウィンゲンター">
-          <div class="player-info">
-            <span>ウィンゲンター</span>
-            <div class="rank">49</div>
-          </div>
-        </a>
-      </div>
-      <div class="player">
-        <a href="https://sites.google.com/view/lionscrown/山田陽翔">
-          <img src="https://via.placeholder.com/100" alt="山田陽翔">
-          <div class="player-info">
-            <span>山田 陽翔</span>
-            <div class="rank">49</div>
-          </div>
-        </a>
-      </div>
-    </div>
-  </div>
-</div>
+<footer>
+  © 2025 L-Crown / Seibu Lions Data
+</footer>
 
 <script>
-const battingBtn = document.getElementById('battingBtn');
-const pitchingBtn = document.getElementById('pitchingBtn');
-const batting = document.getElementById('batting');
-const pitching = document.getElementById('pitching');
-
-battingBtn.addEventListener('click', () => {
-  battingBtn.classList.add('active');
-  pitchingBtn.classList.remove('active');
-  batting.classList.add('active');
-  pitching.classList.remove('active');
-});
-pitchingBtn.addEventListener('click', () => {
-  pitchingBtn.classList.add('active');
-  battingBtn.classList.remove('active');
-  pitching.classList.add('active');
-  batting.classList.remove('active');
-});
+function showRank(type){
+  document.getElementById("rank-bat").style.display = (type === 'bat') ? "block" : "none";
+  document.getElementById("rank-pit").style.display = (type === 'pit') ? "block" : "none";
+  
+  document.querySelectorAll('.rank-btn').forEach(btn => btn.classList.remove('active'));
+  if(type === 'bat'){
+    document.querySelector('.rank-buttons button:nth-child(1)').classList.add('active');
+  } else {
+    document.querySelector('.rank-buttons button:nth-child(2)').classList.add('active');
+  }
+}
 </script>
 
 </body>
