@@ -395,7 +395,76 @@
 
 
 
-<!DOCTYPE html>
+
+<section class="news-section">
+  <h2 class="news-title">ニュース</h2>
+  <ul class="news-list">
+    <li class="news-item">
+      <span class="news-date">2025/03/01</span>
+      <a href="#" class="news-text">サイトをリニューアルしました。</a>
+    </li>
+    <li class="news-item">
+      <span class="news-date">2025/02/28</span>
+      <a href="#" class="news-text">選手データを最新版に更新しました。</a>
+    </li>
+    <li class="news-item">
+      <span class="news-date">2025/02/27</span>
+      <a href="#" class="news-text">今季の日程ページを公開しました。</a>
+    </li>
+  </ul>
+</section>
+.news-section{
+  margin: 20px 0;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.news-title{
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #092048; /* ライオンズ青 */
+  margin-bottom: 15px;
+}
+
+.news-list{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.news-item{
+  display: flex;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.news-item:last-child{
+  border-bottom: none;
+}
+
+.news-date{
+  color: #555;
+  font-size: 0.9rem;
+  width: 90px;
+  flex-shrink: 0;
+}
+
+.news-text{
+  color: #1a1a1a;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.news-text:hover{
+  text-decoration: underline;
+}
+
+
+
+
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
