@@ -1,11 +1,141 @@
-<nav>
-  <ul style="display:flex; gap:20px;">
-    <li><a href="index.html">ホーム</a></li>
-    <li><a href="about.html">サイト概要</a></li>
-    <li><a href="games.html">試合データ</a></li>
-    <li><a href="contact.html">お問い合わせ</a></li>
-  </ul>
-</nav>
+<!-- ▼ ナビゲーション -->
+<header class="nav-header">
+  <div class="nav-container">
+    <div class="nav-title">L-Crown</div>
+
+    <!-- ハンバーガー（スマホ用） -->
+    <input type="checkbox" id="nav-toggle" class="nav-toggle">
+    <label for="nav-toggle" class="nav-toggle-label">
+      <span></span>
+    </label>
+
+    <!-- ▼ メニュー -->
+    <nav class="nav-menu">
+      <a href="index.html">ホーム</a>
+      <a href="games.html">試合一覧</a>
+      <a href="players.html">選手データ</a>
+      <a href="about.html">サイトについて</a>
+    </nav>
+  </div>
+</header>
+
+<style>
+/* 基本色 */
+:root{
+  --main:#092048; /* ライオンズ濃紺 */
+  --text:#ffffff;
+  --hover:#ffca00;
+}
+
+/* レイアウト全体 */
+.nav-header{
+  background: var(--main);
+  color: var(--text);
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+.nav-container{
+  max-width: 1100px;
+  margin: auto;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* PCのメニュー表示 */
+.nav-menu{
+  display: flex;
+  gap: 25px;
+}
+
+.nav-menu a{
+  color: var(--text);
+  text-decoration: none;
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.nav-menu a:hover{
+  color: var(--hover);
+}
+
+/* タイトル */
+.nav-title{
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* ハンバーガーボタン（スマホ用） */
+.nav-toggle{
+  display: none;
+}
+
+.nav-toggle-label{
+  display: none;
+  cursor: pointer;
+}
+
+.nav-toggle-label span,
+.nav-toggle-label span::before,
+.nav-toggle-label span::after{
+  display: block;
+  background: var(--text);
+  height: 3px;
+  width: 28px;
+  border-radius: 3px;
+  position: relative;
+}
+
+.nav-toggle-label span::before,
+.nav-toggle-label span::after{
+  content: "";
+  position: absolute;
+  left: 0;
+}
+
+.nav-toggle-label span::before{
+  top: -8px;
+}
+
+.nav-toggle-label span::after{
+  top: 8px;
+}
+
+/* ▼ スマホ用デザイン */
+@media (max-width: 768px){
+
+  .nav-toggle-label{
+    display: block;
+  }
+
+  .nav-menu{
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background: var(--main);
+    flex-direction: column;
+    gap: 0;
+    display: none;
+  }
+
+  .nav-menu a{
+    padding: 15px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+
+  /* チェックが入ったらメニューを表示 */
+  .nav-toggle:checked + .nav-toggle-label + .nav-menu{
+    display: flex;
+  }
+}
+</style>
+
+
 
 <html lang="ja">
 <head>
