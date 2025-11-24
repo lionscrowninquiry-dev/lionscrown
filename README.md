@@ -74,7 +74,6 @@
       transition:right .35s ease;
       z-index:55;
     }
-
     .nav-menu ul{ list-style:none; padding:0; margin:0; }
     .nav-menu li{ padding:15px 20px; }
     .nav-menu a{
@@ -84,7 +83,7 @@
       font-weight:600;
     }
 
-    /* ▼ 背景の薄黒オーバーレイ */
+    /* ▼ オーバーレイ */
     .overlay{
       position:fixed;
       inset:0;
@@ -93,7 +92,6 @@
       display:none;
       z-index:54;
     }
-
     .nav-toggle:checked ~ .overlay{ display:block; }
     .nav-toggle:checked ~ .nav-menu{ right:0; }
 
@@ -106,9 +104,8 @@
 
 
     /* ======================= */
-    /* ★ 試合速報（新デザイン） */
+    /* ★ 試合速報 */
     /* ======================= */
-
     .game-card{
       background:var(--card);
       padding:20px;
@@ -117,7 +114,6 @@
       margin-bottom:25px;
     }
 
-    /* ▼ 速報カード本体（前回提示の高品質テンプレ移植） */
     .match-card{
       width:100%;
       padding:14px;
@@ -159,12 +155,10 @@
       flex-shrink:0;
     }
     .logo img{ width:100%; height:100%; object-fit:cover; display:block; }
-    .logo .fallback{ font-weight:700; font-size:20px; color:#fff; }
 
     .team-name{ font-size:15px; font-weight:600; }
     .team-sub{ font-size:12px; color:var(--muted); }
 
-    /* ▼ チームカラー連動 */
     .lions .team-name{ color:var(--lions-blue); }
     .hawks .team-name{ color:var(--hawks-yellow); }
 
@@ -182,7 +176,6 @@
     .score .runs{ font-size:36px; font-weight:800; }
     .score .label{ font-size:12px; color:var(--muted); }
 
-
     .meta{
       display:flex;
       flex-direction:column;
@@ -196,18 +189,16 @@
       font-size:13px;
       background:#f3f4f6;
     }
-    .status{ font-size:13px; color:var(--muted); }
-    .time{ font-size:12px; color:var(--muted); }
 
     @media(max-width:560px){
-      .match-card{ flex-direction:column; align-items:stretch; }
+      .match-card{ flex-direction:column; }
       .score{ width:100%; }
       .meta{ flex-direction:row; justify-content:space-between; width:100%; }
     }
 
 
     /* ======================= */
-    /* ★ ニュース（現状維持） */
+    /* ★ ニュース */
     /* ======================= */
     .news-section{
       background:var(--card);
@@ -219,9 +210,8 @@
 
 
     /* ============================ */
-    /* ★ TOP3（カードデザイン化） */
+    /* ★ TOP3カード（カード型） */
     /* ============================ */
-
     .rank-section{
       background:var(--card);
       padding:20px;
@@ -230,94 +220,190 @@
       margin-bottom:25px;
     }
 
-    .rank-cards{
-      display:grid;
-      grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
-      gap:14px;
+    .ranking-tabs{
+      display:flex;
+      gap:10px;
+      margin-bottom:14px;
+    }
+    .ranking-tabs button{
+      padding:8px 14px;
+      border-radius:8px;
+      border:none;
+      background:#e5e7eb;
+      cursor:pointer;
+      font-weight:600;
+    }
+    .ranking-tabs button.active{
+      background:var(--lions-blue);
+      color:#fff;
     }
 
-    .rank-card{
+    .ranking-content{ display:none; }
+    .ranking-content.active{ display:block; }
+
+    .ranking-card{
+      display:flex;
+      gap:12px;
+      padding:12px;
       background:#fff;
-      border-radius:14px;
-      padding:14px 16px;
-      box-shadow:0 2px 8px rgba(0,0,0,0.05);
-      border-left:6px solid var(--lions-blue);
-      transition:.25s;
-    }
-    .rank-card:hover{
-      transform:translateY(-3px);
-      box-shadow:0 6px 16px rgba(0,0,0,0.12);
+      border-radius:12px;
+      margin-bottom:10px;
+      border-left:5px solid var(--lions-blue);
+      box-shadow:0 2px 6px rgba(0,0,0,0.05);
     }
 
-    .rank-no{ font-size:1.2rem; font-weight:700; }
-    .rank-name{ font-size:1.05rem; font-weight:700; margin:4px 0; }
-    .rank-value{ font-size:0.95rem; color:#555; }
+    .rank-num{
+      font-size:1.3rem;
+      font-weight:700;
+    }
+    .player-name{
+      font-size:1.05rem;
+      font-weight:700;
+    }
+    .player-detail{
+      font-size:0.95rem;
+      color:#555;
+    }
 
-    .rank-btn{
+  </style>
+</head>
 
+<body>
 
-<!-- ▼ ここから後半の統合エリア（TOP3 / フッター / スクリプト） -->
-<section class="ranking-section">
-  <div class="ranking-tabs">
-    <button class="active" data-target="batting">打撃 TOP3</button>
-    <button data-target="pitching">投球 TOP3</button>
-  </div>
+<header>
+  <div class="title">L-Crown（西武ライオンズ データサイト）</div>
 
-  <div id="batting" class="ranking-content active">
-    <div class="ranking-card">
-      <div class="rank-num">1</div>
-      <div class="rank-info">
-        <div class="player-name">山川 穂高</div>
-        <div class="player-detail">打率 .320 / HR 35</div>
+  <input type="checkbox" id="nav-toggle" class="nav-toggle">
+  <label for="nav-toggle" class="nav-toggle-label">
+    <span></span>
+  </label>
+
+  <div class="overlay"></div>
+
+  <nav class="nav-menu">
+    <ul>
+      <li><a href="#game">試合速報</a></li>
+      <li><a href="#news">ニュース</a></li>
+      <li><a href="#rank">TOP3</a></li>
+    </ul>
+  </nav>
+</header>
+
+<div class="container">
+
+  <!-- 試合速報 -->
+  <section class="game-card" id="game">
+    <h2>試合速報</h2>
+
+    <div class="match-card">
+      <div class="teams">
+        <div class="team lions">
+          <div class="logo"><span class="fallback">L</span></div>
+          <div>
+            <div class="team-name">Lions</div>
+            <div class="team-sub">埼玉西武</div>
+          </div>
+        </div>
+
+        <div class="score">
+          <div class="runs">3 - 2</div>
+        </div>
+
+        <div class="team hawks">
+          <div class="logo"><span class="fallback">H</span></div>
+          <div>
+            <div class="team-name">Hawks</div>
+            <div class="team-sub">福岡ソフトバンク</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="meta">
+        <div class="inning">7回表</div>
+        <div class="status">ベルーナドーム</div>
       </div>
     </div>
-    <div class="ranking-card">
-      <div class="rank-num">2</div>
-      <div class="rank-info">
-        <div class="player-name">森 友哉</div>
-        <div class="player-detail">打率 .310 / HR 28</div>
-      </div>
-    </div>
-    <div class="ranking-card">
-      <div class="rank-num">3</div>
-      <div class="rank-info">
-        <div class="player-name">源田 壮亮</div>
-        <div class="player-detail">打率 .305 / 盗塁 25</div>
-      </div>
-    </div>
-  </div>
+  </section>
 
-  <div id="pitching" class="ranking-content">
-    <div class="ranking-card">
-      <div class="rank-num">1</div>
-      <div class="rank-info">
-        <div class="player-name">髙橋 光成</div>
-        <div class="player-detail">防御率 2.10 / 12勝</div>
-      </div>
-    </div>
-    <div class="ranking-card">
-      <div class="rank-num">2</div>
-      <div class="rank-info">
-        <div class="player-name">平良 海馬</div>
-        <div class="player-detail">防御率 2.30 / 30H</div>
-      </div>
-    </div>
-    <div class="ranking-card">
-      <div class="rank-num">3</div>
-      <div class="rank-info">
-        <div class="player-name">増田 達至</div>
-        <div class="player-detail">防御率 2.50 / 28S</div>
-      </div>
-    </div>
-  </div>
-</section>
+  <!-- ニュース -->
+  <section class="news-section" id="news">
+    <h2>ニュース</h2>
+    <ul>
+      <li>2025/03/01 サイトをリニューアルしました。</li>
+      <li>2025/02/28 選手データを最新版に更新しました。</li>
+      <li>2025/02/27 今季の日程ページを公開しました。</li>
+    </ul>
+  </section>
 
-<footer class="site-footer">
-  <p>© Lions Crown - All Rights Reserved.</p>
+  <!-- ランキング -->
+  <section class="rank-section" id="rank">
+    <h2>TOP3 ランキング</h2>
+
+    <div class="ranking-tabs">
+      <button class="active" data-target="batting">打撃</button>
+      <button data-target="pitching">投球</button>
+    </div>
+
+    <div id="batting" class="ranking-content active">
+      <div class="ranking-card">
+        <div class="rank-num">1</div>
+        <div>
+          <div class="player-name">山川 穂高</div>
+          <div class="player-detail">打率 .320 / HR 35</div>
+        </div>
+      </div>
+
+      <div class="ranking-card">
+        <div class="rank-num">2</div>
+        <div>
+          <div class="player-name">森 友哉</div>
+          <div class="player-detail">打率 .310 / HR 28</div>
+        </div>
+      </div>
+
+      <div class="ranking-card">
+        <div class="rank-num">3</div>
+        <div>
+          <div class="player-name">源田 壮亮</div>
+          <div class="player-detail">打率 .305 / 盗塁 25</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="pitching" class="ranking-content">
+      <div class="ranking-card">
+        <div class="rank-num">1</div>
+        <div>
+          <div class="player-name">髙橋 光成</div>
+          <div class="player-detail">防御率 2.10 / 12勝</div>
+        </div>
+      </div>
+
+      <div class="ranking-card">
+        <div class="rank-num">2</div>
+        <div>
+          <div class="player-name">平良 海馬</div>
+          <div class="player-detail">防御率 2.30 / 30H</div>
+        </div>
+      </div>
+
+      <div class="ranking-card">
+        <div class="rank-num">3</div>
+        <div>
+          <div class="player-name">増田 達至</div>
+          <div class="player-detail">防御率 2.50 / 28S</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer style="text-align:center; padding:40px; color:#777;">
+  © 2025 L-Crown / Seibu Lions Data
 </footer>
 
 <script>
-// ▼ ランキング切替
 const tabs = document.querySelectorAll('.ranking-tabs button');
 const contents = document.querySelectorAll('.ranking-content');
 
@@ -331,3 +417,6 @@ tabs.forEach(btn => {
   });
 });
 </script>
+
+</body>
+</html>
