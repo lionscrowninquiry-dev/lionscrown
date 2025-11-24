@@ -67,9 +67,9 @@
 <header>
   <div class="title">L-Crown（西武ライオンズ データサイト）</div>
   <nav class="nav-menu">
-    <a href="index.html">試合速報</a>
-    <a href="news.html">ニュース</a>
-    <a href="about.html">サイトについて</a>
+    <a href="game">試合速報</a>
+    <a href="news">ニュース</a>
+    <a href="about">サイトについて</a>
   </nav>
 </header>
 
