@@ -23,84 +23,52 @@
     }
 
     /* ▼ 固定ヘッダー（ハンバーガー対応） */
-    header{
-      position:sticky;
-      top:0;
-      z-index:50;
-      background:var(--lions-blue);
-      color:#fff;
-      padding:12px 20px;
-      font-size:1.3rem;
-      font-weight:700;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      box-shadow:0 2px 6px rgba(0,0,0,0.2);
+    <!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>L-Crown | 西武ライオンズ データ速報</title>
+  <style>
+    :root {
+      --lions-blue:#092048;
+      --bg:#f5f7fa;
+      --card:#ffffff;
+      --muted:#94a3b8;
     }
-    header .title{ font-size:1.4rem; }
+    body { margin:0; background:var(--bg); font-family:'Noto Sans JP',sans-serif; }
+    header {
+      position:sticky; top:0; background:var(--lions-blue); color:#fff;
+      padding:12px 20px; display:flex; justify-content:space-between; align-items:center; z-index:50;
+    }
+    header .title { font-size:1.4rem; font-weight:700; }
+    .nav-menu { display:flex; gap:20px; }
+    .nav-menu a { color:#fff; text-decoration:none; font-weight:600; }
+    .container{ max-width:1100px; margin:0 auto; padding:20px; }
+    .game-card{ background:var(--card); padding:20px; border-radius:14px; margin-bottom:25px; }
+  </style>
+</head>
+<body>
 
-    /* ▼ ハンバーガーアイコン */
-    .nav-toggle{ display:none; }
-    .nav-toggle-label{
-      cursor:pointer;
-      width:32px;
-      height:24px;
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
-      z-index:60;
-    }
-    .nav-toggle-label span,
-    .nav-toggle-label span:before,
-    .nav-toggle-label span:after{
-      content:"";
-      display:block;
-      height:4px;
-      background:#fff;
-      border-radius:4px;
-      transition:.3s;
-    }
+<header>
+  <div class="title">L-Crown（西武ライオンズ データサイト）</div>
+  <nav class="nav-menu">
+    <a href="index.html">試合速報</a>
+    <a href="news.html">ニュース</a>
+    <a href="about.html">サイトについて</a>
+  </nav>
+</header>
 
-    /* ▼ ナビ本体（スライドイン） */
-    .nav-menu{
-      position:fixed;
-      top:0;
-      right:-240px;
-      width:240px;
-      height:100vh;
-      background:#fff;
-      box-shadow:-3px 0 8px rgba(0,0,0,0.15);
-      padding-top:70px;
-      transition:right .35s ease;
-      z-index:55;
-    }
-    .nav-menu ul{ list-style:none; padding:0; margin:0; }
-    .nav-menu li{ padding:15px 20px; }
-    .nav-menu a{
-      text-decoration:none;
-      color:#1a1a1a;
-      font-size:1.1rem;
-      font-weight:600;
-    }
+<div class="container">
+  <section class="game-card">
+    <h2>試合速報</h2>
+    <p>ここに試合速報コンテンツを表示</p>
+  </section>
+</div>
 
-    /* ▼ オーバーレイ */
-    .overlay{
-      position:fixed;
-      inset:0;
-      background:rgba(0,0,0,0.45);
-      backdrop-filter:blur(3px);
-      display:none;
-      z-index:54;
-    }
-    .nav-toggle:checked ~ .overlay{ display:block; }
-    .nav-toggle:checked ~ .nav-menu{ right:0; }
+</body>
+</html>
 
-    /* ▼ コンテナ */
-    .container{
-      max-width:1100px;
-      margin:0 auto;
-      padding:20px;
-    }
 
 
     /* ======================= */
