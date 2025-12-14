@@ -2,186 +2,149 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>2025 埼玉西武ライオンズ 成績一覧</title>
-
+<title>埼玉西武ライオンズ 2025 成績管理</title>
 <style>
-body{
-  font-family: system-ui, sans-serif;
-  background:#f5f6f8;
-  padding:20px;
-}
-h1{
-  margin-bottom:10px;
-}
-table{
-  border-collapse:collapse;
-  width:100%;
-  background:#fff;
-}
-th,td{
-  border:1px solid #bbb;
-  padding:6px;
-  text-align:center;
-  font-size:14px;
-}
-th{
-  background:#092048;
-  color:#fff;
-  position:sticky;
-  top:0;
-}
-input{
-  width:60px;
-  text-align:center;
-}
-.readonly input{
-  pointer-events:none;
-  user-select:none;
-  background:#f0f0f0;
-  border:none;
-}
-.badge{
-  position:fixed;
-  top:10px;
-  right:10px;
-  background:#c00;
-  color:#fff;
-  padding:6px 12px;
-  font-weight:bold;
-  z-index:9999;
-}
+body{font-family:system-ui, sans-serif;}
+table{border-collapse:collapse; font-size:12px;}
+th,td{border:1px solid #ccc; padding:4px; text-align:center;}
+th{background:#092048; color:#fff; position:sticky; top:0;}
+input{width:60px; text-align:right;}
+.name{width:110px; text-align:left;}
+.num{width:40px;}
+.readonly{background:#f5f5f5;}
+.admin-badge{position:fixed; top:8px; right:8px; background:#c00; color:#fff; padding:6px 10px; font-weight:bold;}
 </style>
 </head>
-
 <body>
 
-<h1>2025 埼玉西武ライオンズ 成績演算一覧</h1>
-<p>※ 管理人のみ編集可能（通常閲覧は閲覧専用）</p>
-
-<table>
+<h2>野手成績</h2>
+<table id="batters">
 <thead>
 <tr>
-  <th>選手名</th>
-  <th>AB</th><th>H</th><th>2B</th><th>3B</th>
-  <th>HR</th><th>BB</th><th>HBP</th>
-  <th>AVG</th><th>OPS</th>
-  <th>IP</th><th>ER</th><th>ERA</th>
+<th>背番号</th><th>選手名</th><th>試合</th><th>打率</th><th>打席</th><th>打数</th><th>安打</th><th>2B</th><th>3B</th><th>HR</th><th>塁打</th><th>打点</th><th>得点</th><th>犠打</th><th>犠飛</th><th>盗塁</th><th>盗塁死</th><th>盗塁成功率</th><th>併殺</th><th>出塁率</th><th>長打率</th><th>OPS</th><th>失策</th>
 </tr>
 </thead>
-
-<tbody id="roster">
-
-<!-- ===============================
-  🔽 選手Template（ここを増やす）
-  1行＝1選手
-================================ -->
-
-<tr class="playerRow">
-  <td>選手名①（野手）</td>
-  <td><input class="ab" type="number"></td>
-  <td><input class="h" type="number"></td>
-  <td><input class="d2" type="number"></td>
-  <td><input class="d3" type="number"></td>
-  <td><input class="hr" type="number"></td>
-  <td><input class="bb" type="number"></td>
-  <td><input class="hbp" type="number"></td>
-  <td class="avg">.000</td>
-  <td class="ops">.000</td>
-  <td><input class="ip" type="number" step="0.1"></td>
-  <td><input class="er" type="number"></td>
-  <td class="era">0.00</td>
+<tbody>
+<tr class="batter">
+<td><input class="num"></td>
+<td class="name">選手名</td>
+<td><input class="g"></td>
+<td class="avg readonly">.000</td>
+<td><input class="pa"></td>
+<td><input class="ab"></td>
+<td><input class="h"></td>
+<td><input class="d2"></td>
+<td><input class="d3"></td>
+<td><input class="hr"></td>
+<td class="tb readonly">0</td>
+<td><input class="rbi"></td>
+<td><input class="r"></td>
+<td><input class="sh"></td>
+<td><input class="sf"></td>
+<td><input class="sb"></td>
+<td><input class="cs"></td>
+<td class="sbp readonly">0.0%</td>
+<td><input class="gidp"></td>
+<td class="obp readonly">.000</td>
+<td class="slg readonly">.000</td>
+<td class="ops readonly">.000</td>
+<td><input class="e"></td>
 </tr>
+</tbody>
+</table>
 
-<tr class="playerRow">
-  <td>選手名②（投手）</td>
-  <td><input class="ab" type="number" value="0"></td>
-  <td><input class="h" type="number" value="0"></td>
-  <td><input class="d2" type="number" value="0"></td>
-  <td><input class="d3" type="number" value="0"></td>
-  <td><input class="hr" type="number" value="0"></td>
-  <td><input class="bb" type="number" value="0"></td>
-  <td><input class="hbp" type="number" value="0"></td>
-  <td class="avg">.000</td>
-  <td class="ops">.000</td>
-  <td><input class="ip" type="number" step="0.1"></td>
-  <td><input class="er" type="number"></td>
-  <td class="era">0.00</td>
+<h2>投手成績</h2>
+<table id="pitchers">
+<thead>
+<tr>
+<th>背番号</th><th>選手名</th><th>登板</th><th>先発</th><th>完投</th><th>完封</th><th>勝</th><th>敗</th><th>HLD</th><th>HP</th><th>S</th><th>勝率</th><th>投球回</th><th>被安打</th><th>被HR</th><th>K</th><th>K/9</th><th>BB</th><th>HBP</th><th>WP</th><th>BK</th><th>失点</th><th>自責</th><th>被打率</th><th>K/BB</th><th>WHIP</th>
 </tr>
-
-<!-- ↑ このTemplateを2025年全選手分コピー -->
-
+</thead>
+<tbody>
+<tr class="pitcher">
+<td><input class="num"></td>
+<td class="name">選手名</td>
+<td><input class="g"></td>
+<td><input class="gs"></td>
+<td><input class="cg"></td>
+<td><input class="sho"></td>
+<td><input class="w"></td>
+<td><input class="l"></td>
+<td><input class="hld"></td>
+<td><input class="hp"></td>
+<td><input class="sv"></td>
+<td class="wpct readonly">.000</td>
+<td><input class="ip"></td>
+<td><input class="ha"></td>
+<td><input class="phr"></td>
+<td><input class="k"></td>
+<td class="k9 readonly">0.00</td>
+<td><input class="bb"></td>
+<td><input class="hbp"></td>
+<td><input class="wp"></td>
+<td><input class="bk"></td>
+<td><input class="r"></td>
+<td><input class="er"></td>
+<td class="baa readonly">.000</td>
+<td class="kbb readonly">0.00</td>
+<td class="whip readonly">0.00</td>
+</tr>
 </tbody>
 </table>
 
 <script>
-/* ===============================
-   成績計算
-================================ */
-function calcAll(){
-  document.querySelectorAll(".playerRow").forEach(row=>{
-    const ab  = +row.querySelector(".ab").value;
-    const h   = +row.querySelector(".h").value;
-    const d2  = +row.querySelector(".d2").value;
-    const d3  = +row.querySelector(".d3").value;
-    const hr  = +row.querySelector(".hr").value;
-    const bb  = +row.querySelector(".bb").value;
-    const hbp = +row.querySelector(".hbp").value;
-
-    const single = h - d2 - d3 - hr;
-    const avg = ab ? h / ab : 0;
-    const obp = (ab + bb + hbp) ? (h + bb + hbp) / (ab + bb + hbp) : 0;
-    const slg = ab ? (single + d2*2 + d3*3 + hr*4) / ab : 0;
-    const ops = obp + slg;
-
-    row.querySelector(".avg").textContent =
-      avg.toFixed(3).replace("0.", ".");
-    row.querySelector(".ops").textContent =
-      ops.toFixed(3);
-
-    const ip = +row.querySelector(".ip").value;
-    const er = +row.querySelector(".er").value;
-    row.querySelector(".era").textContent =
-      (ip ? (er * 9 / ip) : 0).toFixed(2);
-  });
-}
-
-/* ===============================
-   管理人判定
-================================ */
-const params = new URLSearchParams(location.search);
-const IS_ADMIN = params.get("admin") === "1";
-
-document.querySelectorAll("input").forEach(i=>{
-  if(!IS_ADMIN){
-    i.disabled = true;
-    document.body.classList.add("readonly");
-  }
-  i.addEventListener("input", calcAll);
-});
-
+const params=new URLSearchParams(location.search);
+const IS_ADMIN=params.get('admin')==='1';
 if(IS_ADMIN){
-  const badge = document.createElement("div");
-  badge.className = "badge";
-  badge.textContent = "管理人編集モード";
-  document.body.appendChild(badge);
+ const b=document.createElement('div');
+ b.className='admin-badge';
+ b.textContent='管理人編集モード';
+ document.body.appendChild(b);
+}else{
+ document.querySelectorAll('input').forEach(i=>i.disabled=true);
 }
 
-/* ===============================
-   操作抑止（一般閲覧者）
-================================ */
-if(!IS_ADMIN){
-  document.addEventListener("contextmenu", e => e.preventDefault());
-  document.addEventListener("keydown", e=>{
-    if(
-      e.key === "F12" ||
-      (e.ctrlKey && ["c","s","u","a","p"].includes(e.key.toLowerCase()))
-    ){
-      e.preventDefault();
-    }
-  });
+function calc(){
+ document.querySelectorAll('.batter').forEach(r=>{
+  const ab=+r.querySelector('.ab').value||0;
+  const h=+r.querySelector('.h').value||0;
+  const d2=+r.querySelector('.d2').value||0;
+  const d3=+r.querySelector('.d3').value||0;
+  const hr=+r.querySelector('.hr').value||0;
+  const bb=0, hbp=0;
+  const sf=+r.querySelector('.sf').value||0;
+  const pa=+r.querySelector('.pa').value||0;
+  const sb=+r.querySelector('.sb').value||0;
+  const cs=+r.querySelector('.cs').value||0;
+
+  const tb=h+d2+2*d3+3*hr;
+  r.querySelector('.tb').textContent=tb;
+  r.querySelector('.avg').textContent=ab?'.'+String(Math.floor(h/ab*1000)).padStart(3,'0'):'.000';
+  r.querySelector('.obp').textContent=pa?'.'+String(Math.floor((h+bb+hbp)/(pa)*1000)).padStart(3,'0'):'.000';
+  r.querySelector('.slg').textContent=ab?'.'+String(Math.floor(tb/ab*1000)).padStart(3,'0'):'.000';
+  const obp=parseFloat(r.querySelector('.obp').textContent);
+  const slg=parseFloat(r.querySelector('.slg').textContent);
+  r.querySelector('.ops').textContent=(obp+slg).toFixed(3);
+  r.querySelector('.sbp').textContent=(sb+cs)?(sb/(sb+cs)*100).toFixed(1)+'%':'0.0%';
+ });
+
+ document.querySelectorAll('.pitcher').forEach(r=>{
+  const w=+r.querySelector('.w').value||0;
+  const l=+r.querySelector('.l').value||0;
+  const ip=+r.querySelector('.ip').value||0;
+  const ha=+r.querySelector('.ha').value||0;
+  const bb=+r.querySelector('.bb').value||0;
+  const k=+r.querySelector('.k').value||0;
+
+  r.querySelector('.wpct').textContent=(w+l)?(w/(w+l)).toFixed(3):'.000';
+  r.querySelector('.k9').textContent=ip?(k*9/ip).toFixed(2):'0.00';
+  r.querySelector('.baa').textContent=ip?'.'+String(Math.floor(ha/(ip*3)*1000)).padStart(3,'0'):'.000';
+  r.querySelector('.kbb').textContent=bb?(k/bb).toFixed(2):'0.00';
+  r.querySelector('.whip').textContent=ip?((ha+bb)/ip).toFixed(2):'0.00';
+ });
 }
+
+document.addEventListener('input',calc);
 </script>
-
 </body>
 </html>
