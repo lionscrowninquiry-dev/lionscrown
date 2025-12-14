@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>2025 埼玉西武ライオンズ 成績一覧</title>
+
+<style>
+body{
+  font-family: system-ui, sans-serif;
+  background:#f5f6f8;
+  padding:20px;
+}
+h1{
+  margin-bottom:10px;
+}
+table{
+  border-collapse:collapse;
+  width:100%;
+  background:#fff;
+}
+th,td{
+  border:1px solid #bbb;
+  padding:6px;
+  text-align:center;
+  font-size:14px;
+}
+th{
+  background:#092048;
+  color:#fff;
+  position:sticky;
+  top:0;
+}
+input{
+  width:60px;
+  text-align:center;
+}
+.readonly input{
+  pointer-events:none;
+  user-select:none;
+  background:#f0f0f0;
+  border:none;
+}
+.badge{
+  position:fixed;
+  top:10px;
+  right:10px;
+  background:#c00;
+  color:#fff;
+  padding:6px 12px;
+  font-weight:bold;
+  z-index:9999;
+}
+</style>
+</head>
+
+<body>
+
+<h1>2025 埼玉西武ライオンズ 成績演算一覧</h1>
+<p>※ 管理人のみ編集可能（通常閲覧は閲覧専用）</p>
+
+<table>
+<thead>
+<tr>
+  <th>選手名</th>
+  <th>AB</th><th>H</th><th>2B</th><th>3B</th>
+  <th>HR</th><th>BB</th><th>HBP</th>
+  <th>AVG</th><th>OPS</th>
+  <th>IP</th><th>ER</th><th>ERA</th>
+</tr>
+</thead>
+
+<tbody id="roster">
+
+<!-- ===============================
+  🔽 選手Template（ここを増やす）
+  1行＝1選手
+================================ -->
+
+<tr class="playerRow">
+  <td>選手名①（野手）</td>
+  <td><input class="ab" type="number"></td>
+  <td><input class="h" type="number"></td>
+  <td><input class="d2" type="number"></td>
+  <td><input class="d3" type="number"></td>
+  <td><input class="hr" type="number"></td>
+  <td><input class="bb" type="number"></td>
+  <td><input class="hbp" type="number"></td>
+  <td class="avg">.000</td>
+  <td class="ops">.000</td>
+  <td><input class="ip" type="number" step="0.1"></td>
+  <td><input class="er" type="number"></td>
+  <td class="era">0.00</td>
+</tr>
+
+<tr class="playerRow">
+  <td>選手名②（投手）</td>
+  <td><input class="ab" type="number" value="0"></td>
+  <td><input class="h" type="number" value="0"></td>
+  <td><input class="d2" type="number" value="0"></td>
+  <td><input class="d3" type="number" value="0"></td>
+  <td><input class="hr" type="number" value="0"></td>
+  <td><input class="bb" type="number" value="0"></td>
+  <td><input class="hbp" type="number" value="0"></td>
+  <td class="avg">.000</td>
+  <td class="ops">.000</td>
+  <td><input class="ip" type="number" step="0.1"></td>
+  <td><input class="er" type="number"></td>
+  <td class="era">0.00</td>
+</tr>
+
+<!-- ↑ このTemplateを2025年全選手分コピー -->
+
+</tbody>
+</table>
+
+<script>
+/* ===============================
+   成績計算
+================================ */
+function calcAll(){
+  document.querySelectorAll(".playerRow").forEach(row=>{
+    const ab  = +row.querySelector(".ab").value;
+    const h   = +row.querySelector(".h").value;
+    const d2  = +row.querySelector(".d2").value;
+    const d3  = +row.querySelector(".d3").value;
+    const hr  = +row.querySelector(".hr").value;
+    const bb  = +row.querySelector(".bb").value;
+    const hbp = +row.querySelector(".hbp").value;
+
+    const single = h - d2 - d3 - hr;
+    const avg = ab ? h / ab : 0;
+    const obp = (ab + bb + hbp) ? (h + bb + hbp) / (ab + bb + hbp) : 0;
+    const slg = ab ? (single + d2*2 + d3*3 + hr*4) / ab : 0;
+    const ops = obp + slg;
+
+    row.querySelector(".avg").textContent =
+      avg.toFixed(3).replace("0.", ".");
+    row.querySelector(".ops").textContent =
+      ops.toFixed(3);
+
+    const ip = +row.querySelector(".ip").value;
+    const er = +row.querySelector(".er").value;
+    row.querySelector(".era").textContent =
+      (ip ? (er * 9 / ip) : 0).toFixed(2);
+  });
+}
+
+/* ===============================
+   管理人判定
+================================ */
+const params = new URLSearchParams(location.search);
+const IS_ADMIN = params.get("admin") === "1";
+
+document.querySelectorAll("input").forEach(i=>{
+  if(!IS_ADMIN){
+    i.disabled = true;
+    document.body.classList.add("readonly");
+  }
+  i.addEventListener("input", calcAll);
+});
+
+if(IS_ADMIN){
+  const badge = document.createElement("div");
+  badge.className = "badge";
+  badge.textContent = "管理人編集モード";
+  document.body.appendChild(badge);
+}
+
+/* ===============================
+   操作抑止（一般閲覧者）
+================================ */
+if(!IS_ADMIN){
+  document.addEventListener("contextmenu", e => e.preventDefault());
+  document.addEventListener("keydown", e=>{
+    if(
+      e.key === "F12" ||
+      (e.ctrlKey && ["c","s","u","a","p"].includes(e.key.toLowerCase()))
+    ){
+      e.preventDefault();
+    }
+  });
+}
+</script>
+
+</body>
+</html>
