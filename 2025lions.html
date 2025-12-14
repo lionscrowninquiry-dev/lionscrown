@@ -2,92 +2,56 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8">
-<title>埼玉西武ライオンズ 2025 成績管理</title>
+<title>埼玉西武ライオンズ 2025 成績管理（完全版）</title>
 <style>
-body{font-family:system-ui, sans-serif;}
-table{border-collapse:collapse; font-size:12px;}
-th,td{border:1px solid #ccc; padding:4px; text-align:center;}
-th{background:#092048; color:#fff; position:sticky; top:0;}
-input{width:60px; text-align:right;}
-.name{width:110px; text-align:left;}
-.num{width:40px;}
-.readonly{background:#f5f5f5;}
-.admin-badge{position:fixed; top:8px; right:8px; background:#c00; color:#fff; padding:6px 10px; font-weight:bold;}
+body{font-family:system-ui,sans-serif}
+input{width:60px;text-align:right}
+.name{text-align:left;width:120px}
+.num{width:40px}
+table{border-collapse:collapse;font-size:12px;margin-bottom:40px}
+th,td{border:1px solid #ccc;padding:4px;text-align:center}
+th{background:#092048;color:#fff;cursor:pointer;position:sticky;top:0}
+.readonly{background:#f5f5f5}
+.admin-badge{position:fixed;top:8px;right:8px;background:#c00;color:#fff;padding:6px 10px;font-weight:bold}
+.controls{margin:10px 0}
 </style>
 </head>
 <body>
 
 <h2>野手成績</h2>
+<div class="controls">
+<input id="batterSearch" placeholder="選手名検索">
+<button onclick="filterBatter(143)">規定打席</button>
+<button onclick="filterBatter(0)">全員</button>
+</div>
 <table id="batters">
 <thead>
 <tr>
-<th>背番号</th><th>選手名</th><th>試合</th><th>打率</th><th>打席</th><th>打数</th><th>安打</th><th>2B</th><th>3B</th><th>HR</th><th>塁打</th><th>打点</th><th>得点</th><th>犠打</th><th>犠飛</th><th>盗塁</th><th>盗塁死</th><th>盗塁成功率</th><th>併殺</th><th>出塁率</th><th>長打率</th><th>OPS</th><th>失策</th>
+<th data-key="num">背番号</th><th data-key="name">選手名</th><th data-key="g">試合</th><th data-key="avg">打率</th><th data-key="pa">打席</th><th data-key="ab">打数</th><th data-key="h">安打</th><th data-key="d2">2B</th><th data-key="d3">3B</th><th data-key="hr">HR</th><th data-key="tb">塁打</th><th>打点</th><th>得点</th><th>犠打</th><th>犠飛</th><th>盗塁</th><th>盗塁死</th><th data-key="sbp">盗塁成功率</th><th>併殺</th><th data-key="obp">出塁率</th><th data-key="slg">長打率</th><th data-key="ops">OPS</th><th>失策</th>
 </tr>
 </thead>
 <tbody>
 <tr class="batter">
-<td><input class="num"></td>
-<td class="name">選手名</td>
-<td><input class="g"></td>
-<td class="avg readonly">.000</td>
-<td><input class="pa"></td>
-<td><input class="ab"></td>
-<td><input class="h"></td>
-<td><input class="d2"></td>
-<td><input class="d3"></td>
-<td><input class="hr"></td>
-<td class="tb readonly">0</td>
-<td><input class="rbi"></td>
-<td><input class="r"></td>
-<td><input class="sh"></td>
-<td><input class="sf"></td>
-<td><input class="sb"></td>
-<td><input class="cs"></td>
-<td class="sbp readonly">0.0%</td>
-<td><input class="gidp"></td>
-<td class="obp readonly">.000</td>
-<td class="slg readonly">.000</td>
-<td class="ops readonly">.000</td>
-<td><input class="e"></td>
+<td><input class="num"></td><td class="name">選手名</td><td><input class="g"></td><td class="avg readonly">.000</td><td><input class="pa"></td><td><input class="ab"></td><td><input class="h"></td><td><input class="d2"></td><td><input class="d3"></td><td><input class="hr"></td><td class="tb readonly">0</td><td><input></td><td><input></td><td><input></td><td><input class="sf"></td><td><input class="sb"></td><td><input class="cs"></td><td class="sbp readonly">0.0%</td><td><input></td><td class="obp readonly">.000</td><td class="slg readonly">.000</td><td class="ops readonly">.000</td><td><input></td>
 </tr>
 </tbody>
 </table>
 
 <h2>投手成績</h2>
+<div class="controls">
+<input id="pitcherSearch" placeholder="選手名検索">
+<button onclick="filterPitcher(143)">規定投球回</button>
+<button onclick="filterPitcher(0)">全員</button>
+</div>
 <table id="pitchers">
 <thead>
 <tr>
-<th>背番号</th><th>選手名</th><th>登板</th><th>先発</th><th>完投</th><th>完封</th><th>勝</th><th>敗</th><th>HLD</th><th>HP</th><th>S</th><th>勝率</th><th>投球回</th><th>被安打</th><th>被HR</th><th>K</th><th>K/9</th><th>BB</th><th>HBP</th><th>WP</th><th>BK</th><th>失点</th><th>自責</th><th>被打率</th><th>K/BB</th><th>WHIP</th>
+<th data-key="num">背番号</th><th data-key="name">選手名</th><th>登板</th><th>先発</th><th>完投</th><th>完封</th><th>勝</th><th>敗</th><th>HLD</th><th>HP</th><th>S</th><th data-key="wpct">勝率</th><th data-key="ip">投球回</th><th>被安打</th><th>被HR</th><th>K</th><th data-key="k9">K/9</th><th>BB</th><th>HBP</th><th>WP</th><th>BK</th><th>失点</th><th>自責</th><th data-key="baa">被打率</th><th data-key="kbb">K/BB</th><th data-key="whip">WHIP</th>
 </tr>
 </thead>
 <tbody>
 <tr class="pitcher">
-<td><input class="num"></td>
-<td class="name">選手名</td>
-<td><input class="g"></td>
-<td><input class="gs"></td>
-<td><input class="cg"></td>
-<td><input class="sho"></td>
-<td><input class="w"></td>
-<td><input class="l"></td>
-<td><input class="hld"></td>
-<td><input class="hp"></td>
-<td><input class="sv"></td>
-<td class="wpct readonly">.000</td>
-<td><input class="ip"></td>
-<td><input class="ha"></td>
-<td><input class="phr"></td>
-<td><input class="k"></td>
-<td class="k9 readonly">0.00</td>
-<td><input class="bb"></td>
-<td><input class="hbp"></td>
-<td><input class="wp"></td>
-<td><input class="bk"></td>
-<td><input class="r"></td>
-<td><input class="er"></td>
-<td class="baa readonly">.000</td>
-<td class="kbb readonly">0.00</td>
-<td class="whip readonly">0.00</td>
+<td><input class="num"></td><td class="name">選手名</td><td><input></td><td><input></td><td><input></td><td><input></td><td><input class="w"></td><td><input class="l"></td><td><input></td><td><input></td><td><input></td><td class="wpct readonly">.000</td><td><input class="ip"></td><td><input class="ha"></td><td><input></td><td><input class="k"></td><td class="k9 readonly">0.00</td><td><input class="bb"></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td><td class="baa readonly">.000</td><td class="kbb readonly">0.00</td><td class="whip readonly">0.00</td>
 </tr>
 </tbody>
 </table>
@@ -95,47 +59,20 @@ input{width:60px; text-align:right;}
 <script>
 const params=new URLSearchParams(location.search);
 const IS_ADMIN=params.get('admin')==='1';
-if(IS_ADMIN){
- const b=document.createElement('div');
- b.className='admin-badge';
- b.textContent='管理人編集モード';
- document.body.appendChild(b);
-}else{
- document.querySelectorAll('input').forEach(i=>i.disabled=true);
-}
+if(IS_ADMIN){const b=document.createElement('div');b.className='admin-badge';b.textContent='管理人編集モード';document.body.appendChild(b);}else{document.querySelectorAll('input').forEach(i=>i.disabled=true)}
 
 function calc(){
  document.querySelectorAll('.batter').forEach(r=>{
-  const ab=+r.querySelector('.ab').value||0;
-  const h=+r.querySelector('.h').value||0;
-  const d2=+r.querySelector('.d2').value||0;
-  const d3=+r.querySelector('.d3').value||0;
-  const hr=+r.querySelector('.hr').value||0;
-  const bb=0, hbp=0;
-  const sf=+r.querySelector('.sf').value||0;
-  const pa=+r.querySelector('.pa').value||0;
-  const sb=+r.querySelector('.sb').value||0;
-  const cs=+r.querySelector('.cs').value||0;
-
-  const tb=h+d2+2*d3+3*hr;
-  r.querySelector('.tb').textContent=tb;
+  const ab=+r.querySelector('.ab').value||0,h=+r.querySelector('.h').value||0,d2=+r.querySelector('.d2').value||0,d3=+r.querySelector('.d3').value||0,hr=+r.querySelector('.hr').value||0,pa=+r.querySelector('.pa').value||0,sf=+r.querySelector('.sf').value||0,sb=+r.querySelector('.sb').value||0,cs=+r.querySelector('.cs').value||0;
+  const tb=h+d2+2*d3+3*hr;r.querySelector('.tb').textContent=tb;
   r.querySelector('.avg').textContent=ab?'.'+String(Math.floor(h/ab*1000)).padStart(3,'0'):'.000';
-  r.querySelector('.obp').textContent=pa?'.'+String(Math.floor((h+bb+hbp)/(pa)*1000)).padStart(3,'0'):'.000';
+  r.querySelector('.obp').textContent=pa?'.'+String(Math.floor(h/pa*1000)).padStart(3,'0'):'.000';
   r.querySelector('.slg').textContent=ab?'.'+String(Math.floor(tb/ab*1000)).padStart(3,'0'):'.000';
-  const obp=parseFloat(r.querySelector('.obp').textContent);
-  const slg=parseFloat(r.querySelector('.slg').textContent);
-  r.querySelector('.ops').textContent=(obp+slg).toFixed(3);
+  r.querySelector('.ops').textContent=(parseFloat(r.querySelector('.obp').textContent)+parseFloat(r.querySelector('.slg').textContent)).toFixed(3);
   r.querySelector('.sbp').textContent=(sb+cs)?(sb/(sb+cs)*100).toFixed(1)+'%':'0.0%';
  });
-
  document.querySelectorAll('.pitcher').forEach(r=>{
-  const w=+r.querySelector('.w').value||0;
-  const l=+r.querySelector('.l').value||0;
-  const ip=+r.querySelector('.ip').value||0;
-  const ha=+r.querySelector('.ha').value||0;
-  const bb=+r.querySelector('.bb').value||0;
-  const k=+r.querySelector('.k').value||0;
-
+  const w=+r.querySelector('.w').value||0,l=+r.querySelector('.l').value||0,ip=+r.querySelector('.ip').value||0,ha=+r.querySelector('.ha').value||0,bb=+r.querySelector('.bb').value||0,k=+r.querySelector('.k').value||0;
   r.querySelector('.wpct').textContent=(w+l)?(w/(w+l)).toFixed(3):'.000';
   r.querySelector('.k9').textContent=ip?(k*9/ip).toFixed(2):'0.00';
   r.querySelector('.baa').textContent=ip?'.'+String(Math.floor(ha/(ip*3)*1000)).padStart(3,'0'):'.000';
@@ -143,8 +80,18 @@ function calc(){
   r.querySelector('.whip').textContent=ip?((ha+bb)/ip).toFixed(2):'0.00';
  });
 }
-
 document.addEventListener('input',calc);
+
+// ソート
+ document.querySelectorAll('th[data-key]').forEach(th=>{let asc=false;th.addEventListener('click',()=>{const key=th.dataset.key,table=th.closest('table'),rows=[...table.tBodies[0].rows];rows.sort((a,b)=>{const A=(a.querySelector('.'+key)?.textContent||a.querySelector('.'+key)?.value||'').replace('%','');const B=(b.querySelector('.'+key)?.textContent||b.querySelector('.'+key)?.value||'').replace('%','');const nA=parseFloat(A),nB=parseFloat(B);if(!isNaN(nA)&&!isNaN(nB))return asc?nA-nB:nB-nA;return asc?A.localeCompare(B):B.localeCompare(A)});asc=!asc;rows.forEach(r=>table.tBodies[0].appendChild(r))})});
+
+// フィルタ
+function filterBatter(limit){document.querySelectorAll('.batter').forEach(r=>{const pa=+r.querySelector('.pa')?.value||0;r.style.display=(limit===0||pa>=limit)?'':'none'})}
+function filterPitcher(limit){document.querySelectorAll('.pitcher').forEach(r=>{const ip=+r.querySelector('.ip')?.value||0;r.style.display=(limit===0||ip>=limit)?'':'none'})}
+
+// 検索
+document.getElementById('batterSearch').addEventListener('input',e=>{const k=e.target.value;document.querySelectorAll('.batter').forEach(r=>{r.style.display=r.querySelector('.name').textContent.includes(k)?'':'none'})});
+document.getElementById('pitcherSearch').addEventListener('input',e=>{const k=e.target.value;document.querySelectorAll('.pitcher').forEach(r=>{r.style.display=r.querySelector('.name').textContent.includes(k)?'':'none'})});
 </script>
 </body>
 </html>
