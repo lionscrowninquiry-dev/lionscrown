@@ -3,57 +3,61 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>L-crown TOP PAGE</title>
+<title>Lions Data PV</title>
 <style>
   body {
     font-family: "Segoe UI", "Noto Sans JP", sans-serif;
     background: linear-gradient(to bottom, #092048, #0d2b5e);
     color: #fff;
     margin: 0;
-    padding: 40px 20px; /* 上下余白を大幅増加 */
+    padding: 40px 20px;
     min-height: 100vh;
   }
   .container {
     max-width: 1200px;
     width: 94%;
     margin: 0 auto;
-    padding: 40px 0; /* コンテナ上下余白増加 */
+    padding: 40px 0;
   }
   h1 {
-    font-size: 2.2rem; /* 少し大きくして存在感UP */
+    font-size: 2.2rem;
     color: #6eb9ff;
     text-align: center;
-    margin: 0 0 72px 0; /* 下余白を大幅に */
+    margin: 0 0 72px 0;
     text-shadow: 0 2px 8px rgba(77,163,255,0.3);
   }
   .content-wrapper {
     display: flex;
-    gap: 56px; /* 左右間隔を広げて余裕を持たせる */
+    gap: 40px; /* gapを少し抑えめに（横並び維持しやすく） */
     align-items: flex-start;
     flex-wrap: wrap;
-    margin-bottom: 80px; /* 最下部余白追加 */
+    margin-bottom: 80px;
   }
-  .video-section,
-  .text-section {
+  .video-section {
+    flex: 1 1 560px; /* 基準幅を維持 */
+    min-width: 480px; /* ← これが重要: 480px以下で縦並びへ移行（早すぎない） */
     background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.18);
+    padding: 32px;
     border-radius: 16px;
-    padding: 32px; /* 内部余白増加 */
+    border: 1px solid rgba(255, 255, 255, 0.18);
     box-shadow: 0 10px 32px rgba(0,0,0,0.4);
-    transition: transform 0.3s ease;
-  }
-  .video-section:hover,
-  .text-section:hover {
-    transform: translateY(-8px);
   }
   .video-section iframe {
     width: 100%;
-    height: 340px; /* 少し大きくして視認性UP */
+    height: 340px;
     border: none;
     border-radius: 12px;
     box-shadow: 0 12px 32px rgba(0,0,0,0.45);
   }
   .text-section {
+    flex: 1 1 400px;
+    min-width: 380px; /* ← テキスト側も最低幅を設定して横並び維持 */
+    background: rgba(255, 255, 255, 0.12);
+    padding: 32px;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 32px rgba(0,0,0,0.4);
+    backdrop-filter: blur(4px);
     line-height: 1.9;
     font-size: 1.08rem;
   }
@@ -65,19 +69,31 @@
     color: #7fc3ff;
     font-weight: bold;
   }
+  @media (max-width: 1024px) {
+    .container { width: 96%; }
+    .content-wrapper { gap: 32px; }
+  }
   @media (max-width: 900px) {
+    .video-section, .text-section {
+      min-width: 45%; /* 中間幅でまだ横並びを頑張る */
+    }
+  }
+  @media (max-width: 768px) {
     .content-wrapper {
       flex-direction: column;
-      gap: 64px;
+      gap: 56px;
     }
+    .video-section, .text-section {
+      min-width: 100%; /* ここで完全に縦並び */
+    }
+    .video-section iframe { height: 300px; }
     .container { padding: 32px 0; }
     h1 { margin-bottom: 64px; }
-    .video-section iframe { height: 300px; }
   }
   @media (max-width: 560px) {
     body { padding: 32px 16px; }
     .video-section, .text-section { padding: 24px; }
-    h1 { font-size: 1.9rem; }
+    .video-section iframe { height: 260px; }
   }
 </style>
 </head>
