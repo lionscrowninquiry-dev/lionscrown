@@ -125,7 +125,7 @@
   <style>
     body {
       font-family: system-ui, sans-serif;
-      background: #ffffff; /* 全体背景を白に */
+      background: #ffffff;
       color: #111111;
       margin: 0;
       padding: 0;
@@ -138,20 +138,19 @@
       margin: 0 auto;
       padding: 48px 16px 72px 16px;
     }
-    /* GAME INFOブロック：背景なし、テキスト白色 */
     .game-info-block {
-      background: transparent; /* 背景色なし */
-      border: none; /* 枠線もなし */
-      padding: 32px 0; /* 上下余白のみ */
-      margin-bottom: 72px;
+      background: transparent;
+      border: none;
+      padding: 32px 0;
+      margin-bottom: 48px;
       position: relative;
-      color: #ffffff; /* テキストを白色に統一 */
-      text-shadow: 0 1px 4px rgba(0,0,0,0.7); /* 白文字が読みやすい影 */
+      color: #ffffff;
+      text-shadow: none;
     }
     .game-info-title {
       position: absolute;
       top: -18px;
-      left: 0;
+      left: 32px;
       background: transparent;
       padding: 0;
       font-size: 1.7rem;
@@ -173,7 +172,7 @@
     .game-info-text p {
       font-size: 1.1rem;
       line-height: 1.8;
-      color: #ffffff; /* 白色 */
+      color: #ffffff;
       margin: 0;
     }
     .game-info-image img {
@@ -181,23 +180,29 @@
       max-width: 300px;
       height: auto;
       border-radius: 12px;
-      box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.15);
     }
 
-    /* 試合速報カード：背景白を画面幅全体に */
-    .game-wrapper {
+    /* 試合速報カードを3つ縦並び（間隔小さめ） */
+    .match-wrapper {
       width: 100vw;
       margin-left: calc(-50vw + 50%);
       margin-right: calc(-50vw + 50%);
-      background: #ffffff; /* 白を画面幅全体に */
-      padding: 0 16px; /* 左右余白確保 */
+      padding: 0 16px;
       box-sizing: border-box;
     }
-    .game-inner {
+    .match-card {
       max-width: 1100px;
-      margin: 0 auto;
-      padding: 32px 0;
+      margin: 0 auto 32px auto; /* カード間の間隔を小さめに */
+      border-radius: 12px;
+      padding: 32px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
     }
+    /* 3つのカードごとに背景色を少しずつ変化 */
+    .match-card:nth-child(1) { background: #f8f9fa; } /* 薄いグレー白 */
+    .match-card:nth-child(2) { background: #f0f4f8; } /* やや青みがかった白 */
+    .match-card:nth-child(3) { background: #ffffff; } /* 純白 */
+
     .match-title {
       text-align: center;
       color: #092048;
@@ -289,7 +294,8 @@
       .game-info-block { padding: 24px 0; margin-bottom: 56px; }
       .game-info-content { gap: 24px; }
       .game-info-image { max-width: 280px; }
-      .match-title { font-size: 1.35rem; margin: 0 0 40px 0; }
+      .match-card { padding: 24px; margin-bottom: 24px; }
+      .match-title { font-size: 1.35rem; margin: 0 0 32px 0; }
       .game-info-title { left: 24px; font-size: 1.5rem; top: -16px; }
     }
     @media (max-width: 480px) {
@@ -301,13 +307,14 @@
       .score-section { flex-direction: row; width: 100%; justify-content: center; gap: 10px; }
       .match-title { font-size: 1.3rem; margin: 0 0 32px 0; }
       .game-info-title { left: 20px; font-size: 1.4rem; top: -14px; }
+      .match-card { padding: 20px; margin-bottom: 20px; }
     }
   </style>
 </head>
 <body>
 
 <div class="container">
-  <!-- GAME INFOブロック（背景なし・テキスト白色） -->
+  <!-- GAME INFOブロック（背景なし・文字白色） -->
   <div class="game-info-block">
     <div class="game-info-title">GAME INFO</div>
     <div class="game-info-content">
@@ -328,84 +335,111 @@
   </div>
 
   <!-- 試合速報コンテンツ（背景白・幅100%） -->
-  <div class="game-wrapper">
-    <div class="game-inner">
-      <!-- 見出しを試合速報カードの内部に配置 -->
+  <div class="match-wrapper">
+    <!-- 試合1 -->
+    <div class="match-card">
       <h1 class="match-title">【オープン戦】2026年3月1日 vs福岡ソフトバンクホークス</h1>
 
-      <div class="game">
-        <div class="game-header">
-          <div class="start-time">13:00</div>
-          <div>アイビースタジアム</div>
-        </div>
+      <div class="game-header">
+        <div class="start-time">13:00</div>
+        <div>アイビースタジアム</div>
+      </div>
 
-        <div class="teams">
-          <div class="team">
-            <img src="https://lions-crown.homep.jp/img/1759836807957.webp" class="team-logo" alt="西武">
-            <div class="team-name seibu">西武</div>
-          </div>
-          <div class="score-section">
-            <div class="pitcher-batter">投：渡邉</div>
-            <div class="score">0</div>
-            <div class="vs">–</div>
-            <div class="score">0</div>
-            <div class="pitcher-batter">打：柳町</div>
-          </div>
-          <div class="team">
-            <img src="https://lions-crown.homep.jp/img/1759836829251.webp" class="team-logo" alt="ソフトバンク">
-            <div class="team-name softbank">ソフトバンク</div>
-          </div>
+      <div class="teams">
+        <div class="team">
+          <img src="https://lions-crown.homep.jp/img/1759836807957.webp" class="team-logo" alt="西武">
+          <div class="team-name seibu">西武</div>
         </div>
-
-        <div class="inning-info">試合前</div>
-
-        <div class="update">
-          最終更新： <span id="update-time">2026年3月1日 00:00</span>
+        <div class="score-section">
+          <div class="pitcher-batter">投：渡邉</div>
+          <div class="score">0</div>
+          <div class="vs">–</div>
+          <div class="score">0</div>
+          <div class="pitcher-batter">打：柳町</div>
         </div>
+        <div class="team">
+          <img src="https://lions-crown.homep.jp/img/1759836829251.webp" class="team-logo" alt="ソフトバンク">
+          <div class="team-name softbank">ソフトバンク</div>
+        </div>
+      </div>
+
+      <div class="inning-info">試合前</div>
+
+      <div class="update">
+        最終更新： <span id="update-time">2026年3月1日 00:00</span>
+      </div>
+    </div>
+
+    <!-- 試合2（仮データ） -->
+    <div class="match-card">
+      <h1 class="match-title">【オープン戦】2026年3月2日 vs千葉ロッテマリーンズ</h1>
+
+      <div class="game-header">
+        <div class="start-time">13:00</div>
+        <div>ベルーナドーム</div>
+      </div>
+
+      <div class="teams">
+        <div class="team">
+          <img src="https://lions-crown.homep.jp/img/1759836807957.webp" class="team-logo" alt="西武">
+          <div class="team-name seibu">西武</div>
+        </div>
+        <div class="score-section">
+          <div class="pitcher-batter">投：隅田</div>
+          <div class="score">0</div>
+          <div class="vs">–</div>
+          <div class="score">0</div>
+          <div class="pitcher-batter">打：佐々木朗希</div>
+        </div>
+        <div class="team">
+          <img src="https://example.com/lotte-logo.png" class="team-logo" alt="ロッテ">
+          <div class="team-name">ロッテ</div>
+        </div>
+      </div>
+
+      <div class="inning-info">試合前</div>
+
+      <div class="update">
+        最終更新： <span id="update-time">2026年3月1日 00:00</span>
+      </div>
+    </div>
+
+    <!-- 試合3（仮データ） -->
+    <div class="match-card">
+      <h1 class="match-title">【オープン戦】2026年3月3日 vsオリックス・バファローズ</h1>
+
+      <div class="game-header">
+        <div class="start-time">13:00</div>
+        <div>京セラドーム大阪</div>
+      </div>
+
+      <div class="teams">
+        <div class="team">
+          <img src="https://lions-crown.homep.jp/img/1759836807957.webp" class="team-logo" alt="西武">
+          <div class="team-name seibu">西武</div>
+        </div>
+        <div class="score-section">
+          <div class="pitcher-batter">投：今井</div>
+          <div class="score">0</div>
+          <div class="vs">–</div>
+          <div class="score">0</div>
+          <div class="pitcher-batter">打：森友哉</div>
+        </div>
+        <div class="team">
+          <img src="https://example.com/orioles-logo.png" class="team-logo" alt="オリックス">
+          <div class="team-name">オリックス</div>
+        </div>
+      </div>
+
+      <div class="inning-info">試合前</div>
+
+      <div class="update">
+        最終更新： <span id="update-time">2026年3月1日 00:00</span>
       </div>
     </div>
   </div>
 </div>
-  <div class="game-wrapper">
-    <div class="game-inner">
-      <!-- 見出しを試合速報カードの内部に配置 -->
-      <h1 class="match-title">【教育リーグ】2026年3月1日 vs千葉ロッテマリーンズ</h1>
 
-      <div class="game">
-        <div class="game-header">
-          <div class="start-time">13:00</div>
-          <div>アイビースタジアム</div>
-        </div>
-
-        <div class="teams">
-          <div class="team">
-            <img src="https://lions-crown.homep.jp/img/1759836807957.webp" class="team-logo" alt="西武">
-            <div class="team-name seibu">西武</div>
-          </div>
-          <div class="score-section">
-            <div class="pitcher-batter">投：渡邉</div>
-            <div class="score">0</div>
-            <div class="vs">–</div>
-            <div class="score">0</div>
-            <div class="pitcher-batter">打：柳町</div>
-          </div>
-          <div class="team">
-            <img src="https://lions-crown.homep.jp/img/1759836829251.webp" class="team-logo" alt="ソフトバンク">
-            <div class="team-name softbank">ソフトバンク</div>
-          </div>
-        </div>
-
-        <div class="inning-info">試合前</div>
-
-        <div class="update">
-          最終更新： <span id="update-time">2026年3月1日 00:00</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-  
 </body>
 </html>
 
