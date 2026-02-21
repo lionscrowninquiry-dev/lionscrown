@@ -342,6 +342,7 @@
     from {opacity: 0; transform: translateY(10px);}
     to {opacity: 1; transform: translateY(0);}
   }
+  /* 横スクロールに戻しました */
   .scroll-container {
     display: flex;
     overflow-x: auto;
@@ -349,8 +350,8 @@
     padding: 10px 20px 20px;
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
-    max-width: 1100px;   /* 他ページと統一 */
-    width: 94%;
+    max-width: 1100px; /* 幅調整で他ページと統一 */
+    width: 94%;        /* 画面サイズに合わせて柔軟に */
     margin: 0 auto;
   }
   .scroll-container::-webkit-scrollbar {
@@ -484,586 +485,6 @@
         </a>
       </div>
     </div>
-</div>
-    <div class="card">
-      <div class="title">本塁打数</div>
-      <div class="player top">
-        <a href="https://sites.google.com/view/lionscrown/ネビン">
-          <img src="https://via.placeholder.com/100" alt="ネビン">
-          <div class="player-info">
-            <span>ネビン</span>
-            <div class="rank">21</div>
-          </div>
-        </a>
-      </div>
-      <div class="player">
-        <a href="https://sites.google.com/view/lionscrown/渡部聖弥">
-          <img src="https://via.placeholder.com/100" alt="渡部聖弥">
-          <div class="player-info">
-            <span>渡部 聖弥</span>
-            <div class="rank">12</div>
-          </div>
-        </a>
-      </div>
-      <div class="player">
-        <a href="https://sites.google.com/view/lionscrown/西川愛也">
-          <img src="https://via.placeholder.com/100" alt="西川愛也">
-          <div class="player-info">
-            <span>西川 愛也</span>
-            <div class="rank">10</div>
-          </div>
-        </a>
-      </div>
-    </div>
-    <div class="card">
-      <div class="title">盗塁</div>
-      <div class="player top">
-        <a href="https://sites.google.com/view/lionscrown/西川愛也">
-          <img src="https://via.placeholder.com/100" alt="西川愛也">
-          <div class="player-info">
-            <span>西川 愛也</span>
-            <div class="rank">25</div>
-          </div>
-        </a>
-      </div>
-      <div class="player">
-        <a href="https://sites.google.com/view/lionscrown/滝澤夏央">
-          <img src="https://via.placeholder.com/100" alt="滝澤夏央">
-          <div class="player-info">
-            <span>滝澤 夏央</span>
-            <div class="rank">21</div>
-          </div>
-        </a>
-      </div>
-      <div class="player">
-        <a href="https://sites.google.com/view/lionscrown/長谷川信哉">
-          <img src="https://via.placeholder.com/100" alt="長谷川信哉">
-          <div class="player-info">
-            <span>長谷川 信哉</span>
-            <div class="rank">9</div>
-          </div>
-        </a>
-      </div>
-    </div>
-    <div class="card">
-      <div class="title">出塁率</div>
-      <div class="player top">
-        <a href="https://sites.google.com/view/lionscrown/ネビン">
-          <img src="https://via.placeholder.com/100" alt="ネビン">
-          <div class="player-info">
-            <span>ネビン</span>
-            <div class="rank">.346</div>
-          </div>
-        </a>
-      </div>
-      <div class="player">
-        <a href="https://sites.google.com/view/lionscrown/西川愛也">
-          <img src="https://via.placeholder.com/100" alt="西川愛也">
-          <div class="player-info">
-            <span>西川 愛也</span>
-            <div class="rank">.318</div>
-          </div>
-        </a>
-      </div>
-      <div class="player">
-        <a href="https://sites.google.com/view/lionscrown/渡部聖弥">
-          <img src="https://via.placeholder.com/100" alt="渡部聖弥">
-          <div class="player-info">
-            <span>渡部 聖弥</span>
-            <div class="rank">.299</div>
-          </div>
-        </a>
-      </div>
-    </div>
-    <div class="card">
-      <div class="title">OPS</div>
-      <div class="player top">
-        <a href="https://sites.google.com/view/lionscrown/ネビン">
-          <img src="https://via.placeholder.com/100" alt="ネビン">
-          <div class="player-info">
-            <span>ネビン</span>
-            <div class="rank">.794</div>
-          </div>
-        </a>
-      </div>
-      <div class="player">
-        <a href="https://sites.google.com/view/lionscrown/西川愛也">
-          <img src="https://via.placeholder.com/100" alt="西川愛也">
-          <div class="player-info">
-            <span>西川 愛也</span>
-            <div class="rank">.704</div>
-          </div>
-        </a>
-      </div>
-      <div class="player">
-        <a href="https://sites.google.com/view/lionscrown/渡部聖弥">
-          <img src="https://via.placeholder.com/100" alt="渡部聖弥">
-          <div class="player-info">
-            <span>渡部 聖弥</span>
-            <div class="rank">.694</div>
-          </div>
-        </a>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- 投球部門 -->
-<div id="pitching" class="section">
-  <div class="scroll-container">
-    <div class="card">
-      <div class="title">防御率</div>
-      <div class="player top">
-        <a href="https://sites.google.com/view/lionscrown/今井達也">
-          <img src="https://via.placeholder.com/100" alt="今井達也">
-          <div class="player-info">
-            <span>今井 達也</span>
-            <div class="rank">1.92</div>
-          </div>
-        </a>
-      </div>
-      <div class="player">
-        <a href="https://sites.google.com/view/lionscrown/隅田知一郎">
-          <img src="https://via.placeholder.com/100" alt="隅田知一郎">
-          <div class="player-info">
-            <span>隅田 知一郎</span>
-            <div class="rank">2.59</div>
-          </div>
-        </a>
-      </div>
-      <div class="player">
-        <a href="https://sites.google.com/view/lionscrown/髙橋光成">
-          <img src="https://via.placeholder.com/100" alt="髙橋光成">
-          <div class="player-info">
-            <span>髙橋 光成</span>
-            <div class="rank">3.04</div>
-          </div>
-        </a>
-      </div>
-    </div>
-    <div class="card">
-      <div class="title">勝利数</div>
-      <div class="player top">
-        <a href="https://sites.google.com/view/lionscrown/隅田知一郎">
-          <img src="https://via.placeholder.com/100" alt="隅田知一郎">
-          <div class="player-info">
-            <span>隅田 知一郎</span>
-            <div class="rank">10</div>
-          </div>
-        </a>
-      </div>
-      <div class="player">
-        <a href="https://sites.google.com/view/lionscrown/今井達也">
-          <img src="https://via.placeholder.com/100" alt="今井達也">
-          <div class="player-info">
-            <span>今井 達也</span>
-            <div class="rank">10</div>
-          </div>
-        </a>
-      </div>
-      <div class="player">
-        <a href="https://sites.google.com/view/lionscrown/髙橋光成">
-          <img src="https://via.placeholder.com/100" alt="髙橋光成">
-          <div class="player-info">
-            <span>髙橋 光成</span>
-            <div class="rank">8</div>
-          </div>
-        </a>
-      </div>
-    </div>
-    <div class="card">
-      <div class="title">奪三振数</div>
-      <div class="player top">
-        <a href="https://sites.google.com/view/lionscrown/今井達也">
-          <img src="https://via.placeholder.com/100" alt="今井達也">
-          <div class="player-info">
-            <span>今井 達也</span>
-            <div class="rank">178</div>
-          </div>
-        </a>
-      </div>
-      <div class="player">
-        <a href="https://sites.google.com/view/lionscrown/隅田知一郎">
-          <img src="https://via.placeholder.com/100" alt="隅田知一郎">
-          <div class="player-info">
-            <span>隅田 知一郎</span>
-            <div class="rank">149</div>
-          </div>
-        </a>
-      </div>
-      <div class="player">
-        <a href="https://sites.google.com/view/lionscrown/髙橋光成">
-          <img src="https://via.placeholder.com/100" alt="髙橋光成">
-          <div class="player-info">
-            <span>髙橋 光成</span>
-            <div class="rank">88</div>
-          </div>
-        </a>
-      </div>
-    </div>
-    <div class="card">
-      <div class="title">ホールド数</div>
-      <div class="player top">
-        <a href="https://sites.google.com/view/lionscrown/甲斐野央">
-          <img src="https://via.placeholder.com/100" alt="甲斐野央">
-          <div class="player-info">
-            <span>甲斐野央</span>
-            <div class="rank">33</div>
-          </div>
-        </a>
-      </div>
-      <div class="player">
-        <a href="https://sites.google.com/view/lionscrown/ウィンゲンター">
-          <img src="https://via.placeholder.com/100" alt="ウィンゲンター">
-          <div class="player-info">
-            <span>ウィンゲンター</span>
-            <div class="rank">31</div>
-          </div>
-        </a>
-      </div>
-      <div class="player">
-        <a href="https://sites.google.com/view/lionscrown/山田陽翔">
-          <img src="https://via.placeholder.com/100" alt="山田陽翔">
-          <div class="player-info">
-            <span>山田 陽翔</span>
-            <div class="rank">17</div>
-          </div>
-        </a>
-      </div>
-    </div>
-    <div class="card">
-      <div class="title">セーブ数</div>
-      <div class="player top">
-        <a href="https://sites.google.com/view/lionscrown/平良海馬">
-          <img src="https://via.placeholder.com/100" alt="平良海馬">
-          <div class="player-info">
-            <span>平良 海馬</span>
-            <div class="rank">31</div>
-          </div>
-        </a>
-      </div>
-      <div class="player">
-        <a href="https://sites.google.com/view/lionscrown/山田陽翔">
-          <img src="https://via.placeholder.com/100" alt="山田陽翔">
-          <div class="player-info">
-            <span>山田 陽翔</span>
-            <div class="rank">1</div>
-          </div>
-        </a>
-      </div>
-      <div class="player">
-        <!-- 3位なし -->
-      </div>
-    </div>
-    <div class="card">
-      <div class="title">投球回</div>
-      <div class="player top">
-        <a href="https://sites.google.com/view/lionscrown/今井達也">
-          <img src="https://via.placeholder.com/100" alt="今井達也">
-          <div class="player-info">
-            <span>今井 達也</span>
-            <div class="rank">163.2</div>
-          </div>
-        </a>
-      </div>
-      <div class="player">
-        <a href="https://sites.google.com/view/lionscrown/隅田知一郎">
-          <img src="https://via.placeholder.com/100" alt="隅田知一郎">
-          <div class="player-info">
-            <span>隅田 知一郎</span>
-            <div class="rank">159.2</div>
-          </div>
-        </a>
-      </div>
-      <div class="player">
-        <a href="https://sites.google.com/view/lionscrown/髙橋光成">
-          <img src="https://via.placeholder.com/100" alt="髙橋光成">
-          <div class="player-info">
-            <span>髙橋 光成</span>
-            <div class="rank">148.0</div>
-          </div>
-        </a>
-      </div>
-    </div>
-    <div class="card">
-      <div class="title">登板数</div>
-      <div class="player top">
-        <a href="https://sites.google.com/view/lionscrown/平良海馬">
-          <img src="https://via.placeholder.com/100" alt="平良海馬">
-          <div class="player-info">
-            <span>平良 海馬</span>
-            <div class="rank">54</div>
-          </div>
-        </a>
-      </div>
-      <div class="player">
-        <a href="https://sites.google.com/view/lionscrown/ウィンゲンター">
-          <img src="https://via.placeholder.com/100" alt="ウィンゲンター">
-          <div class="player-info">
-            <span>ウィンゲンター</span>
-            <div class="rank">49</div>
-          </div>
-        </a>
-      </div>
-      <div class="player">
-        <a href="https://sites.google.com/view/lionscrown/山田陽翔">
-          <img src="https://via.placeholder.com/100" alt="山田陽翔">
-          <div class="player-info">
-            <span>山田 陽翔</span>
-            <div class="rank">49</div>
-          </div>
-        </a>
-      </div>
-    </div>
-  </div>
-</div>
-<script>
-const battingBtn = document.getElementById('battingBtn');
-const pitchingBtn = document.getElementById('pitchingBtn');
-const batting = document.getElementById('batting');
-const pitching = document.getElementById('pitching');
-battingBtn.addEventListener('click', () => {
-  battingBtn.classList.add('active');
-  pitchingBtn.classList.remove('active');
-  batting.classList.add('active');
-  pitching.classList.remove('active');
-});
-pitchingBtn.addEventListener('click', () => {
-  pitchingBtn.classList.add('active');
-  battingBtn.classList.remove('active');
-  pitching.classList.add('active');
-  batting.classList.remove('active');
-});
-</script>
-</body>
-</html>
-
-
-
-
-
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>チームTOP3ランキング（打撃／投球）</title>
-<style>
-  body {
-    font-family: "Segoe UI", "Noto Sans JP", sans-serif;
-    background: linear-gradient(to bottom, #092048, #0d2b5e);
-    color: #fff;
-    margin: 0;
-    padding: 20px 20px 40px;
-    min-height: 100vh;
-  }
-
-  h1 {
-    font-size: 1.9rem;
-    margin-bottom: 20px;
-    color: #6eb9ff;
-    text-align: center;
-    text-shadow: 0 2px 8px rgba(77,163,255,0.3);
-  }
-
-  .toggle-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-bottom: 30px;
-  }
-
-  button {
-    background: transparent;
-    border: 2px solid #4da3ff;
-    color: #fff;
-    padding: 10px 24px;
-    border-radius: 30px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: all 0.3s ease;
-  }
-
-  button.active, button:hover {
-    background: #4da3ff;
-    color: #092048;
-    box-shadow: 0 0 15px rgba(77,163,255,0.5);
-  }
-
-  .section {
-    display: none;
-    animation: fade 0.6s ease-in-out;
-  }
-
-  .section.active {
-    display: block;
-  }
-
-  @keyframes fade {
-    from {opacity: 0; transform: translateY(10px);}
-    to {opacity: 1; transform: translateY(0);}
-  }
-
-  /* 横スクロールに戻しました */
-  .scroll-container {
-    display: flex;
-    overflow-x: auto;
-    gap: 20px;
-    padding: 10px 20px 20px;
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .scroll-container::-webkit-scrollbar {
-    height: 8px;
-  }
-
-  .scroll-container::-webkit-scrollbar-thumb {
-    background: #4da3ff;
-    border-radius: 4px;
-  }
-
-  .scroll-container::-webkit-scrollbar-track {
-    background: rgba(255,255,255,0.05);
-  }
-
-  .card {
-    flex: 0 0 230px;
-    background: rgba(255, 255, 255, 0.09);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    border-radius: 16px;
-    padding: 16px;
-    box-shadow: 0 6px 16px rgba(0,0,0,0.3);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    backdrop-filter: blur(4px);
-  }
-
-  .card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 12px 24px rgba(0,0,0,0.4);
-  }
-
-  .title {
-    font-size: 1.1rem;
-    color: #6eb9ff;
-    margin-bottom: 12px;
-    border-bottom: 1px solid rgba(255,255,255,0.2);
-    padding-bottom: 8px;
-    text-align: center;
-    font-weight: 600;
-  }
-
-  .player {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin: 10px 0;
-  }
-
-  .player a {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    text-decoration: none;
-    color: inherit;
-    width: 100%;
-  }
-
-  .player img {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid #4da3ff;
-  }
-
-  .player.top img {
-    width: 64px;
-    height: 64px;
-    border: 3px solid #7fc3ff;
-    box-shadow: 0 0 16px rgba(127,195,255,0.7);
-  }
-
-  .player-info {
-    text-align: left;
-    flex: 1;
-  }
-
-  .player-info span {
-    display: block;
-    font-weight: bold;
-    font-size: 0.95rem;
-  }
-
-  .player.top .player-info span {
-    font-size: 1.1rem;
-    color: #7fc3ff;
-  }
-
-  .rank {
-    font-size: 0.9rem;
-    color: #ddd;
-    margin-top: 2px;
-  }
-
-  @media (max-width: 600px) {
-    .card {
-      flex: 0 0 200px;
-      padding: 14px;
-    }
-    .scroll-container {
-      gap: 16px;
-      padding: 10px 10px 20px;
-    }
-    .player.top img {
-      width: 58px;
-      height: 58px;
-    }
-  }
-</style>
-</head>
-<body>
-
-<h1>チームTOP3ランキング2025</h1>
-
-<div class="toggle-buttons">
-  <button id="battingBtn" class="active">打撃成績</button>
-  <button id="pitchingBtn">投球成績</button>
-</div>
-
-<!-- 打撃部門 -->
-<div id="batting" class="section active">
-  <div class="scroll-container">
-    <div class="card">
-      <div class="title">打率</div>
-      <div class="player top">
-        <a href="https://sites.google.com/view/lionscrown/ネビン">
-          <img src="https://via.placeholder.com/100" alt="ネビン">
-          <div class="player-info">
-            <span>ネビン</span>
-            <div class="rank">.277</div>
-          </div>
-        </a>
-      </div>
-      <div class="player">
-        <a href="https://sites.google.com/view/lionscrown/西川愛也">
-          <img src="https://via.placeholder.com/100" alt="西川愛也">
-          <div class="player-info">
-            <span>西川愛也</span>
-            <div class="rank">.264</div>
-          </div>
-        </a>
-      </div>
-      <div class="player">
-        <a href="https://sites.google.com/view/lionscrown/渡部聖弥">
-          <img src="https://via.placeholder.com/100" alt="渡部聖弥">
-          <div class="player-info">
-            <span>渡部聖弥</span>
-            <div class="rank">.259</div>
-          </div>
-        </a>
-      </div>
-    </div>
-
     <div class="card">
       <div class="title">安打数</div>
       <div class="player top">
@@ -1094,7 +515,6 @@ pitchingBtn.addEventListener('click', () => {
         </a>
       </div>
     </div>
-
     <div class="card">
       <div class="title">本塁打数</div>
       <div class="player top">
@@ -1125,7 +545,6 @@ pitchingBtn.addEventListener('click', () => {
         </a>
       </div>
     </div>
-
     <div class="card">
       <div class="title">盗塁</div>
       <div class="player top">
@@ -1156,7 +575,6 @@ pitchingBtn.addEventListener('click', () => {
         </a>
       </div>
     </div>
-
     <div class="card">
       <div class="title">出塁率</div>
       <div class="player top">
@@ -1187,7 +605,6 @@ pitchingBtn.addEventListener('click', () => {
         </a>
       </div>
     </div>
-
     <div class="card">
       <div class="title">OPS</div>
       <div class="player top">
@@ -1220,7 +637,6 @@ pitchingBtn.addEventListener('click', () => {
     </div>
   </div>
 </div>
-
 <!-- 投球部門 -->
 <div id="pitching" class="section">
   <div class="scroll-container">
@@ -1254,7 +670,6 @@ pitchingBtn.addEventListener('click', () => {
         </a>
       </div>
     </div>
-
     <div class="card">
       <div class="title">勝利数</div>
       <div class="player top">
@@ -1285,7 +700,6 @@ pitchingBtn.addEventListener('click', () => {
         </a>
       </div>
     </div>
-
     <div class="card">
       <div class="title">奪三振数</div>
       <div class="player top">
@@ -1316,7 +730,6 @@ pitchingBtn.addEventListener('click', () => {
         </a>
       </div>
     </div>
-
     <div class="card">
       <div class="title">ホールド数</div>
       <div class="player top">
@@ -1347,7 +760,6 @@ pitchingBtn.addEventListener('click', () => {
         </a>
       </div>
     </div>
-
     <div class="card">
       <div class="title">セーブ数</div>
       <div class="player top">
@@ -1372,7 +784,6 @@ pitchingBtn.addEventListener('click', () => {
         <!-- 3位なし -->
       </div>
     </div>
-
     <div class="card">
       <div class="title">投球回</div>
       <div class="player top">
@@ -1403,7 +814,6 @@ pitchingBtn.addEventListener('click', () => {
         </a>
       </div>
     </div>
-
     <div class="card">
       <div class="title">登板数</div>
       <div class="player top">
@@ -1436,13 +846,11 @@ pitchingBtn.addEventListener('click', () => {
     </div>
   </div>
 </div>
-
 <script>
 const battingBtn = document.getElementById('battingBtn');
 const pitchingBtn = document.getElementById('pitchingBtn');
 const batting = document.getElementById('batting');
 const pitching = document.getElementById('pitching');
-
 battingBtn.addEventListener('click', () => {
   battingBtn.classList.add('active');
   pitchingBtn.classList.remove('active');
@@ -1456,6 +864,5 @@ pitchingBtn.addEventListener('click', () => {
   batting.classList.remove('active');
 });
 </script>
-
 </body>
 </html>
