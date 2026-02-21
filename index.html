@@ -124,10 +124,10 @@
   <style>
     body {
       font-family: system-ui, sans-serif;
-      background: linear-gradient(to bottom, #ffffff, #f8fcff);
+      background: #ffffff; /* 全体背景を白に統一 */
       color: #111111;
       margin: 0;
-      padding: 48px 16px;
+      padding: 0; /* 端まで広がるよう余白ゼロ */
       min-height: 100vh;
       line-height: 1.4;
     }
@@ -135,6 +135,7 @@
       max-width: 1100px;
       width: 94%;
       margin: 0 auto;
+      padding: 48px 16px; /* 内部コンテンツの余白をここで確保 */
     }
     h1 {
       text-align: center;
@@ -143,14 +144,14 @@
       margin: 64px 0 72px 0;
       font-weight: bold;
     }
-    .game-info-block {
+    .game-info-block,
+    .game {
       background: #ffffff;
       border: 1px solid #d1e0ff;
       border-radius: 12px;
       padding: 32px;
       box-shadow: 0 8px 24px rgba(0,0,0,0.1);
       margin-bottom: 72px;
-      position: relative;
     }
     .game-info-title {
       position: absolute;
@@ -169,11 +170,7 @@
       gap: 32px;
       flex-wrap: wrap;
       justify-content: center;
-      margin-top: 16px; /* タイトルとの間隔 */
-    }
-    .game-info-text {
-      flex: 1 1 400px;
-      min-width: 300px;
+      margin-top: 16px;
     }
     .game-info-text p {
       font-size: 1.1rem;
@@ -181,23 +178,12 @@
       color: #333;
       margin: 0;
     }
-    .game-info-image {
-      flex: 0 0 280px;
-      text-align: center;
-    }
     .game-info-image img {
       width: 100%;
       max-width: 280px;
       height: auto;
       border-radius: 12px;
       box-shadow: 0 6px 16px rgba(0,0,0,0.15);
-    }
-    .game {
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
-      border-radius: 12px;
-      padding: 32px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
     }
     .game-header {
       display: flex;
@@ -279,12 +265,13 @@
       margin-top: 16px;
     }
     @media (max-width: 768px) {
-      body { padding: 32px 12px; }
+      .container { padding: 32px 12px; }
       .game-info-block, .game { padding: 24px; margin-bottom: 56px; }
       h1 { margin: 48px 0 56px 0; font-size: 1.5rem; }
       .game-info-title { left: 24px; font-size: 1.5rem; top: -16px; }
     }
     @media (max-width: 480px) {
+      .container { padding: 24px 10px; }
       .game-info-block, .game { padding: 20px; margin-bottom: 48px; }
       .teams { flex-direction: column; gap: 16px; }
       .score-section { flex-direction: row; width: 100%; justify-content: center; gap: 10px; }
@@ -308,8 +295,8 @@
         </p>
       </div>
       <div class="game-info-image">
-        <img 
-          src="https://lions-crown.homep.jp/img/1771638837177.webp" 
+        <img
+          src="https://lions-crown.homep.jp/img/1771638837177.webp"
           alt="オープン戦イメージ"
         >
       </div>
@@ -330,7 +317,6 @@
         <img src="https://lions-crown.homep.jp/img/1759836807957.webp" class="team-logo" alt="西武">
         <div class="team-name seibu">西武</div>
       </div>
-
       <div class="score-section">
         <div class="pitcher-batter">投：渡邉</div>
         <div class="score">0</div>
@@ -338,15 +324,12 @@
         <div class="score">0</div>
         <div class="pitcher-batter">打：柳町</div>
       </div>
-
       <div class="team">
         <img src="https://lions-crown.homep.jp/img/1759836829251.webp" class="team-logo" alt="ソフトバンク">
         <div class="team-name softbank">ソフトバンク</div>
       </div>
     </div>
-
     <div class="inning-info">試合前</div>
-
     <div class="update">
       最終更新： <span id="update-time">2026年3月1日 00:00</span>
     </div>
@@ -355,6 +338,7 @@
 
 </body>
 </html>
+
 
 <!DOCTYPE html>
 <html lang="ja">
