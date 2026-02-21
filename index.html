@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lions Data PV</title>
+<title>L-crown TOP PAGE</title>
 <style>
   body {
     font-family: "Segoe UI", "Noto Sans JP", sans-serif;
@@ -101,7 +101,6 @@
 </body>
 </html>
 
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -127,24 +126,64 @@
       text-align: center;
       color: #092048;
       font-size: 1.6rem;
-      margin: 0 0 64px 0;
+      margin: 64px 0 72px 0;
       font-weight: bold;
     }
-    .game-info-block,
-    .game {
+    .game-info-block {
       background: #ffffff;
       border: 1px solid #d1e0ff;
       border-radius: 12px;
       padding: 32px;
       box-shadow: 0 8px 24px rgba(0,0,0,0.1);
       margin-bottom: 72px;
+      position: relative;
     }
-    .game-info-block .title {
+    .game-info-title {
+      position: absolute;
+      top: -18px;
+      left: 32px;
+      background: #ffffff;
+      padding: 0 12px;
       font-size: 1.7rem;
       font-weight: bold;
       color: #092048;
-      margin: 0 0 16px 0;
       letter-spacing: 1.2px;
+    }
+    .game-info-content {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 16px; /* タイトルとの間隔 */
+    }
+    .game-info-text {
+      flex: 1 1 400px;
+      min-width: 300px;
+    }
+    .game-info-text p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #333;
+      margin: 0;
+    }
+    .game-info-image {
+      flex: 0 0 280px;
+      text-align: center;
+    }
+    .game-info-image img {
+      width: 100%;
+      max-width: 280px;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+    }
+    .game {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 32px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
     }
     .game-header {
       display: flex;
@@ -228,44 +267,43 @@
     @media (max-width: 768px) {
       body { padding: 32px 12px; }
       .game-info-block, .game { padding: 24px; margin-bottom: 56px; }
-      h1 { margin-bottom: 56px; font-size: 1.5rem; }
-      .teams { gap: 10px; }
-      .score { font-size: 2.4rem; }
-      .team-logo { width: 56px; height: 56px; }
+      h1 { margin: 48px 0 56px 0; font-size: 1.5rem; }
+      .game-info-title { left: 24px; font-size: 1.5rem; top: -16px; }
     }
     @media (max-width: 480px) {
       .game-info-block, .game { padding: 20px; margin-bottom: 48px; }
       .teams { flex-direction: column; gap: 16px; }
       .score-section { flex-direction: row; width: 100%; justify-content: center; gap: 10px; }
-      h1 { font-size: 1.4rem; margin-bottom: 48px; }
+      h1 { font-size: 1.4rem; margin: 40px 0 48px 0; }
+      .game-info-title { left: 20px; font-size: 1.4rem; top: -14px; }
     }
   </style>
 </head>
 <body>
 
 <div class="container">
-  <h1>【オープン戦】2026年3月1日 vs福岡ソフトバンクホークス</h1>
-
-  <!-- GAME INFOブロック -->
+  <!-- GAME INFOブロック（見出しの上に配置） -->
   <div class="game-info-block">
-    <div class="title">GAME INFO</div>
-    <div style="display: flex; align-items: center; gap: 32px; flex-wrap: wrap; justify-content: center;">
-      <div style="flex: 1 1 400px; min-width: 300px;">
-        <p style="font-size: 1.1rem; line-height: 1.8; color: #333; margin: 0;">
+    <div class="game-info-title">GAME INFO</div>
+    <div class="game-info-content">
+      <div class="game-info-text">
+        <p>
           間もなく始まるオープン戦もLクラでは全試合データを速報で公開。<br>
           レギュラーシーズンへ向けた選手たちの競争をお伝えします。<br>
           ※詳細な選手データの公開は3月27日からを予定しています
         </p>
       </div>
-      <div style="flex: 0 0 280px; text-align: center;">
+      <div class="game-info-image">
         <img 
           src="https://lions-crown.homep.jp/img/1771638837177.webp" 
           alt="オープン戦イメージ"
-          style="width: 100%; max-width: 280px; height: auto; border-radius: 12px; box-shadow: 0 6px 16px rgba(0,0,0,0.15);"
         >
       </div>
     </div>
   </div>
+
+  <!-- 試合速報の見出し -->
+  <h1>【オープン戦】2026年3月1日 vs福岡ソフトバンクホークス</h1>
 
   <!-- 試合速報カード -->
   <div class="game">
