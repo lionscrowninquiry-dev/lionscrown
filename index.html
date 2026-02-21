@@ -10,90 +10,74 @@
     background: linear-gradient(to bottom, #092048, #0d2b5e);
     color: #fff;
     margin: 0;
-    padding: 20px;
+    padding: 40px 20px; /* 上下余白を大幅増加 */
     min-height: 100vh;
   }
   .container {
     max-width: 1200px;
     width: 94%;
     margin: 0 auto;
-    padding: 20px 0;
+    padding: 40px 0; /* コンテナ上下余白増加 */
   }
   h1 {
-    font-size: 2rem;
+    font-size: 2.2rem; /* 少し大きくして存在感UP */
     color: #6eb9ff;
     text-align: center;
-    margin-bottom: 96px; /* 間隔を広げて区切りを明確に */
+    margin: 0 0 72px 0; /* 下余白を大幅に */
     text-shadow: 0 2px 8px rgba(77,163,255,0.3);
   }
   .content-wrapper {
     display: flex;
-    gap: 40px;
+    gap: 56px; /* 左右間隔を広げて余裕を持たせる */
     align-items: flex-start;
     flex-wrap: wrap;
+    margin-bottom: 80px; /* 最下部余白追加 */
   }
-  .video-section {
-    flex: 1 1 560px;
-    min-width: 300px;
-    margin-bottom: 100px; /* セクション間のスペース追加 */
-    background: rgba(255, 255, 255, 0.05); /* 背景色を微調整で区切りを強調 */
-    padding: 12px;
+  .video-section,
+  .text-section {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.18);
     border-radius: 16px;
-    border: 1px solid rgba(255, 255, 255, 0.1); /* 薄いボーダー追加 */
-    box-shadow: 0 8px 24px rgba(0,0,0,0.35); /* 影を少し強く */
+    padding: 32px; /* 内部余白増加 */
+    box-shadow: 0 10px 32px rgba(0,0,0,0.4);
+    transition: transform 0.3s ease;
+  }
+  .video-section:hover,
+  .text-section:hover {
+    transform: translateY(-8px);
   }
   .video-section iframe {
     width: 100%;
-    height: 315px;
+    height: 340px; /* 少し大きくして視認性UP */
     border: none;
-    border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    border-radius: 12px;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.45);
   }
   .text-section {
-    flex: 1 1 400px;
-    min-width: 300px;
-    background: rgba(255, 255, 255, 0.12); /* 背景を少し濃くして差別化 */
-    padding: 24px;
-    border-radius: 16px;
-    border: 1px solid rgba(255, 255, 255, 0.2); /* ボーダー強化 */
-    box-shadow: 0 8px 24px rgba(0,0,0,0.35);
-    backdrop-filter: blur(4px);
-    line-height: 1.8;
-    font-size: 1.05rem;
+    line-height: 1.9;
+    font-size: 1.08rem;
   }
   .text-section strong {
     color: #6eb9ff;
-    font-size: 1.2rem;
+    font-size: 1.25rem;
   }
   .highlight {
     color: #7fc3ff;
     font-weight: bold;
   }
-  @media (max-width: 1024px) {
-    .container { width: 96%; }
-  }
   @media (max-width: 900px) {
-    .container { width: 97%; }
     .content-wrapper {
       flex-direction: column;
-      gap: 40px; /* 縦並び時のスペース増加 */
+      gap: 64px;
     }
-    .video-section iframe {
-      height: 280px;
-    }
-    .text-section {
-      padding: 20px;
-    }
+    .container { padding: 32px 0; }
+    h1 { margin-bottom: 64px; }
+    .video-section iframe { height: 300px; }
   }
   @media (max-width: 560px) {
-    .container { width: 98%; }
-    .video-section iframe {
-      height: 240px;
-    }
-    .text-section {
-      font-size: 1rem;
-      padding: 16px;
-    }
+    body { padding: 32px 16px; }
+    .video-section, .text-section { padding: 24px; }
+    h1 { font-size: 1.9rem; }
   }
 </style>
 </head>
@@ -101,11 +85,9 @@
 <div class="container">
   <h1>Lions Data 新サイト紹介</h1>
   <div class="content-wrapper">
-    <!-- YouTube埋め込み -->
     <div class="video-section">
       <iframe width="550" height="315" src="https://www.youtube.com/embed/3Gc5eSL5kxU?si=eH9zgE7RlFD2-fB9" title="Lions Data PV" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
     </div>
-    <!-- 説明テキスト（横に配置） -->
     <div class="text-section">
       <p><strong>「ライオンズで〜た【Lions Data】」を更に深化。</strong><br>
       データも、機能も、体験も<span class="highlight">“ひとつ上のレベルへ”</span>。</p>
@@ -131,140 +113,88 @@
       background: linear-gradient(to bottom, #ffffff, #f8fcff);
       color: #111111;
       margin: 0;
-      padding: 12px 8px;
+      padding: 48px 16px; /* body上下を大幅に */
       min-height: 100vh;
-      line-height: 1.3;
+      line-height: 1.4;
     }
     .container {
       max-width: 1100px;
       width: 94%;
       margin: 0 auto;
-      position: relative;
     }
     h1 {
       text-align: center;
-      color: #1e40af;
-      font-size: 1.45rem;
-      margin: 12px 0 32px; /* 間隔を広げて区切り強調 */
+      color: #092048; /* 紺に統一 */
+      font-size: 1.6rem;
+      margin: 0 0 64px 0; /* 大幅間隔 */
       font-weight: bold;
     }
+    .game-info-block,
     .game {
-      background: #fcfcfc; /* 背景を微調整で差別化 */
-      border: 1px solid #e2e8f0;
-      border-radius: 10px;
-      padding: 16px 18px; /* パディング増加で内部スペース確保 */
-      box-shadow: 0 4px 16px rgba(0,0,0,0.12); /* 影を強く */
-      position: relative;
-      min-height: 160px;
-      margin-bottom: 96px; /* 次のコンテンツとのスペース追加 */
+      background: #ffffff;
+      border: 1px solid #d1e0ff; /* 薄青ボーダー */
+      border-radius: 12px;
+      padding: 32px; /* 内部余白大幅増加 */
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+      margin-bottom: 72px; /* ブロック間を広く */
+    }
+    .game-info-block h2-like {
+      font-size: 1.7rem;
+      font-weight: bold;
+      color: #092048;
+      margin: 0 0 16px 0;
+      letter-spacing: 1px;
     }
     .game-header {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.9rem;
-      color: #475569;
-      margin-bottom: 12px; /* 内部間隔調整 */
-      font-weight: bold;
-    }
-    .start-time {
-      font-size: 1.1rem;
+      margin-bottom: 20px;
     }
     .teams {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 8px; /* gap増加で要素間スペース確保 */
-      flex-wrap: wrap;
-    }
-    .team {
-      flex: 1 1 110px;
-      text-align: center;
-      min-width: 90px;
-    }
-    .team-logo {
-      width: 56px;
-      height: 56px;
-      object-fit: contain;
-      margin-bottom: 6px; /* ロゴと名前の間隔調整 */
-    }
-    .team-name {
-      font-size: 1rem;
-      font-weight: bold;
-      color: #111111;
-    }
-    .team-name.seibu {
-      color: #092048;
-    }
-    .team-name.softbank {
-      color: #F5C700;
-    }
-    .pitcher-batter {
-      font-size: 0.82rem;
-      color: #334155;
-      text-align: center;
-      margin: 4px 0 4px;
-      white-space: nowrap;
+      gap: 12px;
     }
     .score-section {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      flex: 1 1 auto;
-      justify-content: center;
-      min-width: 180px;
-    }
-    .score {
-      font-size: 2.6rem;
-      font-weight: 900;
-      min-width: 60px;
-      text-align: center;
-      color: #111111;
-    }
-    .vs {
-      font-size: 1.2rem;
-      color: #64748b;
-      padding: 0 6px;
+      gap: 12px;
     }
     .inning-info {
-      text-align: center;
-      font-size: 1rem;
-      margin: 12px 0 6px; /* 間隔調整 */
-      color: #334155;
-    }
-    .update {
-      position: absolute;
-      bottom: 8px;
-      right: 14px;
-      font-size: 0.75rem;
-      color: #6b7280;
-      margin: 0;
-    }
-    @media (max-width: 1024px) {
-      .container { width: 96%; max-width: 1000px; }
+      margin: 20px 0 12px;
     }
     @media (max-width: 768px) {
-      .container { width: 98%; max-width: none; }
-      h1 { font-size: 1.4rem; }
-      .teams { gap: 10px; }
-      .score { font-size: 2.4rem; min-width: 55px; }
-      .team-logo { width: 52px; height: 52px; }
-      .game { padding: 14px 16px; margin-bottom: 40px; }
+      body { padding: 32px 12px; }
+      .game-info-block, .game { padding: 24px; margin-bottom: 56px; }
+      h1 { margin-bottom: 56px; }
     }
     @media (max-width: 480px) {
-      .container { width: 100%; padding: 0 4px; }
-      .teams { flex-direction: column; gap: 12px; }
-      .score-section { flex-direction: row; width: 100%; justify-content: center; gap: 10px; }
-      .pitcher-batter { font-size: 0.78rem; }
-      .update { font-size: 0.72rem; right: 10px; bottom: 6px; }
-      h1 { font-size: 1.35rem; margin: 10px 0 20px; }
-      .game { margin-bottom: 32px; }
+      .game-info-block, .game { padding: 20px; margin-bottom: 48px; }
+      h1 { font-size: 1.4rem; margin-bottom: 48px; }
     }
   </style>
 </head>
 <body>
 <div class="container">
   <h1>【オープン戦】2026年3月1日 vs福岡ソフトバンクホークス</h1>
+
+  <!-- GAME INFO -->
+  <div class="game-info-block">
+    <div style="font-size: 1.7rem; font-weight: bold; color: #092048; margin-bottom: 16px; letter-spacing: 1.2px;">
+      GAME INFO
+    </div>
+    <div style="display: flex; align-items: center; gap: 32px; flex-wrap: wrap; justify-content: center;">
+      <div style="flex: 1 1 400px; min-width: 300px;">
+        <p style="font-size: 1.1rem; line-height: 1.8; color: #333; margin: 0;">
+          間もなく始まるオープン戦もLクラでは全試合データを速報で公開。<br>
+          レギュラーシーズンへ向けた選手たちの競争をお伝えします。<br>
+          ※詳細な選手データの公開は3月27日からを予定しています
+        </p>
+      </div>
+      <div style="flex: 0 0 280px; text-align: center;">
+        <img src="https://lions-crown.homep.jp/img/1771638837177.webp" alt="オープン戦イメージ"
+             style="width: 100%; max-width: 280px; height: auto; border-radius: 12px; box-shadow: 0 6px 16px rgba(0,0,0,0.15);">
+      </div>
+    </div>
+  </div>
+
+  <!-- 試合速報 -->
   <div class="game">
+    <!-- 元の試合速報内容（変更なし） -->
     <div class="game-header">
       <div class="start-time">13:00</div>
       <div>アイビースタジアム</div>
@@ -291,6 +221,7 @@
       最終更新： <span id="update-time">2026年3月1日 00:00</span>
     </div>
   </div>
+</div>
 </body>
 </html>
 
