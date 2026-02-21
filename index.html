@@ -1,8 +1,127 @@
-<iframe width="560" height="315" src="https://www.youtube.com/embed/3Gc5eSL5kxU?si=eH9zgE7RlFD2-fB9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lions Data PV</title>
+<style>
+  body {
+    font-family: "Segoe UI", "Noto Sans JP", sans-serif;
+    background: linear-gradient(to bottom, #092048, #0d2b5e);
+    color: #fff;
+    margin: 0;
+    padding: 20px;
+    min-height: 100vh;
+  }
 
-「ライオンズで〜た【Lions Data】」をさらに深化。 データも、機能も、体験も“ひとつ上のレベルへ”。
-埼玉西武ライオンズの成績や記録を、 より速く、より見やすく、分かりやすく設計した新データ情報サイトです。
-ファンの皆さまにとって「データを身近なものにする」ために、 これまで以上に進化したコンテンツを発信していきます。
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 0;
+  }
+
+  h1 {
+    font-size: 2rem;
+    color: #6eb9ff;
+    text-align: center;
+    margin-bottom: 40px;
+    text-shadow: 0 2px 8px rgba(77,163,255,0.3);
+  }
+
+  .content-wrapper {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .video-section {
+    flex: 1 1 560px;
+    min-width: 300px;
+  }
+
+  .video-section iframe {
+    width: 100%;
+    height: 315px;
+    border: none;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  }
+
+  .text-section {
+    flex: 1 1 400px;
+    min-width: 300px;
+    background: rgba(255, 255, 255, 0.08);
+    padding: 24px;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    backdrop-filter: blur(4px);
+    line-height: 1.8;
+    font-size: 1.05rem;
+  }
+
+  .text-section strong {
+    color: #6eb9ff;
+    font-size: 1.2rem;
+  }
+
+  .highlight {
+    color: #7fc3ff;
+    font-weight: bold;
+  }
+
+  @media (max-width: 900px) {
+    .content-wrapper {
+      flex-direction: column;
+      gap: 30px;
+    }
+    .video-section iframe {
+      height: 280px;
+    }
+    .text-section {
+      padding: 20px;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .video-section iframe {
+      height: 240px;
+    }
+    .text-section {
+      font-size: 1rem;
+      padding: 16px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Lions Data 新サイト紹介</h1>
+
+  <div class="content-wrapper">
+    <!-- YouTube埋め込み -->
+    <div class="video-section">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/3Gc5eSL5kxU?si=eH9zgE7RlFD2-fB9" title="Lions Data PV" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+
+    <!-- 説明テキスト（横に配置） -->
+    <div class="text-section">
+      <p><strong>「ライオンズで〜た【Lions Data】」をさらに深化。</strong><br>
+      データも、機能も、体験も<span class="highlight">“ひとつ上のレベルへ”</span>。</p>
+
+      <p>埼玉西武ライオンズの成績や記録を、<br>
+      より速く、より見やすく、分かりやすく設計した新データ情報サイトです。</p>
+
+      <p>ファンの皆さまにとって「データを身近なものにする」ために、<br>
+      これまで以上に進化したコンテンツを発信していきます。</p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
 
 
 Game
