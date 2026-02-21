@@ -28,16 +28,16 @@
   }
   .content-wrapper {
     display: flex;
-    gap: 40px; /* gapを少し抑えめに（横並び維持しやすく） */
+    gap: 32px;               /* gapを減らして横並びしやすく */
     align-items: flex-start;
     flex-wrap: wrap;
     margin-bottom: 80px;
   }
   .video-section {
-    flex: 1 1 560px; /* 基準幅を維持 */
-    min-width: 480px; /* ← これが重要: 480px以下で縦並びへ移行（早すぎない） */
+    flex: 1 1 560px;
+    min-width: 450px;         /* ← ここを下げて横並びの閾値を広げる */
     background: rgba(255, 255, 255, 0.08);
-    padding: 32px;
+    padding: 28px;            /* 少しコンパクトに */
     border-radius: 16px;
     border: 1px solid rgba(255, 255, 255, 0.18);
     box-shadow: 0 10px 32px rgba(0,0,0,0.4);
@@ -51,9 +51,9 @@
   }
   .text-section {
     flex: 1 1 400px;
-    min-width: 380px; /* ← テキスト側も最低幅を設定して横並び維持 */
+    min-width: 350px;         /* ← テキスト側も下げて横並び維持 */
     background: rgba(255, 255, 255, 0.12);
-    padding: 32px;
+    padding: 28px;
     border-radius: 16px;
     border: 1px solid rgba(255, 255, 255, 0.2);
     box-shadow: 0 10px 32px rgba(0,0,0,0.4);
@@ -71,24 +71,22 @@
   }
   @media (max-width: 1024px) {
     .container { width: 96%; }
-    .content-wrapper { gap: 32px; }
+    .content-wrapper { gap: 28px; }
   }
   @media (max-width: 900px) {
     .video-section, .text-section {
-      min-width: 45%; /* 中間幅でまだ横並びを頑張る */
+      min-width: 48%;         /* まだ横並びを維持 */
     }
   }
-  @media (max-width: 768px) {
+  @media (max-width: 800px) {   /* ← ここで縦並びに切り替え（これまでより遅く） */
     .content-wrapper {
       flex-direction: column;
       gap: 56px;
     }
     .video-section, .text-section {
-      min-width: 100%; /* ここで完全に縦並び */
+      min-width: 100%;
     }
     .video-section iframe { height: 300px; }
-    .container { padding: 32px 0; }
-    h1 { margin-bottom: 64px; }
   }
   @media (max-width: 560px) {
     body { padding: 32px 16px; }
