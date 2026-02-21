@@ -585,14 +585,31 @@ Game
     to {opacity: 1; transform: translateY(0);}
   }
 
-  .grid-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  /* 横スクロールに戻しました */
+  .scroll-container {
+    display: flex;
+    overflow-x: auto;
     gap: 20px;
-    padding: 0 10px;
+    padding: 10px 20px 20px;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .scroll-container::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  .scroll-container::-webkit-scrollbar-thumb {
+    background: #4da3ff;
+    border-radius: 4px;
+  }
+
+  .scroll-container::-webkit-scrollbar-track {
+    background: rgba(255,255,255,0.05);
   }
 
   .card {
+    flex: 0 0 230px;
     background: rgba(255, 255, 255, 0.09);
     border: 1px solid rgba(255, 255, 255, 0.18);
     border-radius: 16px;
@@ -671,12 +688,13 @@ Game
   }
 
   @media (max-width: 600px) {
-    .grid-container {
-      grid-template-columns: 1fr;
-      gap: 16px;
-    }
     .card {
+      flex: 0 0 200px;
       padding: 14px;
+    }
+    .scroll-container {
+      gap: 16px;
+      padding: 10px 10px 20px;
     }
     .player.top img {
       width: 58px;
@@ -696,7 +714,7 @@ Game
 
 <!-- 打撃部門 -->
 <div id="batting" class="section active">
-  <div class="grid-container">
+  <div class="scroll-container">
     <div class="card">
       <div class="title">打率</div>
       <div class="player top">
@@ -887,7 +905,7 @@ Game
 
 <!-- 投球部門 -->
 <div id="pitching" class="section">
-  <div class="grid-container">
+  <div class="scroll-container">
     <div class="card">
       <div class="title">防御率</div>
       <div class="player top">
@@ -1033,7 +1051,7 @@ Game
         </a>
       </div>
       <div class="player">
-        <!-- 3位なし（元データ通り空欄） -->
+        <!-- 3位なし -->
       </div>
     </div>
 
