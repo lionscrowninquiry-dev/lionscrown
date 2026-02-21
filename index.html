@@ -125,7 +125,7 @@
   <style>
     body {
       font-family: system-ui, sans-serif;
-      background: #ffffff;
+      background: #ffffff; /* 全体背景を白に */
       color: #111111;
       margin: 0;
       padding: 0;
@@ -138,56 +138,67 @@
       margin: 0 auto;
       padding: 48px 16px 72px 16px;
     }
-    .game-info-block,
-    .game {
-      background: #ffffff;
-      border: 1px solid #d1e0ff;
-      border-radius: 12px;
-      padding: 32px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    /* GAME INFOブロック：背景なし、テキスト白色 */
+    .game-info-block {
+      background: transparent; /* 背景色なし */
+      border: none; /* 枠線もなし */
+      padding: 32px 0; /* 上下余白のみ */
       margin-bottom: 72px;
       position: relative;
+      color: #ffffff; /* テキストを白色に統一 */
+      text-shadow: 0 1px 4px rgba(0,0,0,0.7); /* 白文字が読みやすい影 */
     }
     .game-info-title {
       position: absolute;
       top: -18px;
-      left: 32px;
-      background: #ffffff;
-      padding: 0 12px;
+      left: 0;
+      background: transparent;
+      padding: 0;
       font-size: 1.7rem;
       font-weight: bold;
-      color: #092048;
+      color: #ffffff;
       letter-spacing: 1.2px;
     }
     .game-info-content {
       display: flex;
       align-items: center;
-      gap: 40px; /* テキストと画像の間隔を少し広げて見やすく */
+      gap: 40px;
       flex-wrap: wrap;
-      justify-content: flex-start; /* 左寄せで自然に */
+      justify-content: flex-start;
     }
     .game-info-text {
-      flex: 1 1 500px; /* テキスト側を広く */
+      flex: 1 1 500px;
       min-width: 300px;
     }
     .game-info-text p {
       font-size: 1.1rem;
       line-height: 1.8;
-      color: #333;
+      color: #ffffff; /* 白色 */
       margin: 0;
-    }
-    .game-info-image {
-      flex: 0 0 300px; /* 画像側を固定幅 */
-      text-align: center;
     }
     .game-info-image img {
       width: 100%;
       max-width: 300px;
       height: auto;
       border-radius: 12px;
-      box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.3);
     }
-    h1 {
+
+    /* 試合速報カード：背景白を画面幅全体に */
+    .game-wrapper {
+      width: 100vw;
+      margin-left: calc(-50vw + 50%);
+      margin-right: calc(-50vw + 50%);
+      background: #ffffff; /* 白を画面幅全体に */
+      padding: 0 16px; /* 左右余白確保 */
+      box-sizing: border-box;
+    }
+    .game-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 32px 0;
+    }
+    .match-title {
       text-align: center;
       color: #092048;
       font-size: 1.45rem;
@@ -275,20 +286,20 @@
     }
     @media (max-width: 768px) {
       .container { padding: 32px 12px 56px 12px; }
-      .game-info-block, .game { padding: 24px; margin-bottom: 56px; }
+      .game-info-block { padding: 24px 0; margin-bottom: 56px; }
       .game-info-content { gap: 24px; }
-      .game-info-image { flex: 0 0 280px; }
-      h1 { margin: 0 0 40px 0; font-size: 1.35rem; }
+      .game-info-image { max-width: 280px; }
+      .match-title { font-size: 1.35rem; margin: 0 0 40px 0; }
       .game-info-title { left: 24px; font-size: 1.5rem; top: -16px; }
     }
     @media (max-width: 480px) {
       .container { padding: 24px 10px 48px 10px; }
-      .game-info-block, .game { padding: 20px; margin-bottom: 48px; }
+      .game-info-block { padding: 20px 0; margin-bottom: 48px; }
       .game-info-content { flex-direction: column; gap: 20px; }
       .game-info-image { max-width: 240px; }
       .teams { flex-direction: column; gap: 16px; }
       .score-section { flex-direction: row; width: 100%; justify-content: center; gap: 10px; }
-      h1 { font-size: 1.3rem; margin: 0 0 32px 0; }
+      .match-title { font-size: 1.3rem; margin: 0 0 32px 0; }
       .game-info-title { left: 20px; font-size: 1.4rem; top: -14px; }
     }
   </style>
@@ -296,7 +307,7 @@
 <body>
 
 <div class="container">
-  <!-- GAME INFOブロック -->
+  <!-- GAME INFOブロック（背景なし・テキスト白色） -->
   <div class="game-info-block">
     <div class="game-info-title">GAME INFO</div>
     <div class="game-info-content">
@@ -316,38 +327,42 @@
     </div>
   </div>
 
-  <!-- 試合速報カード（見出しを内部に移動） -->
-  <div class="game">
-    <!-- 見出しをここに配置（13:00の上） -->
-    <h1 class="match-title">【オープン戦】2026年3月1日 vs福岡ソフトバンクホークス</h1>
+  <!-- 試合速報コンテンツ（背景白・幅100%） -->
+  <div class="game-wrapper">
+    <div class="game-inner">
+      <!-- 見出しを試合速報カードの内部に配置 -->
+      <h1 class="match-title">【オープン戦】2026年3月1日 vs福岡ソフトバンクホークス</h1>
 
-    <div class="game-header">
-      <div class="start-time">13:00</div>
-      <div>アイビースタジアム</div>
-    </div>
+      <div class="game">
+        <div class="game-header">
+          <div class="start-time">13:00</div>
+          <div>アイビースタジアム</div>
+        </div>
 
-    <div class="teams">
-      <div class="team">
-        <img src="https://lions-crown.homep.jp/img/1759836807957.webp" class="team-logo" alt="西武">
-        <div class="team-name seibu">西武</div>
+        <div class="teams">
+          <div class="team">
+            <img src="https://lions-crown.homep.jp/img/1759836807957.webp" class="team-logo" alt="西武">
+            <div class="team-name seibu">西武</div>
+          </div>
+          <div class="score-section">
+            <div class="pitcher-batter">投：渡邉</div>
+            <div class="score">0</div>
+            <div class="vs">–</div>
+            <div class="score">0</div>
+            <div class="pitcher-batter">打：柳町</div>
+          </div>
+          <div class="team">
+            <img src="https://lions-crown.homep.jp/img/1759836829251.webp" class="team-logo" alt="ソフトバンク">
+            <div class="team-name softbank">ソフトバンク</div>
+          </div>
+        </div>
+
+        <div class="inning-info">試合前</div>
+
+        <div class="update">
+          最終更新： <span id="update-time">2026年3月1日 00:00</span>
+        </div>
       </div>
-      <div class="score-section">
-        <div class="pitcher-batter">投：渡邉</div>
-        <div class="score">0</div>
-        <div class="vs">–</div>
-        <div class="score">0</div>
-        <div class="pitcher-batter">打：柳町</div>
-      </div>
-      <div class="team">
-        <img src="https://lions-crown.homep.jp/img/1759836829251.webp" class="team-logo" alt="ソフトバンク">
-        <div class="team-name softbank">ソフトバンク</div>
-      </div>
-    </div>
-
-    <div class="inning-info">試合前</div>
-
-    <div class="update">
-      最終更新： <span id="update-time">2026年3月1日 00:00</span>
     </div>
   </div>
 </div>
