@@ -101,76 +101,6 @@
 </body>
 </html>
 
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>プロ野球 試合速報</title>
-  <style>
-    body {
-      font-family: system-ui, sans-serif;
-      background: linear-gradient(to bottom, #ffffff, #f8fcff);
-      color: #111111;
-      margin: 0;
-      padding: 48px 16px; /* body上下を大幅に */
-      min-height: 100vh;
-      line-height: 1.4;
-    }
-    .container {
-      max-width: 1100px;
-      width: 94%;
-      margin: 0 auto;
-    }
-    h1 {
-      text-align: center;
-      color: #092048; /* 紺に統一 */
-      font-size: 1.6rem;
-      margin: 0 0 64px 0; /* 大幅間隔 */
-      font-weight: bold;
-    }
-    .game-info-block,
-    .game {
-      background: #ffffff;
-      border: 1px solid #d1e0ff; /* 薄青ボーダー */
-      border-radius: 12px;
-      padding: 32px; /* 内部余白大幅増加 */
-      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-      margin-bottom: 72px; /* ブロック間を広く */
-    }
-    .game-info-block h2-like {
-      font-size: 1.7rem;
-      font-weight: bold;
-      color: #092048;
-      margin: 0 0 16px 0;
-      letter-spacing: 1px;
-    }
-    .game-header {
-      margin-bottom: 20px;
-    }
-    .teams {
-      gap: 12px;
-    }
-    .score-section {
-      gap: 12px;
-    }
-    .inning-info {
-      margin: 20px 0 12px;
-    }
-    @media (max-width: 768px) {
-      body { padding: 32px 12px; }
-      .game-info-block, .game { padding: 24px; margin-bottom: 56px; }
-      h1 { margin-bottom: 56px; }
-    }
-    @media (max-width: 480px) {
-      .game-info-block, .game { padding: 20px; margin-bottom: 48px; }
-      h1 { font-size: 1.4rem; margin-bottom: 48px; }
-    }
-  </style>
-</head>
-<body>
-<div class="container">
-  <h1>【オープン戦】2026年3月1日 vs福岡ソフトバンクホークス</h1>
 
   <!-- GAME INFO -->
   <div class="game-info-block">
@@ -193,8 +123,152 @@
   </div>
 
   <!-- 試合速報 -->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>プロ野球 試合速報</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      background: linear-gradient(to bottom, #ffffff, #f8fcff);
+      color: #111111;
+      margin: 0;
+      padding: 12px 8px;
+      min-height: 100vh;
+      line-height: 1.3;
+    }
+    .container {
+      max-width: 1100px;
+      width: 94%;
+      margin: 0 auto;
+      position: relative;
+    }
+    h1 {
+      text-align: center;
+      color: #1e40af;
+      font-size: 1.45rem;
+      margin: 36px 0 96px; /* 間隔を広げて区切り強調 */
+      font-weight: bold;
+    }
+    .game {
+      background: #fcfcfc; /* 背景を微調整で差別化 */
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 16px 18px; /* パディング増加で内部スペース確保 */
+      box-shadow: 0 4px 16px rgba(0,0,0,0.12); /* 影を強く */
+      position: relative;
+      min-height: 160px;
+      margin-bottom: 96px; /* 次のコンテンツとのスペース追加 */
+    }
+    .game-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.9rem;
+      color: #475569;
+      margin-bottom: 12px; /* 内部間隔調整 */
+      font-weight: bold;
+    }
+    .start-time {
+      font-size: 1.1rem;
+    }
+    .teams {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px; /* gap増加で要素間スペース確保 */
+      flex-wrap: wrap;
+    }
+    .team {
+      flex: 1 1 110px;
+      text-align: center;
+      min-width: 90px;
+    }
+    .team-logo {
+      width: 56px;
+      height: 56px;
+      object-fit: contain;
+      margin-bottom: 6px; /* ロゴと名前の間隔調整 */
+    }
+    .team-name {
+      font-size: 1rem;
+      font-weight: bold;
+      color: #111111;
+    }
+    .team-name.seibu {
+      color: #092048;
+    }
+    .team-name.softbank {
+      color: #F5C700;
+    }
+    .pitcher-batter {
+      font-size: 0.82rem;
+      color: #334155;
+      text-align: center;
+      margin: 4px 0 4px;
+      white-space: nowrap;
+    }
+    .score-section {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex: 1 1 auto;
+      justify-content: center;
+      min-width: 180px;
+    }
+    .score {
+      font-size: 2.6rem;
+      font-weight: 900;
+      min-width: 60px;
+      text-align: center;
+      color: #111111;
+    }
+    .vs {
+      font-size: 1.2rem;
+      color: #64748b;
+      padding: 0 6px;
+    }
+    .inning-info {
+      text-align: center;
+      font-size: 1rem;
+      margin: 12px 0 6px; /* 間隔調整 */
+      color: #334155;
+    }
+    .update {
+      position: absolute;
+      bottom: 8px;
+      right: 14px;
+      font-size: 0.75rem;
+      color: #6b7280;
+      margin: 0;
+    }
+    @media (max-width: 1024px) {
+      .container { width: 96%; max-width: 1000px; }
+    }
+    @media (max-width: 768px) {
+      .container { width: 98%; max-width: none; }
+      h1 { font-size: 1.4rem; }
+      .teams { gap: 10px; }
+      .score { font-size: 2.4rem; min-width: 55px; }
+      .team-logo { width: 52px; height: 52px; }
+      .game { padding: 14px 16px; margin-bottom: 40px; }
+    }
+    @media (max-width: 480px) {
+      .container { width: 100%; padding: 0 4px; }
+      .teams { flex-direction: column; gap: 12px; }
+      .score-section { flex-direction: row; width: 100%; justify-content: center; gap: 10px; }
+      .pitcher-batter { font-size: 0.78rem; }
+      .update { font-size: 0.72rem; right: 10px; bottom: 6px; }
+      h1 { font-size: 1.35rem; margin: 10px 0 20px; }
+      .game { margin-bottom: 32px; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>【オープン戦】2026年3月1日 vs福岡ソフトバンクホークス</h1>
   <div class="game">
-    <!-- 元の試合速報内容（変更なし） -->
     <div class="game-header">
       <div class="start-time">13:00</div>
       <div>アイビースタジアム</div>
@@ -221,7 +295,6 @@
       最終更新： <span id="update-time">2026年3月1日 00:00</span>
     </div>
   </div>
-</div>
 </body>
 </html>
 
