@@ -115,6 +115,7 @@
 </body>
 </html>
 
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -124,10 +125,10 @@
   <style>
     body {
       font-family: system-ui, sans-serif;
-      background: #ffffff; /* 純白背景 */
+      background: #ffffff;
       color: #111111;
       margin: 0;
-      padding: 0; /* 左右端まで完全に広がる */
+      padding: 0;
       min-height: 100vh;
       line-height: 1.4;
     }
@@ -135,14 +136,7 @@
       max-width: 1100px;
       width: 94%;
       margin: 0 auto;
-      padding: 48px 16px 72px 16px; /* 上下左右の内部余白確保 */
-    }
-    h1 {
-      text-align: center;
-      color: #092048;
-      font-size: 1.6rem;
-      margin: 64px 0 72px 0;
-      font-weight: bold;
+      padding: 48px 16px 72px 16px;
     }
     .game-info-block,
     .game {
@@ -152,6 +146,7 @@
       padding: 32px;
       box-shadow: 0 8px 24px rgba(0,0,0,0.08);
       margin-bottom: 72px;
+      position: relative;
     }
     .game-info-title {
       position: absolute;
@@ -167,10 +162,13 @@
     .game-info-content {
       display: flex;
       align-items: center;
-      gap: 32px;
+      gap: 40px; /* テキストと画像の間隔を少し広げて見やすく */
       flex-wrap: wrap;
-      justify-content: center;
-      margin-top: 16px;
+      justify-content: flex-start; /* 左寄せで自然に */
+    }
+    .game-info-text {
+      flex: 1 1 500px; /* テキスト側を広く */
+      min-width: 300px;
     }
     .game-info-text p {
       font-size: 1.1rem;
@@ -178,12 +176,23 @@
       color: #333;
       margin: 0;
     }
+    .game-info-image {
+      flex: 0 0 300px; /* 画像側を固定幅 */
+      text-align: center;
+    }
     .game-info-image img {
       width: 100%;
-      max-width: 280px;
+      max-width: 300px;
       height: auto;
       border-radius: 12px;
       box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+    }
+    h1 {
+      text-align: center;
+      color: #092048;
+      font-size: 1.45rem;
+      margin: 0 0 32px 0;
+      font-weight: bold;
     }
     .game-header {
       display: flex;
@@ -267,15 +276,19 @@
     @media (max-width: 768px) {
       .container { padding: 32px 12px 56px 12px; }
       .game-info-block, .game { padding: 24px; margin-bottom: 56px; }
-      h1 { margin: 48px 0 56px 0; font-size: 1.5rem; }
+      .game-info-content { gap: 24px; }
+      .game-info-image { flex: 0 0 280px; }
+      h1 { margin: 0 0 40px 0; font-size: 1.35rem; }
       .game-info-title { left: 24px; font-size: 1.5rem; top: -16px; }
     }
     @media (max-width: 480px) {
       .container { padding: 24px 10px 48px 10px; }
       .game-info-block, .game { padding: 20px; margin-bottom: 48px; }
+      .game-info-content { flex-direction: column; gap: 20px; }
+      .game-info-image { max-width: 240px; }
       .teams { flex-direction: column; gap: 16px; }
       .score-section { flex-direction: row; width: 100%; justify-content: center; gap: 10px; }
-      h1 { font-size: 1.4rem; margin: 40px 0 48px 0; }
+      h1 { font-size: 1.3rem; margin: 0 0 32px 0; }
       .game-info-title { left: 20px; font-size: 1.4rem; top: -14px; }
     }
   </style>
@@ -283,7 +296,7 @@
 <body>
 
 <div class="container">
-  <!-- GAME INFOブロック（見出しの上に配置） -->
+  <!-- GAME INFOブロック -->
   <div class="game-info-block">
     <div class="game-info-title">GAME INFO</div>
     <div class="game-info-content">
@@ -303,15 +316,16 @@
     </div>
   </div>
 
-  <!-- 試合速報の見出し -->
-  <h1>【オープン戦】2026年3月1日 vs福岡ソフトバンクホークス</h1>
-
-  <!-- 試合速報カード -->
+  <!-- 試合速報カード（見出しを内部に移動） -->
   <div class="game">
+    <!-- 見出しをここに配置（13:00の上） -->
+    <h1 class="match-title">【オープン戦】2026年3月1日 vs福岡ソフトバンクホークス</h1>
+
     <div class="game-header">
       <div class="start-time">13:00</div>
       <div>アイビースタジアム</div>
     </div>
+
     <div class="teams">
       <div class="team">
         <img src="https://lions-crown.homep.jp/img/1759836807957.webp" class="team-logo" alt="西武">
@@ -329,7 +343,9 @@
         <div class="team-name softbank">ソフトバンク</div>
       </div>
     </div>
+
     <div class="inning-info">試合前</div>
+
     <div class="update">
       最終更新： <span id="update-time">2026年3月1日 00:00</span>
     </div>
