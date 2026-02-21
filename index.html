@@ -3,6 +3,317 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lions Data PV</title>
+<style>
+  body {
+    font-family: "Segoe UI", "Noto Sans JP", sans-serif;
+    background: linear-gradient(to bottom, #092048, #0d2b5e);
+    color: #fff;
+    margin: 0;
+    padding: 20px;
+    min-height: 100vh;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 0;
+  }
+
+  h1 {
+    font-size: 2rem;
+    color: #6eb9ff;
+    text-align: center;
+    margin-bottom: 40px;
+    text-shadow: 0 2px 8px rgba(77,163,255,0.3);
+  }
+
+  .content-wrapper {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .video-section {
+    flex: 1 1 560px;
+    min-width: 300px;
+  }
+
+  .video-section iframe {
+    width: 100%;
+    height: 315px;
+    border: none;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  }
+
+  .text-section {
+    flex: 1 1 400px;
+    min-width: 300px;
+    background: rgba(255, 255, 255, 0.08);
+    padding: 24px;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    backdrop-filter: blur(4px);
+    line-height: 1.8;
+    font-size: 1.05rem;
+  }
+
+  .text-section strong {
+    color: #6eb9ff;
+    font-size: 1.2rem;
+  }
+
+  .highlight {
+    color: #7fc3ff;
+    font-weight: bold;
+  }
+
+  @media (max-width: 900px) {
+    .content-wrapper {
+      flex-direction: column;
+      gap: 30px;
+    }
+    .video-section iframe {
+      height: 280px;
+    }
+    .text-section {
+      padding: 20px;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .video-section iframe {
+      height: 240px;
+    }
+    .text-section {
+      font-size: 1rem;
+      padding: 16px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Lions Data 新サイト紹介</h1>
+
+  <div class="content-wrapper">
+    <!-- YouTube埋め込み -->
+    <div class="video-section">
+      <iframe width="550" height="315" src="https://www.youtube.com/embed/3Gc5eSL5kxU?si=eH9zgE7RlFD2-fB9" title="Lions Data PV" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+
+    <!-- 説明テキスト（横に配置） -->
+    <div class="text-section">
+      <p><strong>「ライオンズで〜た【Lions Data】」を更に深化。</strong><br>
+      データも、機能も、体験も<span class="highlight">“ひとつ上のレベルへ”</span>。</p>
+
+      <p>埼玉西武ライオンズの成績や記録を、<br>
+      より速く、より見やすく、分かりやすく設計した新データ情報サイトです。</p>
+
+      <p>ファンの皆さまにとって「データを身近なものにする」ために、<br>
+      これまで以上に進化したコンテンツを発信していきます。</p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>プロ野球 試合速報</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      background: linear-gradient(to bottom, #ffffff, #f8fcff); /* 全体に薄いグラデーション背景 */
+      color: #111111;
+      margin: 0;
+      padding: 12px 8px;
+      min-height: 100vh; /* 画面全体をカバー */
+      line-height: 1.3;
+    }
+    .container {
+      max-width: 800px;          /* PCでの上限を少し広めに */
+      width: 90%;                /* 基本は画面の90% */
+      margin: 0 auto;
+      position: relative;
+    }
+    h1 {
+      text-align: center;
+      color: #1e40af;
+      font-size: 1.45rem;
+      margin: 12px 0 16px;
+      font-weight: bold;
+    }
+    .game {
+      background: #ffffff;       /* カード自体は純白でクリアに */
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 12px 14px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08); /* 軽く浮き上がる影 */
+      position: relative;
+      min-height: 160px;
+    }
+    .game-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.9rem;
+      color: #475569;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+    .start-time {
+      font-size: 1.1rem;
+    }
+    .teams {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .team {
+      flex: 1 1 110px;
+      text-align: center;
+      min-width: 90px;
+    }
+    .team-logo {
+      width: 56px;
+      height: 56px;
+      object-fit: contain;
+      margin-bottom: 4px;
+    }
+    .team-name {
+      font-size: 1rem;
+      font-weight: bold;
+      color: #111111; /* デフォルト */
+    }
+    .team-name.seibu {
+      color: #092048;
+    }
+    .team-name.softbank {
+      color: #F5C700; /* ソフトバンク公式黄色系 */
+    }
+    .pitcher-batter {
+      font-size: 0.82rem;
+      color: #334155;
+      text-align: center;
+      margin: 4px 0 2px;
+      white-space: nowrap;
+    }
+    .score-section {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex: 1 1 auto;
+      justify-content: center;
+      min-width: 180px;
+    }
+    .score {
+      font-size: 2.6rem;
+      font-weight: 900;
+      min-width: 60px;
+      text-align: center;
+      color: #111111;
+    }
+    .vs {
+      font-size: 1.2rem;
+      color: #64748b;
+      padding: 0 6px;
+    }
+    .inning-info {
+      text-align: center;
+      font-size: 1rem;
+      margin: 10px 0 4px;
+      color: #334155;
+    }
+    .update {
+      position: absolute;
+      bottom: 8px;
+      right: 14px;
+      font-size: 0.75rem;
+      color: #6b7280;
+      margin: 0;
+    }
+
+    /* レスポンシブ調整（利用者の画面幅に合わせて柔軟に） */
+    @media (max-width: 1024px) {
+      .container { width: 92%; max-width: 720px; }
+    }
+    @media (max-width: 768px) {  /* タブレット */
+      .container { width: 95%; max-width: none; }
+      h1 { font-size: 1.4rem; }
+      .teams { gap: 8px; }
+      .score { font-size: 2.4rem; min-width: 55px; }
+      .team-logo { width: 52px; height: 52px; }
+    }
+    @media (max-width: 480px) {  /* スマホ */
+      .container { width: 98%; padding: 0 4px; }
+      .teams { flex-direction: column; gap: 10px; }
+      .score-section { flex-direction: row; width: 100%; justify-content: center; gap: 8px; }
+      .pitcher-batter { font-size: 0.78rem; }
+      .update { font-size: 0.72rem; right: 10px; bottom: 6px; }
+      h1 { font-size: 1.35rem; margin: 10px 0 12px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <h1>【オープン戦】2026年3月1日 vs福岡ソフトバンクホークス</h1>
+
+  <div class="game">
+    <div class="game-header">
+      <div class="start-time">13:00</div>
+      <div>アイビースタジアム</div>
+    </div>
+
+    <div class="teams">
+      <div class="team">
+        <img src="https://lions-crown.homep.jp/img/1759836807957.webp" class="team-logo" alt="西武">
+        <div class="team-name seibu">西武</div>
+      </div>
+
+      <div class="score-section">
+        <div class="pitcher-batter">投：渡邉</div>
+        <div class="score">0</div>
+        <div class="vs">–</div>
+        <div class="score">0</div>
+        <div class="pitcher-batter">打：柳町</div>
+      </div>
+
+      <div class="team">
+        <img src="https://lions-crown.homep.jp/img/1759836829251.webp" class="team-logo" alt="ソフトバンク">
+        <div class="team-name softbank">ソフトバンク</div>
+      </div>
+    </div>
+
+    <div class="inning-info">試合前</div>
+
+    <div class="update">
+      最終更新： <span id="update-time">2026年3月1日 00:00</span>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>チームTOP3ランキング（打撃／投球）</title>
 <style>
   body {
@@ -578,316 +889,7 @@ pitchingBtn.addEventListener('click', () => {
 </html>
 
 
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lions Data PV</title>
-<style>
-  body {
-    font-family: "Segoe UI", "Noto Sans JP", sans-serif;
-    background: linear-gradient(to bottom, #092048, #0d2b5e);
-    color: #fff;
-    margin: 0;
-    padding: 20px;
-    min-height: 100vh;
-  }
 
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px 0;
-  }
-
-  h1 {
-    font-size: 2rem;
-    color: #6eb9ff;
-    text-align: center;
-    margin-bottom: 40px;
-    text-shadow: 0 2px 8px rgba(77,163,255,0.3);
-  }
-
-  .content-wrapper {
-    display: flex;
-    gap: 40px;
-    align-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  .video-section {
-    flex: 1 1 560px;
-    min-width: 300px;
-  }
-
-  .video-section iframe {
-    width: 100%;
-    height: 315px;
-    border: none;
-    border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-  }
-
-  .text-section {
-    flex: 1 1 400px;
-    min-width: 300px;
-    background: rgba(255, 255, 255, 0.08);
-    padding: 24px;
-    border-radius: 16px;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-    backdrop-filter: blur(4px);
-    line-height: 1.8;
-    font-size: 1.05rem;
-  }
-
-  .text-section strong {
-    color: #6eb9ff;
-    font-size: 1.2rem;
-  }
-
-  .highlight {
-    color: #7fc3ff;
-    font-weight: bold;
-  }
-
-  @media (max-width: 900px) {
-    .content-wrapper {
-      flex-direction: column;
-      gap: 30px;
-    }
-    .video-section iframe {
-      height: 280px;
-    }
-    .text-section {
-      padding: 20px;
-    }
-  }
-
-  @media (max-width: 560px) {
-    .video-section iframe {
-      height: 240px;
-    }
-    .text-section {
-      font-size: 1rem;
-      padding: 16px;
-    }
-  }
-</style>
-</head>
-<body>
-
-<div class="container">
-  <h1>Lions Data 新サイト紹介</h1>
-
-  <div class="content-wrapper">
-    <!-- YouTube埋め込み -->
-    <div class="video-section">
-      <iframe width="550" height="315" src="https://www.youtube.com/embed/3Gc5eSL5kxU?si=eH9zgE7RlFD2-fB9" title="Lions Data PV" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-    </div>
-
-    <!-- 説明テキスト（横に配置） -->
-    <div class="text-section">
-      <p><strong>「ライオンズで〜た【Lions Data】」を更に深化。</strong><br>
-      データも、機能も、体験も<span class="highlight">“ひとつ上のレベルへ”</span>。</p>
-
-      <p>埼玉西武ライオンズの成績や記録を、<br>
-      より速く、より見やすく、分かりやすく設計した新データ情報サイトです。</p>
-
-      <p>ファンの皆さまにとって「データを身近なものにする」ために、<br>
-      これまで以上に進化したコンテンツを発信していきます。</p>
-    </div>
-  </div>
-</div>
-
-</body>
-</html>
-
-
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>プロ野球 試合速報</title>
-  <style>
-    body {
-      font-family: system-ui, sans-serif;
-      background: linear-gradient(to bottom, #ffffff, #f8fcff); /* 全体に薄いグラデーション背景 */
-      color: #111111;
-      margin: 0;
-      padding: 12px 8px;
-      min-height: 100vh; /* 画面全体をカバー */
-      line-height: 1.3;
-    }
-    .container {
-      max-width: 800px;          /* PCでの上限を少し広めに */
-      width: 90%;                /* 基本は画面の90% */
-      margin: 0 auto;
-      position: relative;
-    }
-    h1 {
-      text-align: center;
-      color: #1e40af;
-      font-size: 1.45rem;
-      margin: 12px 0 16px;
-      font-weight: bold;
-    }
-    .game {
-      background: #ffffff;       /* カード自体は純白でクリアに */
-      border: 1px solid #e2e8f0;
-      border-radius: 10px;
-      padding: 12px 14px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.08); /* 軽く浮き上がる影 */
-      position: relative;
-      min-height: 160px;
-    }
-    .game-header {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.9rem;
-      color: #475569;
-      margin-bottom: 10px;
-      font-weight: bold;
-    }
-    .start-time {
-      font-size: 1.1rem;
-    }
-    .teams {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 6px;
-      flex-wrap: wrap;
-    }
-    .team {
-      flex: 1 1 110px;
-      text-align: center;
-      min-width: 90px;
-    }
-    .team-logo {
-      width: 56px;
-      height: 56px;
-      object-fit: contain;
-      margin-bottom: 4px;
-    }
-    .team-name {
-      font-size: 1rem;
-      font-weight: bold;
-      color: #111111; /* デフォルト */
-    }
-    .team-name.seibu {
-      color: #092048;
-    }
-    .team-name.softbank {
-      color: #F5C700; /* ソフトバンク公式黄色系 */
-    }
-    .pitcher-batter {
-      font-size: 0.82rem;
-      color: #334155;
-      text-align: center;
-      margin: 4px 0 2px;
-      white-space: nowrap;
-    }
-    .score-section {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      flex: 1 1 auto;
-      justify-content: center;
-      min-width: 180px;
-    }
-    .score {
-      font-size: 2.6rem;
-      font-weight: 900;
-      min-width: 60px;
-      text-align: center;
-      color: #111111;
-    }
-    .vs {
-      font-size: 1.2rem;
-      color: #64748b;
-      padding: 0 6px;
-    }
-    .inning-info {
-      text-align: center;
-      font-size: 1rem;
-      margin: 10px 0 4px;
-      color: #334155;
-    }
-    .update {
-      position: absolute;
-      bottom: 8px;
-      right: 14px;
-      font-size: 0.75rem;
-      color: #6b7280;
-      margin: 0;
-    }
-
-    /* レスポンシブ調整（利用者の画面幅に合わせて柔軟に） */
-    @media (max-width: 1024px) {
-      .container { width: 92%; max-width: 720px; }
-    }
-    @media (max-width: 768px) {  /* タブレット */
-      .container { width: 95%; max-width: none; }
-      h1 { font-size: 1.4rem; }
-      .teams { gap: 8px; }
-      .score { font-size: 2.4rem; min-width: 55px; }
-      .team-logo { width: 52px; height: 52px; }
-    }
-    @media (max-width: 480px) {  /* スマホ */
-      .container { width: 98%; padding: 0 4px; }
-      .teams { flex-direction: column; gap: 10px; }
-      .score-section { flex-direction: row; width: 100%; justify-content: center; gap: 8px; }
-      .pitcher-batter { font-size: 0.78rem; }
-      .update { font-size: 0.72rem; right: 10px; bottom: 6px; }
-      h1 { font-size: 1.35rem; margin: 10px 0 12px; }
-    }
-  </style>
-</head>
-<body>
-
-<div class="container">
-
-  <h1>【オープン戦】2026年3月1日 vs福岡ソフトバンクホークス</h1>
-
-  <div class="game">
-    <div class="game-header">
-      <div class="start-time">13:00</div>
-      <div>アイビースタジアム</div>
-    </div>
-
-    <div class="teams">
-      <div class="team">
-        <img src="https://lions-crown.homep.jp/img/1759836807957.webp" class="team-logo" alt="西武">
-        <div class="team-name seibu">西武</div>
-      </div>
-
-      <div class="score-section">
-        <div class="pitcher-batter">投：渡邉</div>
-        <div class="score">0</div>
-        <div class="vs">–</div>
-        <div class="score">0</div>
-        <div class="pitcher-batter">打：柳町</div>
-      </div>
-
-      <div class="team">
-        <img src="https://lions-crown.homep.jp/img/1759836829251.webp" class="team-logo" alt="ソフトバンク">
-        <div class="team-name softbank">ソフトバンク</div>
-      </div>
-    </div>
-
-    <div class="inning-info">試合前</div>
-
-    <div class="update">
-      最終更新： <span id="update-time">2026年3月1日 00:00</span>
-    </div>
-  </div>
-
-</div>
-
-</body>
-</html>
 
 
 <!DOCTYPE html>
