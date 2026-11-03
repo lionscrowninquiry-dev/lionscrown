@@ -1,883 +1,482 @@
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<link rel="icon" type="image/jpeg" href="./lc-icon.jpg">
-<link rel="apple-touch-icon" href="./lc-icon.jpg">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="L-crown新サイト開設に関する詳細・補足。2027年3月1日公開予定。">
-<meta name="theme-color" content="#071a35">
-<title>新サイト開設に関する詳細・補足 | L-crown</title>
-<style>
-/* =========================
-   L-crown NEXT PROJECT
-========================= */
-
-:root {
-  --navy: #071a35;
-  --navy2: #102b50;
-  --blue: #2466ad;
-  --light-blue: #eaf2fa;
-  --white: #ffffff;
-  --text: #202c3b;
-  --gray: #718096;
-  --line: #dce4ed;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 85px;
-}
-
-body {
-  margin: 0;
-  color: var(--text);
-  background: #f7f9fc;
-  font-family:
-    "Noto Sans JP",
-    "Yu Gothic",
-    "Meiryo",
-    sans-serif;
-  line-height: 1.9;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-/* HEADER */
-
-.header {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  height: 68px;
-  background: rgba(7, 26, 53, 0.97);
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 6%;
-  box-shadow: 0 2px 12px rgba(0,0,0,.12);
-}
-
-.logo {
-  font-size: 21px;
-  font-weight: 900;
-  letter-spacing: 2px;
-}
-
-.logo span {
-  font-size: 10px;
-  color: #9bbde3;
-  display: block;
-  line-height: 1;
-  letter-spacing: 3px;
-}
-
-.header-link {
-  font-size: 12px;
-  letter-spacing: 1px;
-  color: #d9e8f8;
-}
-
-/* HERO */
-
-.hero {
-  min-height: 540px;
-  padding: 100px 20px 90px;
-  background:
-    radial-gradient(circle at 80% 20%, #204b7c 0%, transparent 38%),
-    linear-gradient(135deg, #071a35, #102e54 65%, #071a35);
-  color: white;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-
-.hero::before {
-  content: "L";
-  position: absolute;
-  right: -30px;
-  bottom: -180px;
-  font-size: 580px;
-  font-weight: 900;
-  color: rgba(255,255,255,.025);
-  line-height: 1;
-  pointer-events: none;
-}
-
-.hero-content {
-  position: relative;
-  z-index: 1;
-  max-width: 900px;
-  margin: auto;
-}
-
-.eyebrow {
-  font-size: 12px;
-  letter-spacing: 5px;
-  color: #a9c9ec;
-  font-weight: bold;
-}
-
-.hero h1 {
-  font-size: clamp(34px, 6vw, 65px);
-  line-height: 1.3;
-  letter-spacing: 2px;
-  margin: 35px 0 15px;
-}
-
-.hero-catch {
-  font-size: clamp(15px, 2.5vw, 22px);
-  font-weight: 600;
-  letter-spacing: 2px;
-  line-height: 2;
-}
-
-.hero-description {
-  margin: 30px auto;
-  color: #d4e0ed;
-  font-size: 14px;
-  max-width: 620px;
-}
-
-.release-date {
-  margin: 45px auto 0;
-  padding: 20px;
-  max-width: 360px;
-  border-top: 1px solid rgba(255,255,255,.35);
-  border-bottom: 1px solid rgba(255,255,255,.35);
-}
-
-.release-date small {
-  display: block;
-  color: #b9d2ed;
-  font-size: 11px;
-  letter-spacing: 3px;
-}
-
-.release-date strong {
-  display: block;
-  font-size: clamp(32px, 5vw, 43px);
-  letter-spacing: 3px;
-  line-height: 1.5;
-}
-
-.release-date p {
-  font-size: 11px;
-  color: #c5d8ec;
-  margin: 0;
-}
-
-/* NAVIGATION */
-
-.page-nav {
-  background: white;
-  padding: 24px 20px;
-  border-bottom: 1px solid var(--line);
-}
-
-.page-nav-inner {
-  max-width: 900px;
-  margin: auto;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.page-nav a {
-  font-size: 12px;
-  padding: 8px 15px;
-  border: 1px solid var(--line);
-  border-radius: 3px;
-  transition: .2s;
-}
-
-.page-nav a:hover {
-  color: white;
-  background: var(--navy);
-}
-
-/* MAIN */
-
-main {
-  max-width: 900px;
-  margin: auto;
-  padding: 65px 22px 90px;
-}
-
-.intro {
-  text-align: center;
-  max-width: 750px;
-  margin: 0 auto 65px;
-}
-
-.intro-label {
-  color: var(--blue);
-  font-size: 11px;
-  font-weight: bold;
-  letter-spacing: 4px;
-}
-
-.intro h2 {
-  font-size: 25px;
-  color: var(--navy);
-  margin: 10px 0 25px;
-}
-
-.intro p {
-  font-size: 14px;
-  color: #566477;
-  text-align: left;
-}
-
-/* SECTION */
-
-.section {
-  margin: 0 0 55px;
-  padding: 35px 38px;
-  background: white;
-  border: 1px solid #e7ecf2;
-  box-shadow: 0 5px 20px rgba(20,50,80,.035);
-  border-radius: 5px;
-}
-
-.section-heading {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  border-bottom: 1px solid var(--line);
-  padding-bottom: 20px;
-  margin-bottom: 25px;
-}
-
-.section-number {
-  color: var(--blue);
-  font-size: 32px;
-  font-weight: 800;
-  letter-spacing: 1px;
-}
-
-.section-title small {
-  display: block;
-  color: var(--blue);
-  font-size: 10px;
-  letter-spacing: 3px;
-  font-weight: bold;
-}
-
-.section-title h2 {
-  color: var(--navy);
-  font-size: 21px;
-  margin: 0;
-}
-
-.section p {
-  font-size: 14px;
-  margin: 15px 0;
-}
-
-.section h3 {
-  color: var(--navy);
-  font-size: 17px;
-  margin: 30px 0 12px;
-}
-
-.highlight {
-  background: var(--light-blue);
-  border-left: 4px solid var(--blue);
-  padding: 20px 24px;
-  margin: 25px 0;
-}
-
-.highlight strong {
-  color: var(--navy);
-}
-
-/* DATE BOX */
-
-.date-box {
-  text-align: center;
-  background: linear-gradient(135deg, #0a2242, #194878);
-  color: white;
-  padding: 35px 15px;
-  margin: 25px 0;
-  border-radius: 4px;
-}
-
-.date-box small {
-  display: block;
-  color: #bdd5ef;
-  letter-spacing: 3px;
-  font-size: 11px;
-}
-
-.date-box strong {
-  display: block;
-  font-size: clamp(30px, 6vw, 46px);
-  letter-spacing: 3px;
-  margin: 8px 0;
-}
-
-.date-box p {
-  color: #d6e5f4;
-  font-size: 11px;
-  margin: 0;
-}
-
-/* IDEA */
-
-.idea-lead {
-  color: var(--navy);
-  font-size: clamp(22px, 4vw, 32px) !important;
-  font-weight: 800;
-  text-align: center;
-  letter-spacing: 2px;
-  margin: 35px 0 !important;
-}
-
-.subsection {
-  padding: 15px 0 25px;
-  border-bottom: 1px solid var(--line);
-}
-
-.subsection:last-child {
-  border-bottom: none;
-}
-
-.subsection h3 {
-  margin-top: 10px;
-}
-
-.subsection-label {
-  color: var(--blue);
-  font-size: 10px;
-  letter-spacing: 2px;
-  font-weight: bold;
-}
-
-/* NOTICE */
-
-.notice {
-  background: #f1f5fa;
-  border: 1px solid #dce5ef;
-  padding: 18px 22px;
-  margin-top: 25px;
-  font-size: 12px;
-  color: #526176;
-}
-
-/* FUTURE */
-
-.future {
-  background: linear-gradient(135deg, #071a35, #163b65);
-  color: white;
-  padding: 55px 30px;
-  text-align: center;
-  border-radius: 5px;
-  margin-top: 70px;
-}
-
-.future small {
-  color: #a9c9ec;
-  letter-spacing: 4px;
-  font-size: 10px;
-}
-
-.future h2 {
-  font-size: 26px;
-  margin: 18px 0;
-}
-
-.future p {
-  font-size: 13px;
-  color: #d5e2ef;
-  max-width: 620px;
-  margin: 15px auto;
-}
-
-.future-catch {
-  margin-top: 35px !important;
-  font-size: 19px !important;
-  font-weight: bold;
-  letter-spacing: 2px;
-  line-height: 2;
-  color: white !important;
-}
-
-/* FOOTER */
-
-footer {
-  background: #06152b;
-  color: white;
-  text-align: center;
-  padding: 45px 20px;
-}
-
-.footer-logo {
-  font-size: 24px;
-  font-weight: 900;
-  letter-spacing: 4px;
-}
-
-footer p {
-  font-size: 10px;
-  color: #a8bad0;
-  letter-spacing: 1px;
-}
-
-footer .copyright {
-  margin-top: 30px;
-  color: #74879e;
-}
-
-/* TOP BUTTON */
-
-#topButton {
-  position: fixed;
-  right: 22px;
-  bottom: 22px;
-  width: 45px;
-  height: 45px;
-  border: none;
-  border-radius: 50%;
-  background: var(--navy);
-  color: white;
-  font-size: 18px;
-  cursor: pointer;
-  opacity: 0;
-  visibility: hidden;
-  transition: .3s;
-  z-index: 50;
-}
-
-#topButton.show {
-  opacity: 1;
-  visibility: visible;
-}
-
-/* RESPONSIVE */
-
-@media (max-width: 600px) {
-  .header {
-    padding: 0 18px;
-  }
-
-  .hero {
-    min-height: 490px;
-    padding: 80px 18px;
-  }
-
-  .hero::before {
-    font-size: 350px;
-    bottom: -100px;
-  }
-
-  main {
-    padding: 45px 14px 65px;
-  }
-
-  .section {
-    padding: 25px 20px;
-    margin-bottom: 30px;
-  }
-
-  .section-heading {
-    gap: 12px;
-  }
-
-  .section-number {
-    font-size: 27px;
-  }
-
-  .section-title h2 {
-    font-size: 18px;
-  }
-
-  .page-nav-inner {
-    gap: 7px;
-  }
-
-  .page-nav a {
-    font-size: 10px;
-    padding: 7px 10px;
-  }
-
-  .future {
-    padding: 40px 20px;
-  }
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="L-crown NEXT PROJECT。新サイト開設に向けた最新のお知らせ、準備状況、プロジェクト情報をお届けします。">
+  <meta name="theme-color" content="#071a35">
+  <link rel="icon" type="image/jpeg" href="./lc-icon.jpg">
+  <link rel="apple-touch-icon" href="./lc-icon.jpg">
+  <title>L-crown NEXT PROJECT | 新サイト開設プロジェクト</title>
+  <style>
+    :root {
+      --navy: #071a35;
+      --navy-2: #0b2850;
+      --blue: #1765ad;
+      --blue-light: #4ca6ed;
+      --gold: #d7b66b;
+      --gold-light: #f0d99b;
+      --ink: #17243a;
+      --muted: #718096;
+      --paper: #f4f6fa;
+      --white: #fff;
+      --line: #e3e8f0;
+      --shadow: 0 16px 45px rgba(5, 22, 48, .10);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif;
+      line-height: 1.8;
+    }
+    a { color: inherit; }
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(7, 26, 53, .96);
+      border-bottom: 1px solid rgba(215, 182, 107, .28);
+      backdrop-filter: blur(12px);
+    }
+    .header-inner {
+      width: min(1160px, calc(100% - 40px));
+      min-height: 76px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: white;
+      text-decoration: none;
+      min-width: 0;
+    }
+    .brand img {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1px solid rgba(240, 217, 155, .7);
+    }
+    .brand-name { display: block; font-family: Georgia, serif; font-size: 1.35rem; font-weight: 700; letter-spacing: .04em; line-height: 1.2; }
+    .brand-sub { display: block; margin-top: 4px; color: #c6d2e2; font-size: .62rem; letter-spacing: .16em; }
+    .nav { display: flex; align-items: center; gap: 26px; }
+    .nav a {
+      color: #e8edf5;
+      font-size: .82rem;
+      font-weight: 700;
+      text-decoration: none;
+      letter-spacing: .04em;
+      transition: color .2s;
+    }
+    .nav a:hover { color: var(--gold-light); }
+    .menu-toggle {
+      display: none;
+      border: 1px solid rgba(255,255,255,.35);
+      color: white;
+      background: transparent;
+      border-radius: 8px;
+      padding: 8px 12px;
+      font: inherit;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      color: white;
+      background:
+        radial-gradient(ellipse at 78% 20%, rgba(40, 105, 174, .34), transparent 42%),
+        radial-gradient(ellipse at 12% 90%, rgba(23, 101, 173, .22), transparent 38%),
+        linear-gradient(135deg, #06152d, #0b2850 58%, #071a35);
+      isolation: isolate;
+    }
+    .hero::before, .hero::after {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      border: 1px solid rgba(215, 182, 107, .18);
+      border-radius: 50%;
+      width: 520px;
+      height: 520px;
+      right: -150px;
+      top: -230px;
+    }
+    .hero::after { width: 680px; height: 680px; right: -230px; top: -300px; }
+    .hero-inner {
+      width: min(1160px, calc(100% - 40px));
+      min-height: 510px;
+      margin: auto;
+      padding: 86px 0 90px;
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      align-items: center;
+      gap: 46px;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--gold-light);
+      font-size: .75rem;
+      font-weight: 800;
+      letter-spacing: .2em;
+    }
+    .eyebrow::before { content: ""; width: 32px; height: 1px; background: var(--gold); }
+    h1 {
+      margin: 22px 0 18px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.7rem, 6vw, 5.1rem);
+      line-height: 1.05;
+      letter-spacing: .015em;
+      font-weight: 700;
+    }
+    .hero-lead {
+      margin: 0;
+      color: #e5edf8;
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      font-weight: 600;
+      letter-spacing: .08em;
+    }
+    .hero-copy { max-width: 590px; margin: 22px 0 0; color: #b9c8da; font-size: .94rem; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
+    .button {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 48px;
+      padding: 0 22px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: .86rem;
+      font-weight: 800;
+      transition: transform .2s, background .2s;
+    }
+    .button:hover { transform: translateY(-2px); }
+    .button-gold { color: #15243a; background: linear-gradient(135deg, var(--gold-light), var(--gold)); }
+    .button-outline { color: white; border: 1px solid rgba(255,255,255,.45); }
+    .hero-logo-wrap { display: flex; justify-content: center; align-items: center; }
+    .hero-logo {
+      width: min(330px, 75%);
+      aspect-ratio: 1;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 5px solid rgba(215, 182, 107, .72);
+      box-shadow: 0 20px 70px rgba(0,0,0,.38), 0 0 0 14px rgba(255,255,255,.035);
+    }
+    .date-strip {
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+    }
+    .date-strip-inner {
+      width: min(1160px, calc(100% - 40px));
+      min-height: 92px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 22px;
+      text-align: center;
+    }
+    .date-label { color: var(--muted); font-size: .72rem; font-weight: 800; letter-spacing: .16em; }
+    .date-value { color: var(--navy); font-family: Georgia, serif; font-size: clamp(1.55rem, 3vw, 2.15rem); font-weight: 700; letter-spacing: .08em; }
+    .date-note { color: var(--muted); font-size: .75rem; }
+
+    .section { width: min(1080px, calc(100% - 40px)); margin: auto; padding: 86px 0; }
+    .section-heading { margin-bottom: 30px; }
+    .section-kicker { color: var(--blue); font-size: .72rem; font-weight: 900; letter-spacing: .2em; }
+    .section-title { margin: 7px 0 0; color: var(--navy); font-size: clamp(1.8rem, 4vw, 2.55rem); line-height: 1.3; letter-spacing: .025em; }
+    .section-description { margin: 12px 0 0; color: var(--muted); font-size: .9rem; }
+
+    .news-list { display: grid; gap: 14px; }
+    .news-card {
+      display: grid;
+      grid-template-columns: 150px 1fr 24px;
+      align-items: center;
+      gap: 22px;
+      padding: 23px 26px;
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 9px;
+      text-decoration: none;
+      box-shadow: 0 5px 18px rgba(5,22,48,.035);
+      transition: transform .2s, box-shadow .2s, border-color .2s;
+    }
+    .news-card:hover { transform: translateY(-3px); border-color: #c8d7e9; box-shadow: var(--shadow); }
+    .news-date { color: var(--muted); font-family: Georgia, serif; font-size: .88rem; font-weight: 700; }
+    .news-category {
+      display: inline-block;
+      margin-bottom: 6px;
+      padding: 2px 9px;
+      color: #75571d;
+      background: #f8f0dc;
+      border-radius: 3px;
+      font-size: .66rem;
+      font-weight: 900;
+      letter-spacing: .06em;
+    }
+    .news-title { margin: 0; color: var(--navy); font-size: 1.04rem; font-weight: 800; }
+    .news-summary { margin: 5px 0 0; color: var(--muted); font-size: .82rem; }
+    .news-arrow { color: var(--gold); font-size: 1.35rem; }
+    .empty-message { padding: 28px; text-align: center; color: var(--muted); background: white; border: 1px dashed #cbd5e1; border-radius: 8px; }
+    .news-error { color: #8a4b17; background: #fff8e9; padding: 14px 18px; border-radius: 7px; font-size: .82rem; }
+
+    .project-section { background: white; }
+    .project-inner { width: min(1080px, calc(100% - 40px)); margin: auto; padding: 82px 0; }
+    .project-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 32px; }
+    .project-card {
+      min-height: 190px;
+      padding: 25px;
+      background: linear-gradient(145deg, #fff, #f5f8fc);
+      border: 1px solid var(--line);
+      border-top: 3px solid var(--gold);
+      border-radius: 7px;
+    }
+    .project-number { color: var(--gold); font-family: Georgia, serif; font-size: 1.6rem; font-weight: 700; }
+    .project-card h3 { margin: 9px 0 8px; color: var(--navy); font-size: 1.02rem; }
+    .project-card p { margin: 0; color: var(--muted); font-size: .83rem; }
+
+    .detail-banner {
+      position: relative;
+      overflow: hidden;
+      padding: 52px 30px;
+      color: white;
+      background: linear-gradient(120deg, #071a35, #123d70);
+      border-radius: 10px;
+      text-align: center;
+    }
+    .detail-banner::after {
+      content: "L";
+      position: absolute;
+      right: 5%;
+      top: -80px;
+      color: rgba(255,255,255,.045);
+      font-family: Georgia, serif;
+      font-size: 18rem;
+      line-height: 1;
+      pointer-events: none;
+    }
+    .detail-banner h2 { position: relative; margin: 8px 0 10px; font-size: clamp(1.45rem, 3vw, 2rem); }
+    .detail-banner p { position: relative; margin: 0 auto 23px; max-width: 650px; color: #c8d6e8; font-size: .88rem; }
+    .detail-banner .button { position: relative; }
+
+    .footer { padding: 38px 20px; color: #b8c5d6; background: #06152d; text-align: center; }
+    .footer-brand { color: white; font-family: Georgia, serif; font-size: 1.25rem; font-weight: 700; letter-spacing: .08em; }
+    .footer p { margin: 8px 0 0; font-size: .72rem; }
+    .footer-small { margin-top: 18px !important; color: #8192a9; }
+
+    @media (max-width: 760px) {
+      .header-inner { min-height: 68px; }
+      .menu-toggle { display: inline-block; }
+      .nav {
+        display: none;
+        position: absolute;
+        top: 68px;
+        left: 0;
+        right: 0;
+        padding: 18px 22px 22px;
+        background: var(--navy);
+        border-top: 1px solid rgba(255,255,255,.12);
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+      }
+      .nav.open { display: flex; }
+      .hero-inner { min-height: auto; padding: 65px 0 68px; grid-template-columns: 1fr; gap: 38px; }
+      .hero-logo-wrap { grid-row: 1; }
+      .hero-logo { width: min(220px, 58%); }
+      .hero-copy { font-size: .88rem; }
+      .date-strip-inner { min-height: 100px; flex-direction: column; gap: 0; padding: 15px 0; }
+      .section, .project-inner { padding: 62px 0; }
+      .news-card { grid-template-columns: 1fr 20px; gap: 8px 12px; padding: 18px; }
+      .news-date { grid-column: 1; }
+      .news-content { grid-column: 1; }
+      .news-arrow { grid-column: 2; grid-row: 1 / span 2; }
+      .project-grid { grid-template-columns: 1fr; gap: 12px; }
+      .project-card { min-height: auto; }
+    }
+  </style>
 </head>
-
 <body>
-
-<!-- HEADER -->
-<header class="header">
-  <a href="#" class="logo">
-    L-crown
-    <span>OFFICIAL PROJECT</span>
-  </a>
-  <a href="#opening" class="header-link">NEXT PROJECT / 2026</a>
-</header>
-
-<!-- HERO -->
-<section class="hero" id="opening">
-  <div class="hero-content">
-    <div class="eyebrow">L-crown — NEXT PROJECT</div>
-
-    <h1>新サイト開設決定。</h1>
-
-    <div class="hero-catch">
-      ライオンズを、もっと深く。<br>
-      データに、熱狂を。
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="./index.html" aria-label="L-crown NEXT PROJECT トップ">
+        <img src="./lc-icon.jpg" alt="L-crown アイコン">
+        <span>
+          <span class="brand-name">L-crown</span>
+          <span class="brand-sub">NEXT PROJECT</span>
+        </span>
+      </a>
+      <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="siteNav">MENU</button>
+      <nav class="nav" id="siteNav" aria-label="メインナビゲーション">
+        <a href="#news">NEWS</a>
+        <a href="#project">PROJECT</a>
+        <a href="#schedule">SCHEDULE</a>
+        <a href="./nextproject.html">ABOUT</a>
+      </nav>
     </div>
+  </header>
 
-    <p class="hero-description">
-      L-crownは、ライオンズを愛するすべての人に向けた、
-      新たなサイトを開設します。
-    </p>
+  <main>
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="hero-content">
+          <span class="eyebrow">L-CROWN / NEXT PROJECT</span>
+          <h1>新たな<br>L-crownへ。</h1>
+          <p class="hero-lead">ライオンズを、もっと深く。<br>データに、熱狂を。</p>
+          <p class="hero-copy">
+            L-crownは、新たなサイトの開設に向けて準備を進めています。
+            このページでは、新サイトに関する最新情報や制作の進捗をお知らせします。
+          </p>
+          <div class="hero-actions">
+            <a class="button button-gold" href="#news">最新のお知らせ</a>
+            <a class="button button-outline" href="./nextproject.html">プロジェクト詳細</a>
+          </div>
+        </div>
+        <div class="hero-logo-wrap">
+          <img class="hero-logo" src="./lc-icon.jpg" alt="L-crown ロゴ">
+        </div>
+      </div>
+    </section>
 
-    <div class="release-date">
-      <small>OPENING SCHEDULE</small>
-      <strong>2027.03.01</strong>
-      <p>新サイト公開予定日（現時点での予定）</p>
-    </div>
-  </div>
-</section>
+    <section class="date-strip" id="schedule">
+      <div class="date-strip-inner">
+        <div class="date-label">NEW SITE OPENING</div>
+        <div class="date-value">2027.03.01</div>
+        <div class="date-note">公開予定日（現時点での予定）</div>
+      </div>
+    </section>
 
-<!-- NAVIGATION -->
-<nav class="page-nav">
-  <div class="page-nav-inner">
-    <a href="#schedule">公開予定日</a>
-    <a href="#integration">サイト統合</a>
-    <a href="#contents">コンテンツ</a>
-    <a href="#idea">サイト理念</a>
-    <a href="#future">今後の情報解禁</a>
-  </div>
-</nav>
+    <section class="section" id="news">
+      <div class="section-heading">
+        <div class="section-kicker">LATEST INFORMATION</div>
+        <h2 class="section-title">最新のお知らせ</h2>
+        <p class="section-description">新サイトに関する発表・更新情報を、新しい順に掲載します。</p>
+      </div>
+      <div class="news-list" id="newsList" aria-live="polite">
+        <div class="empty-message">お知らせを読み込んでいます…</div>
+      </div>
+    </section>
 
-<main>
+    <section class="project-section" id="project">
+      <div class="project-inner">
+        <div class="section-heading">
+          <div class="section-kicker">PROJECT INFORMATION</div>
+          <h2 class="section-title">新サイト開設プロジェクト</h2>
+          <p class="section-description">新しいL-crownに向けて、サイト全体の再構築を進めています。</p>
+        </div>
+        <div class="project-grid">
+          <article class="project-card">
+            <div class="project-number">01</div>
+            <h3>サイトの統合</h3>
+            <p>L-crown公式サイトと制作委員会サイトを統合し、新たな情報発信の拠点を構築します。</p>
+          </article>
+          <article class="project-card">
+            <div class="project-number">02</div>
+            <h3>コンテンツの刷新</h3>
+            <p>試合情報・選手情報・各種成績など、各コンテンツの構成や掲載内容を見直します。</p>
+          </article>
+          <article class="project-card">
+            <div class="project-number">03</div>
+            <h3>新しいサイト体験</h3>
+            <p>情報を探しやすく、データを通じてライオンズをより深く楽しめるサイトを目指します。</p>
+          </article>
+        </div>
+      </div>
+    </section>
 
-<!-- INTRO -->
-<div class="intro">
-  <div class="intro-label">INFORMATION RELEASE / 01</div>
-  <h2>新サイト開設に関する詳細・補足</h2>
+    <section class="section">
+      <div class="detail-banner">
+        <div class="section-kicker" style="color:#f0d99b">ABOUT THE PROJECT</div>
+        <h2>新サイト開設について</h2>
+        <p>開設の背景、サイト統合の内容、L-crownが目指す姿など、プロジェクトの詳細はこちらからご覧ください。</p>
+        <a class="button button-gold" href="./nextproject.html">詳細・補足ページを見る</a>
+      </div>
+    </section>
+  </main>
 
-  <p>
-    2026年11月1日に発表した、L-crownの新サイト開設について、
-    現時点で決定している内容および計画の詳細をお知らせします。
-  </p>
+  <footer class="footer">
+    <div class="footer-brand">L-crown</div>
+    <p>NEXT PROJECT</p>
+    <p class="footer-small">本ページはL-crown新サイト開設プロジェクトに関する情報発信専用ページです。<br>新サイトの公開予定日は、今後変更となる場合があります。</p>
+    <p class="footer-small">© L-crown NEXT PROJECT</p>
+  </footer>
 
-  <p>
-    今回のプロジェクトでは、既存サイトの枠組みを見直し、
-    複数のサイトを統合するとともに、各コンテンツのアップデートを実施します。
-  </p>
-</div>
+  <script>
+    const newsList = document.getElementById("newsList");
 
-<!-- 01 SCHEDULE -->
-<section class="section" id="schedule">
-  <div class="section-heading">
-    <div class="section-number">01</div>
-    <div class="section-title">
-      <small>OPENING SCHEDULE</small>
-      <h2>新サイト公開予定日</h2>
-    </div>
-  </div>
+    function escapeHTML(value) {
+      return String(value ?? "").replace(/[&<>"']/g, (char) => ({
+        "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+      }[char]));
+    }
 
-  <div class="date-box">
-    <small>OPENING DATE</small>
-    <strong>2027.03.01</strong>
-    <p>MONDAY / 公開予定</p>
-  </div>
+    function formatDate(dateText) {
+      const parts = String(dateText || "").split("-");
+      if (parts.length !== 3) return escapeHTML(dateText || "");
+      return `${parts[0]}.${parts[1]}.${parts[2]}`;
+    }
 
-  <p>
-    現時点では、2027年3月1日の新サイト公開を予定しています。
-  </p>
+    function renderNews(items) {
+      const sorted = [...items].sort((a, b) => String(b.date).localeCompare(String(a.date)));
+      if (!sorted.length) {
+        newsList.innerHTML = '<div class="empty-message">現在掲載中のお知らせはありません。</div>';
+        return;
+      }
 
-  <p>
-    ただし、こちらはあくまで現時点での予定であり、
-    制作・開発の進捗状況などによって、公開日が変更となる場合があります。
-  </p>
+      newsList.innerHTML = sorted.map((item) => {
+        const title = escapeHTML(item.title);
+        const summary = escapeHTML(item.summary);
+        const category = escapeHTML(item.category || "お知らせ");
+        const date = formatDate(item.date);
+        const url = item.url ? String(item.url) : "";
+        const safeUrl = /^(https?:\/\/|\.\/|\/|#)/.test(url) ? url : "#news";
+        return `
+          <a class="news-card" href="${escapeHTML(safeUrl)}">
+            <div class="news-date">${date}</div>
+            <div class="news-content">
+              <span class="news-category">${category}</span>
+              <h3 class="news-title">${title}</h3>
+              <p class="news-summary">${summary}</p>
+            </div>
+            <span class="news-arrow" aria-hidden="true">›</span>
+          </a>`;
+      }).join("");
+    }
 
-  <p>
-    より良いサイトをお届けできるよう、準備を進めてまいります。
-    正式な公開日については、今後の続報をお待ちください。
-  </p>
-</section>
+    fetch("./notices.json", { cache: "no-store" })
+      .then((response) => {
+        if (!response.ok) throw new Error("notices.json を読み込めませんでした");
+        return response.json();
+      })
+      .then((data) => {
+        if (!Array.isArray(data)) throw new Error("JSONの形式が正しくありません");
+        renderNews(data);
+      })
+      .catch((error) => {
+        console.error(error);
+        newsList.innerHTML = '<div class="news-error">お知らせを読み込めませんでした。notices.json が index.html と同じ階層にあるか確認してください。</div>';
+      });
 
-<!-- 02 INTEGRATION -->
-<section class="section" id="integration">
-  <div class="section-heading">
-    <div class="section-number">02</div>
-    <div class="section-title">
-      <small>SITE INTEGRATION</small>
-      <h2>サイトの統合・URL変更について</h2>
-    </div>
-  </div>
-
-  <p>
-    今回の新サイト開設に伴い、現在運営している
-    「L-crown公式サイト」と「L-crown製作委員会サイト」の
-    2つのサイトを統合します。
-  </p>
-
-  <div class="highlight">
-    <strong>2つのサイトを1つのL-crownへ。</strong>
-    <p>
-      それぞれのサイトで展開してきた情報やコンテンツを整理し、
-      新たなサイトへ集約します。
-    </p>
-  </div>
-
-  <p>
-    これまで別々に展開してきた情報を一元化することで、
-    より分かりやすく、利用しやすい環境を目指します。
-  </p>
-
-  <h3>URLアドレスの変更</h3>
-
-  <p>
-    サイトの統合に伴い、新サイトではURLアドレスも変更となる予定です。
-  </p>
-
-  <p>
-    新しいURLについては、決定次第、改めてお知らせします。
-    現在のサイトから新サイトへの移行についても、
-    必要な情報を順次ご案内していく予定です。
-  </p>
-</section>
-
-<!-- 03 CONTENTS -->
-<section class="section" id="contents">
-  <div class="section-heading">
-    <div class="section-number">03</div>
-    <div class="section-title">
-      <small>CONTENTS UPDATE</small>
-      <h2>各コンテンツのアップデート</h2>
-    </div>
-  </div>
-
-  <p>
-    新サイトでは、サイトの統合だけでなく、
-    各コンテンツについてもアップデートを実施する予定です。
-  </p>
-
-  <p>
-    これまでの運営を通じて得られた経験や課題を踏まえ、
-    情報の整理方法や閲覧環境、各コンテンツの内容などを見直していきます。
-  </p>
-
-  <div class="highlight">
-    <strong>単なる移行ではなく、新たな発展へ。</strong>
-    <p>
-      現在のコンテンツをそのまま移行するだけではなく、
-      新サイトにふさわしい形へと発展させることを目指します。
-    </p>
-  </div>
-
-  <p>
-    詳細な変更内容や新たに展開するコンテンツについては、
-    今後の情報解禁にて順次お知らせします。
-  </p>
-</section>
-
-<!-- 04 IDEA -->
-<section class="section" id="idea">
-  <div class="section-heading">
-    <div class="section-number">04</div>
-    <div class="section-title">
-      <small>OUR PHILOSOPHY</small>
-      <h2>サイトの理念</h2>
-    </div>
-  </div>
-
-  <div class="idea-lead">
-    ライオンズを、もっと深く。
-  </div>
-
-  <p>
-    L-crown（エルクラウン）は、埼玉西武ライオンズに関する
-    データや情報を発信する、ライオンズファンのための独立した情報サイトです。
-  </p>
-
-  <p>
-    試合情報や選手プロフィール、各種成績などを整理・蓄積し、
-    ライオンズをより深く知り、楽しむための情報を提供することを目指しています。
-  </p>
-
-  <p>
-    単に情報を掲載するだけでなく、データを通じて試合や選手の魅力を掘り下げ、
-    ライオンズを多角的に楽しめる場所を目指します。
-  </p>
-
-  <!-- OUR IDEA -->
-  <div class="subsection">
-    <div class="subsection-label">01 / OUR IDEA</div>
-    <h3>サイトの理念</h3>
-
-    <p>
-      野球には、試合を観戦する楽しさだけでなく、
-      データから新たな発見を得る楽しさがあります。
-    </p>
-
-    <p>
-      選手の成長を数字から追うこと、試合の流れを振り返ること、
-      過去の成績と比較すること。
-      ひとつひとつの記録を積み重ねることで、
-      これまで気づかなかった選手の特徴やチームの歩みが見えてきます。
-    </p>
-
-    <p>
-      L-crownは、データの持つ価値と、
-      ファンだからこそ感じられる野球の魅力を大切にします。
-    </p>
-
-    <p>
-      正確で見やすい情報を提供すること。
-      そして、その情報がライオンズを応援する楽しさにつながること。
-      それが、L-crownの目指す姿です。
-    </p>
-  </div>
-
-  <!-- OUR VISION -->
-  <div class="subsection">
-    <div class="subsection-label">02 / OUR VISION</div>
-    <h3>L-crownが目指すもの</h3>
-
-    <p>
-      L-crownでは、埼玉西武ライオンズに関する情報を体系的に整理し、
-      必要なデータを調べやすく、継続的に振り返ることができる
-      環境づくりを目指しています。
-    </p>
-
-    <p>
-      試合と選手、選手と成績など、さまざまな情報を関連付けることで、
-      ひとつの記録からさらに多くの発見につながるサイトを目指します。
-    </p>
-
-    <p>
-      また、情報を一時的に消費するだけでなく、
-      シーズンを越えて記録を蓄積し、過去と現在を比較できることも
-      大切にしていきます。
-    </p>
-
-    <p>
-      日々の試合を楽しみたい方から、選手の成績やチームの記録を
-      詳しく調べたい方まで。
-      幅広いライオンズファンにとって、
-      繰り返し訪れる価値のあるサイトとなることを目標としています。
-    </p>
-  </div>
-
-  <!-- INFORMATION -->
-  <div class="subsection">
-    <div class="subsection-label">03 / INFORMATION</div>
-    <h3>情報の取り扱いについて</h3>
-
-    <p>
-      L-crownでは、掲載するデータや情報の正確性を重視し、
-      確認可能な情報に基づいたコンテンツの作成に努めます。
-    </p>
-
-    <p>
-      記録や掲載内容に誤りが確認された場合には、
-      必要に応じて確認・修正を行います。
-      また、情報の更新状況やデータの収録範囲については、
-      各コンテンツの内容をご確認ください。
-    </p>
-
-    <p>
-      なお、掲載情報の正確性や完全性を保証するものではありません。
-      ご利用にあたっては、必要に応じて公式発表などの一次情報もご確認ください。
-    </p>
-  </div>
-
-  <!-- INDEPENDENT SITE -->
-  <div class="subsection">
-    <div class="subsection-label">04 / INDEPENDENT SITE</div>
-    <h3>運営について</h3>
-
-    <p>
-      L-crownは、埼玉西武ライオンズを応援するファンの視点と、
-      データを大切にする姿勢を軸に運営する独立した非公式ファンサイトです。
-    </p>
-
-    <p>
-      埼玉西武ライオンズ球団および関係団体が運営・公認する
-      公式サイトではなく、これらの団体とは独立して運営しています。
-    </p>
-  </div>
-</section>
-
-<!-- 05 FUTURE -->
-<section class="future" id="future">
-  <small>FUTURE INFORMATION / 05</small>
-
-  <h2>今後の情報解禁について</h2>
-
-  <p>
-    今回の発表は、新サイト開設に向けた第一弾の情報解禁です。
-  </p>
-
-  <p>
-    今後は、新サイトの具体的な構成や各コンテンツの詳細、
-    機能面の変更などについて、準備の進捗に合わせて
-    順次お知らせしていく予定です。
-  </p>
-
-  <p>
-    2027年3月1日の公開に向け、
-    新たなL-crownの姿を少しずつお伝えしてまいります。
-  </p>
-
-  <div class="future-catch">
-    ライオンズを、もっと深く。<br>
-    データに、熱狂を。
-  </div>
-</section>
-
-</main>
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-logo">L-crown</div>
-  <p>L-CROWN — NEXT PROJECT</p>
-  <p>ライオンズを、もっと深く。データに、熱狂を。</p>
-  <p class="copyright">
-    © L-crown. All Rights Reserved.
-  </p>
-</footer>
-
-<button id="topButton" aria-label="ページ上部へ戻る">↑</button>
-
-<script>
-/* ページ上部へ戻るボタン */
-const topButton = document.getElementById("topButton");
-
-window.addEventListener("scroll", () => {
-  if (window.scrollY > 400) {
-    topButton.classList.add("show");
-  } else {
-    topButton.classList.remove("show");
-  }
-});
-
-topButton.addEventListener("click", () => {
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
-  });
-});
-</script>
-
+    const menuToggle = document.getElementById("menuToggle");
+    const siteNav = document.getElementById("siteNav");
+    menuToggle.addEventListener("click", () => {
+      const opened = siteNav.classList.toggle("open");
+      menuToggle.setAttribute("aria-expanded", String(opened));
+    });
+    siteNav.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        siteNav.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+      });
+    });
+  </script>
 </body>
 </html>
