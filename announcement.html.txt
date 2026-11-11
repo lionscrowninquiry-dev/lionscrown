@@ -1,0 +1,531 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#071a35"><meta name="description" content="2027年3月1日公開予定の新L-crown。156件の調査回答を踏まえたコンテンツ紹介と、選手名鑑・指標ガイドの開発中画面を先行公開。"><link rel="icon" href="./lc-icon.jpg"><title>ファンの声から、新しいL-crownへ。 | 情報解禁 第2弾</title><style>
+/* =========================
+   L-crown NEXT PROJECT
+========================= */
+
+:root {
+  --navy: #071a35;
+  --navy2: #102b50;
+  --blue: #2466ad;
+  --light-blue: #eaf2fa;
+  --white: #ffffff;
+  --text: #202c3b;
+  --gray: #718096;
+  --line: #dce4ed;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 85px;
+}
+
+body {
+  margin: 0;
+  color: var(--text);
+  background: #f7f9fc;
+  font-family:
+    "Noto Sans JP",
+    "Yu Gothic",
+    "Meiryo",
+    sans-serif;
+  line-height: 1.9;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* HEADER */
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: 68px;
+  background: rgba(7, 26, 53, 0.97);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 6%;
+  box-shadow: 0 2px 12px rgba(0,0,0,.12);
+}
+
+.logo {
+  font-size: 21px;
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+
+.logo span {
+  font-size: 10px;
+  color: #9bbde3;
+  display: block;
+  line-height: 1;
+  letter-spacing: 3px;
+}
+
+.header-link {
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: #d9e8f8;
+}
+
+/* HERO */
+
+.hero {
+  min-height: 540px;
+  padding: 100px 20px 90px;
+  background:
+    radial-gradient(circle at 80% 20%, #204b7c 0%, transparent 38%),
+    linear-gradient(135deg, #071a35, #102e54 65%, #071a35);
+  color: white;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: "L";
+  position: absolute;
+  right: -30px;
+  bottom: -180px;
+  font-size: 580px;
+  font-weight: 900;
+  color: rgba(255,255,255,.025);
+  line-height: 1;
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 900px;
+  margin: auto;
+}
+
+.eyebrow {
+  font-size: 12px;
+  letter-spacing: 5px;
+  color: #a9c9ec;
+  font-weight: bold;
+}
+
+.hero h1 {
+  font-size: clamp(34px, 6vw, 65px);
+  line-height: 1.3;
+  letter-spacing: 2px;
+  margin: 35px 0 15px;
+}
+
+.hero-catch {
+  font-size: clamp(15px, 2.5vw, 22px);
+  font-weight: 600;
+  letter-spacing: 2px;
+  line-height: 2;
+}
+
+.hero-description {
+  margin: 30px auto;
+  color: #d4e0ed;
+  font-size: 14px;
+  max-width: 620px;
+}
+
+.release-date {
+  margin: 45px auto 0;
+  padding: 20px;
+  max-width: 360px;
+  border-top: 1px solid rgba(255,255,255,.35);
+  border-bottom: 1px solid rgba(255,255,255,.35);
+}
+
+.release-date small {
+  display: block;
+  color: #b9d2ed;
+  font-size: 11px;
+  letter-spacing: 3px;
+}
+
+.release-date strong {
+  display: block;
+  font-size: clamp(32px, 5vw, 43px);
+  letter-spacing: 3px;
+  line-height: 1.5;
+}
+
+.release-date p {
+  font-size: 11px;
+  color: #c5d8ec;
+  margin: 0;
+}
+
+/* NAVIGATION */
+
+.page-nav {
+  background: white;
+  padding: 24px 20px;
+  border-bottom: 1px solid var(--line);
+}
+
+.page-nav-inner {
+  max-width: 900px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.page-nav a {
+  font-size: 12px;
+  padding: 8px 15px;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  transition: .2s;
+}
+
+.page-nav a:hover {
+  color: white;
+  background: var(--navy);
+}
+
+/* MAIN */
+
+main {
+  max-width: 900px;
+  margin: auto;
+  padding: 65px 22px 90px;
+}
+
+.intro {
+  text-align: center;
+  max-width: 750px;
+  margin: 0 auto 65px;
+}
+
+.intro-label {
+  color: var(--blue);
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 4px;
+}
+
+.intro h2 {
+  font-size: 25px;
+  color: var(--navy);
+  margin: 10px 0 25px;
+}
+
+.intro p {
+  font-size: 14px;
+  color: #566477;
+  text-align: left;
+}
+
+/* SECTION */
+
+.section {
+  margin: 0 0 55px;
+  padding: 35px 38px;
+  background: white;
+  border: 1px solid #e7ecf2;
+  box-shadow: 0 5px 20px rgba(20,50,80,.035);
+  border-radius: 5px;
+}
+
+.section-heading {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 20px;
+  margin-bottom: 25px;
+}
+
+.section-number {
+  color: var(--blue);
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.section-title small {
+  display: block;
+  color: var(--blue);
+  font-size: 10px;
+  letter-spacing: 3px;
+  font-weight: bold;
+}
+
+.section-title h2 {
+  color: var(--navy);
+  font-size: 21px;
+  margin: 0;
+}
+
+.section p {
+  font-size: 14px;
+  margin: 15px 0;
+}
+
+.section h3 {
+  color: var(--navy);
+  font-size: 17px;
+  margin: 30px 0 12px;
+}
+
+.highlight {
+  background: var(--light-blue);
+  border-left: 4px solid var(--blue);
+  padding: 20px 24px;
+  margin: 25px 0;
+}
+
+.highlight strong {
+  color: var(--navy);
+}
+
+/* DATE BOX */
+
+.date-box {
+  text-align: center;
+  background: linear-gradient(135deg, #0a2242, #194878);
+  color: white;
+  padding: 35px 15px;
+  margin: 25px 0;
+  border-radius: 4px;
+}
+
+.date-box small {
+  display: block;
+  color: #bdd5ef;
+  letter-spacing: 3px;
+  font-size: 11px;
+}
+
+.date-box strong {
+  display: block;
+  font-size: clamp(30px, 6vw, 46px);
+  letter-spacing: 3px;
+  margin: 8px 0;
+}
+
+.date-box p {
+  color: #d6e5f4;
+  font-size: 11px;
+  margin: 0;
+}
+
+/* IDEA */
+
+.idea-lead {
+  color: var(--navy);
+  font-size: clamp(22px, 4vw, 32px) !important;
+  font-weight: 800;
+  text-align: center;
+  letter-spacing: 2px;
+  margin: 35px 0 !important;
+}
+
+.subsection {
+  padding: 15px 0 25px;
+  border-bottom: 1px solid var(--line);
+}
+
+.subsection:last-child {
+  border-bottom: none;
+}
+
+.subsection h3 {
+  margin-top: 10px;
+}
+
+.subsection-label {
+  color: var(--blue);
+  font-size: 10px;
+  letter-spacing: 2px;
+  font-weight: bold;
+}
+
+/* NOTICE */
+
+.notice {
+  background: #f1f5fa;
+  border: 1px solid #dce5ef;
+  padding: 18px 22px;
+  margin-top: 25px;
+  font-size: 12px;
+  color: #526176;
+}
+
+/* FUTURE */
+
+.future {
+  background: linear-gradient(135deg, #071a35, #163b65);
+  color: white;
+  padding: 55px 30px;
+  text-align: center;
+  border-radius: 5px;
+  margin-top: 70px;
+}
+
+.future small {
+  color: #a9c9ec;
+  letter-spacing: 4px;
+  font-size: 10px;
+}
+
+.future h2 {
+  font-size: 26px;
+  margin: 18px 0;
+}
+
+.future p {
+  font-size: 13px;
+  color: #d5e2ef;
+  max-width: 620px;
+  margin: 15px auto;
+}
+
+.future-catch {
+  margin-top: 35px !important;
+  font-size: 19px !important;
+  font-weight: bold;
+  letter-spacing: 2px;
+  line-height: 2;
+  color: white !important;
+}
+
+/* FOOTER */
+
+footer {
+  background: #06152b;
+  color: white;
+  text-align: center;
+  padding: 45px 20px;
+}
+
+.footer-logo {
+  font-size: 24px;
+  font-weight: 900;
+  letter-spacing: 4px;
+}
+
+footer p {
+  font-size: 10px;
+  color: #a8bad0;
+  letter-spacing: 1px;
+}
+
+footer .copyright {
+  margin-top: 30px;
+  color: #74879e;
+}
+
+/* TOP BUTTON */
+
+#topButton {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  width: 45px;
+  height: 45px;
+  border: none;
+  border-radius: 50%;
+  background: var(--navy);
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: .3s;
+  z-index: 50;
+}
+
+#topButton.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 600px) {
+  .header {
+    padding: 0 18px;
+  }
+
+  .hero {
+    min-height: 490px;
+    padding: 80px 18px;
+  }
+
+  .hero::before {
+    font-size: 350px;
+    bottom: -100px;
+  }
+
+  main {
+    padding: 45px 14px 65px;
+  }
+
+  .section {
+    padding: 25px 20px;
+    margin-bottom: 30px;
+  }
+
+  .section-heading {
+    gap: 12px;
+  }
+
+  .section-number {
+    font-size: 27px;
+  }
+
+  .section-title h2 {
+    font-size: 18px;
+  }
+
+  .page-nav-inner {
+    gap: 7px;
+  }
+
+  .page-nav a {
+    font-size: 10px;
+    padding: 7px 10px;
+  }
+
+  .future {
+    padding: 40px 20px;
+  }
+}
+
+.skip{position:absolute;left:12px;top:-80px;background:white;padding:12px;z-index:200}.skip:focus{top:8px}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #c49c49;outline-offset:5px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:28px 0}.stat{padding:22px 15px;background:var(--light-blue);border-top:3px solid var(--blue)}
+.stat strong{display:block;color:var(--navy);font-size:36px;line-height:1.3}.stat span{font-size:12px}.stat small{display:block;color:#526176;font-size:11px}
+.bar-list{margin:25px 0}.bar-row{margin:20px 0}.bar-label{display:flex;justify-content:space-between;gap:16px;font-size:13px}.bar-track{height:8px;background:#eaf0f7;margin-top:8px}.bar-fill{height:100%;background:linear-gradient(90deg,#2466ad,#7ca7d5)}
+.note{font-size:12px!important;color:#526176}.feature-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:25px 0}.feature{border:1px solid var(--line);padding:22px}.feature h3{margin:12px 0!important}.tag{display:inline-block;font-size:10px;font-weight:bold;letter-spacing:.08em;padding:3px 9px;color:#1c527f;background:#eaf2fa}.tag.plan{color:#68511e;background:#f6efdf}
+figure{margin:28px 0}figure img{display:block;width:100%;height:auto;border:1px solid var(--line)}figcaption{font-size:11px;color:#526176;margin-top:10px}.preview-label{font-size:11px;letter-spacing:.15em;color:var(--blue);margin-bottom:10px}
+.timeline{border-left:2px solid #c9d9eb;padding-left:22px}.timeline h3{margin-top:22px}.action{display:inline-block;padding:12px 24px;background:var(--blue);color:white;font-size:13px;font-weight:bold;border-radius:3px}.future .action{background:white;color:var(--navy);margin-top:16px}
+details{border-top:1px solid var(--line);padding:18px 0}summary{font-size:14px;font-weight:bold;cursor:pointer}.header-link{max-width:55%;text-align:right}.hero h1{font-size:clamp(30px,5vw,48px)}
+@media(max-width:600px){.stats{grid-template-columns:1fr}.stat{display:grid;grid-template-columns:110px 1fr;align-items:center}.stat small{grid-column:2}.feature-grid{grid-template-columns:1fr}.header-link{font-size:10px}.bar-label{font-size:12px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style></head><body><a class="skip" href="#main">本文へスキップ</a><header class="header"><a href="./index.html" class="logo">L-crown<span>NEXT PROJECT</span></a><a href="./index.html#news" class="header-link">プロジェクトトップへ ↗</a></header>
+<section class="hero" id="opening"><div class="hero-content"><div class="eyebrow">L-crown — INFORMATION RELEASE / 02</div><h1>ファンの声から、<br>新しいL-crownへ。</h1><div class="hero-catch">ライオンズを、もっと深く。<br>データに、熱狂を。</div><p class="hero-description">156件の回答を、新しい体験へのヒントに。<br>新サイトのコンテンツと開発中の画面を、少しだけ公開。</p><div class="release-date"><small>OPENING SCHEDULE</small><strong>2027.03.01</strong><p>新サイト公開予定 / 日程・内容は変更の場合があります</p></div></div></section>
+<nav class="page-nav" aria-label="このページの内容"><div class="page-nav-inner"><a href="#survey">ファンの声</a><a href="#features">コンテンツ紹介</a><a href="#preview">画面先行公開</a><a href="#plans">今後の検討</a><a href="#schedule">公開に向けて</a></div></nav>
+<main id="main"><div class="intro"><div class="intro-label">INFORMATION RELEASE / 02</div><h2>データを、応援する楽しさへ。</h2><p>データをよく見る方にも、これから触れてみたい方にも。L-crownは、記録を探しやすく、読み解きやすい場所を目指しています。今回の情報解禁では、ファンの皆さまからいただいた回答と、新サイトで準備しているコンテンツ、その先の構想をお伝えします。</p></div><section class="section" id="survey"><div class="section-heading"><div class="section-number">01</div><div class="section-title"><small>FAN VOICES</small><h2>ファンの声から見えたこと</h2></div></div><p>「データ意識度調査」に寄せられた156件の回答から、新しいL-crownの情報設計を考えました。数字を知ることが、選手や試合をもっと楽しむきっかけになる。そのために、情報の量とともに、見やすさや読み解きやすさを大切にします。</p>
+<div class="stats"><div class="stat"><strong>87.2<span>％</span></strong><span>表などの見やすさを重視</span><small>136 / 156件</small></div><div class="stat"><strong>68.6<span>％</span></strong><span>選手・チームの分析記事を希望</span><small>107 / 156件</small></div><div class="stat"><strong>64.7<span>％</span></strong><span>専門的なデータを希望</span><small>101 / 156件</small></div></div>
+<div class="bar-list" aria-label="調査回答に占める割合"><div class="bar-row"><div class="bar-label"><span>毎試合データを確認する</span><strong>60.9％</strong></div><div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width:60.9%"></div></div></div><div class="bar-row"><div class="bar-label"><span>直感や「目で見た印象」も重要（4・5）</span><strong>78.2％</strong></div><div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width:78.2%"></div></div></div><div class="bar-row"><div class="bar-label"><span>セイバーメトリクスの自己申告の理解（4・5）</span><strong>20.5％</strong></div><div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width:20.5%"></div></div></div></div><div class="highlight"><strong>観戦で感じたことを、データからも深める。</strong><p>数値と映像の印象が食い違うとき、映像などを重視する回答は62.8％（98件）でした。観戦の実感とデータを行き来できるように、成績だけでなく、その意味や見方も伝えていきます。</p></div>
+<p class="note">出典：データ意識度調査の提供回答資料および同資料の学術レポート。分母は156件。見やすさ・希望コンテンツは複数回答。5段階評価は5が肯定的、1が否定的で、4・5を肯定側として集計しています。</p>
+<details><summary>調査の範囲と読み取り上の注意</summary><p>回答記録の期間は2025年9月14日〜2026年3月1日。PDFの番号付き137行と番号なし19行を合わせた156件を対象としています。募集経路や重複回答の制御方法は確認できず、156件が異なる156人に対応するかも検証できません。結果は回答者集団の傾向であり、ライオンズファン全体の意見を代表するものではありません。</p><p>自由記述は機能検討の参考として要約し、個別回答やタイムスタンプは掲載していません。調査から考えた改善案の効果は、公開後に確認していきます。</p></details></section><section class="section" id="features"><div class="section-heading"><div class="section-number">02</div><div class="section-title"><small>CONTENTS PREVIEW</small><h2>新L-crownで、できること</h2></div></div><p>新L-crownでは、試合情報・選手情報・年度別データ・記事・指標ガイドを通じて、記録を探すことと、意味を知ることをつなぎます。以下は開発中の構成です。</p><div class="feature-grid"><article class="feature"><span class="tag">開発中</span><h3>選手名鑑</h3><p>選手名・背番号・選手IDによる検索に加え、守備位置などの絞り込みや並べ替えで、気になる選手へ。</p></article><article class="feature"><span class="tag">開発中</span><h3>成績・年度別データ</h3><p>チームや選手の成績を、対象年度・期間とともに確認。基本指標から、より詳しいデータへ進める入口に。</p></article><article class="feature"><span class="tag">開発中</span><h3>記事・コラム</h3><p>選手やチームの特徴を掘り下げる記事から、根拠となるデータにも触れられる構成を目指します。</p></article><article class="feature"><span class="tag">開発中</span><h3>指標ガイド</h3><p>打率・出塁率などの基本指標から発展的な指標まで。式だけでなく、読み方や注意点も紹介します。</p></article></div><div class="highlight"><strong>あなたの関心から、次の発見へ。</strong><p>ホームには、お気に入り選手や興味に合わせた未読コンテンツの表示欄も準備されています。これらの機能の需要や効果を、本調査で個別に検証したわけではありません。</p></div></section><section class="section" id="preview"><div class="section-heading"><div class="section-number">03</div><div class="section-title"><small>FIRST LOOK</small><h2>開発中の画面を先行公開</h2></div></div><p>新しいL-crownの画面を、一部だけ先行公開します。選手を探す入口と、指標を理解するためのガイドです。</p>
+<figure><div class="preview-label">01 / PLAYER DIRECTORY</div><img src="./assets/preview-4.png" width="1125" height="330" alt="開発中の選手名鑑。選手名・背番号・選手IDの検索欄と並べ替え欄。" loading="lazy"><figcaption>選手名鑑の検索部分。2026年11月9日時点の開発中画面。掲載数や表示内容は公開時に変更される場合があります。</figcaption></figure>
+<figure><div class="preview-label">02 / STATS GUIDE</div><img src="./assets/preview-5.png" width="1074" height="300" alt="開発中の指標ガイド。打率・出塁率・長打率の計算式と読み方を説明するカード。" loading="lazy"><figcaption>指標ガイドの打撃指標部分。2026年11月9日時点の開発中画面。画像は機能紹介用で、検索などの操作はできません。</figcaption></figure>
+<p class="note">画面例は共有チャットで作成された学術レポートの掲載画像を使用しています。新サイトのURLは、正式なご案内まで非公開です。</p></section><section class="section" id="plans"><div class="section-heading"><div class="section-number">04</div><div class="section-title"><small>WHAT COMES NEXT</small><h2>声を、これからの改善へ</h2></div></div><p>調査の希望項目や自由記述を踏まえ、以下の追加・改善を検討します。現時点で実装や提供開始を確約するものではありません。</p>
+<div class="timeline"><div><span class="tag plan">公開に向けた改善方針</span><h3>名鑑・成績表・記事・ガイドをつなぐ</h3><p>見やすさを重視する回答を踏まえ、目的の情報へ進みやすい導線を整理。記事の根拠や、指標の意味を確かめられる構成を目指します。</p></div><div><span class="tag plan">追加候補</span><h3>選手比較・選手別の月次推移</h3><p>同じ条件で成績を見比べる選手比較、選手ごとの変化を追う時系列表示を検討します。時系列変化は自由記述から得られた案で、要望の割合は算出していません。</p></div><div><span class="tag plan">公開後の拡充候補</span><h3>2・3軍の情報</h3><p>今後見たいデータとして75件（48.1％）が選択。記録の入手可能性や継続的な更新体制を確認しながら、段階的な拡充を検討します。</p></div></div>
+<div class="notice">配球・トラッキングデータ・得点期待値・即時速報などは、原記録の入手、利用条件、定義、更新体制を確認したうえで判断します。</div></section><section class="section" id="schedule"><div class="section-heading"><div class="section-number">05</div><div class="section-title"><small>ROAD TO OPENING</small><h2>2027年3月1日の公開に向けて</h2></div></div><div class="date-box"><small>NEW SITE OPENING</small><strong>2027.03.01</strong><p>MONDAY / 公開予定</p></div><p>2026年11月1日の発表に続き、新サイトの具体的な構成と、調査から考えた改善の方向性をお知らせしました。L-crown公式サイトと制作委員会サイトを統合し、公開に向けて準備を進めます。</p><p>公開日は現時点での予定です。開発の進捗により変更する場合があります。新しいURLや正式な提供内容は、準備が整い次第、このプロジェクトページでご案内します。</p><a class="action" href="./nextproject.html">11月1日の発表を見る →</a></section><section class="future"><small>L-CROWN / NEXT PROJECT</small><h2>ひとつの記録から、<br>新しい発見を。</h2><p>選手を探す。数字を確かめる。記事で深める。<br>その行き来が、次の試合をもっと楽しみに変えていく。</p><a class="action" href="./index.html#news">最新のお知らせを見る</a></section></main><footer><div class="footer-logo">L-crown</div><p>ライオンズを、もっと深く。データに、熱狂を。</p><p>独立した非公式ファンサイトです。球団・関係団体による運営・公認ではありません。</p><p class="copyright">© L-crown. All Rights Reserved.</p></footer><button id="topButton" type="button" aria-label="ページ上部へ戻る">↑</button><script>const topButton=document.getElementById('topButton');window.addEventListener('scroll',()=>topButton.classList.toggle('show',window.scrollY>400),{passive:true});topButton.addEventListener('click',()=>window.scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'}));</script></body></html>
